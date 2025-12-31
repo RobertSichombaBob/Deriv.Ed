@@ -1,249 +1,629 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pure Mathematics A-Level | A+ Initiative</title>
     
-    <!-- Same head content as index.html, adjust title -->
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        math: {
+                            50: '#fdf4ff',
+                            100: '#fae8ff',
+                            200: '#f5d0fe',
+                            300: '#f0abfc',
+                            400: '#e879f9',
+                            500: '#d946ef',
+                            600: '#c026d3',
+                            700: '#a21caf',
+                            800: '#86198f',
+                            900: '#701a75',
+                        },
+                        dark: '#0f172a',
+                        light: '#f8fafc',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'serif': ['Source Serif Pro', 'Georgia', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
     
     <style>
-        .chapter-progress {
-            position: relative;
+        :root {
+            --primary: #d946ef;
+            --dark: #0f172a;
+            --light: #f8fafc;
         }
         
-        .chapter-progress::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: var(--progress, 0%);
-            background: linear-gradient(to right, #3B82F6, #8B5CF6);
+        .math-equation {
+            background: rgba(217, 70, 239, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
             border-radius: 0.5rem;
-            z-index: 0;
+            margin: 1.5rem 0;
+            font-family: 'Source Serif Pro', serif;
         }
         
-        .interactive-graph {
-            min-height: 300px;
-            background: #F8FAFC;
+        .theorem {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(217, 70, 239, 0.3);
             border-radius: 0.75rem;
-            border: 1px solid #E2E8F0;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .theorem-header {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .example {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .solution {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            display: none;
+        }
+        
+        .solution.show {
+            display: block;
         }
     </style>
 </head>
-<body class="font-sans bg-gray-50">
-    <!-- Navigation (same as index.html) -->
-    
-    <!-- Course Hero -->
-    <section class="pt-32 pb-20 px-4 bg-gradient-to-br from-pure-math/10 via-white to-blue-50">
-        <div class="max-w-6xl mx-auto">
-            <div class="flex flex-col md:flex-row items-center justify-between">
-                <div class="md:w-2/3 mb-10 md:mb-0">
-                    <span class="inline-block bg-pure-math/10 text-pure-math px-4 py-2 rounded-full font-semibold text-sm mb-6">
-                        A-Level Mathematics
-                    </span>
-                    <h1 class="text-4xl md:text-6xl font-bold mb-6">
-                        <span class="bg-gradient-to-r from-pure-math to-blue-600 bg-clip-text text-transparent">
-                            Pure Mathematics
+
+<body class="antialiased bg-dark text-gray-300">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-dark/95 backdrop-blur-sm border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="../index.html" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-math to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-graduation-cap text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold text-white">A+ Initiative</h1>
+                        <p class="text-xs text-math font-semibold">Pure Mathematics</p>
+                    </div>
+                </a>
+
+                <!-- Course Navigation -->
+                <div class="hidden lg:flex items-center space-x-6">
+                    <a href="#overview" class="text-gray-300 hover:text-math font-medium">Overview</a>
+                    <a href="#chapters" class="text-gray-300 hover:text-math font-medium">Chapters</a>
+                    <a href="#exercises" class="text-gray-300 hover:text-math font-medium">Exercises</a>
+                    <a href="#resources" class="text-gray-300 hover:text-math font-medium">Resources</a>
+                    <a href="../index.html" class="text-gray-300 hover:text-white font-medium">
+                        <i class="fas fa-home mr-2"></i>Dashboard
+                    </a>
+                </div>
+
+                <!-- Mobile Menu -->
+                <button id="mobileMenuBtn" class="lg:hidden text-gray-300">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Course Header -->
+    <div class="pt-20 pb-12 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-math/10 to-purple-600/10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+                <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="px-3 py-1 rounded-full bg-math/20 text-math text-sm font-semibold">
+                            A-Level Course
                         </span>
+                        <span class="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-sm">
+                            14 Chapters
+                        </span>
+                    </div>
+                    <h1 class="text-4xl lg:text-5xl font-bold text-white mb-4">
+                        Pure Mathematics
                     </h1>
-                    <p class="text-xl text-gray-600 mb-8">
-                        Master the language of the universe. From calculus to complex numbers, 
-                        build the mathematical foundation for all STEM subjects.
+                    <p class="text-xl text-gray-300 mb-6 max-w-3xl">
+                        Master calculus, algebra, trigonometry, and advanced mathematical concepts with 
+                        interactive lessons, step-by-step solutions, and comprehensive practice materials.
                     </p>
+                    
                     <div class="flex flex-wrap gap-4">
-                        <button class="btn-primary px-8 py-3 rounded-xl font-semibold">
-                            <i class="fas fa-play-circle mr-3"></i>Start Learning
+                        <button onclick="startLearning()" class="px-6 py-3 rounded-lg bg-math hover:bg-math/80 text-white font-semibold">
+                            <i class="fas fa-play mr-2"></i> Start Learning
                         </button>
-                        <button class="btn-secondary px-8 py-3 rounded-xl font-semibold">
-                            <i class="fas fa-download mr-3"></i>Syllabus PDF
+                        <button onclick="downloadResources()" class="px-6 py-3 rounded-lg bg-gray-800 hover:bg-gray-700 text-white font-semibold">
+                            <i class="fas fa-download mr-2"></i> Download Resources
                         </button>
                     </div>
                 </div>
-                <div class="md:w-1/3">
-                    <div class="card p-6 bg-white">
-                        <h3 class="text-xl font-bold mb-4">Course Details</h3>
-                        <div class="space-y-3">
-                            <div class="flex justify-between">
-                                <span class="text-gray-600">Duration</span>
-                                <span class="font-semibold">120 hours</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-gray-600">Modules</span>
-                                <span class="font-semibold">12</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-gray-600">Difficulty</span>
-                                <span class="font-semibold text-pure-math">Advanced</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-gray-600">Exam Board</span>
-                                <span class="font-semibold">AQA, Edexcel, OCR</span>
-                            </div>
+                
+                <div class="glass rounded-2xl p-6 w-full lg:w-80">
+                    <h3 class="text-white font-bold mb-4">Course Progress</h3>
+                    <div class="mb-6">
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-gray-300">Overall Progress</span>
+                            <span class="text-math font-bold" id="courseProgress">0%</span>
+                        </div>
+                        <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-math rounded-full" id="progressBar" style="width: 0%"></div>
                         </div>
                     </div>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-300">Chapters Completed</span>
+                            <span class="text-white font-bold" id="chaptersCompleted">0/14</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-300">Practice Questions</span>
+                            <span class="text-white font-bold">500+</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-300">Study Hours</span>
+                            <span class="text-white font-bold">120+</span>
+                        </div>
+                    </div>
+                    
+                    <button onclick="continueLearning()" class="w-full py-3 rounded-lg bg-math hover:bg-math/80 text-white font-semibold">
+                        <i class="fas fa-play-circle mr-2"></i> Continue Learning
+                    </button>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Course Content -->
-    <section class="py-20 px-4">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Left Column: Chapters -->
+            <div class="lg:col-span-2">
+                <!-- Overview -->
+                <section id="overview" class="mb-12">
+                    <h2 class="text-3xl font-bold text-white mb-6">Course Overview</h2>
+                    <div class="glass rounded-2xl p-6 mb-6">
+                        <p class="text-gray-300 mb-4">
+                            This comprehensive A-Level Pure Mathematics course covers all topics required for 
+                            AQA, Edexcel, OCR, and Cambridge International examinations. The course is designed 
+                            to build mathematical understanding from fundamental concepts to advanced applications.
+                        </p>
+                        <p class="text-gray-300 mb-6">
+                            Each chapter includes video lessons, interactive examples, practice questions with 
+                            step-by-step solutions, and chapter tests to assess your understanding.
+                        </p>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="text-center p-4 bg-gray-800/50 rounded-xl">
+                                <div class="text-2xl font-bold text-math mb-1">14</div>
+                                <div class="text-sm text-gray-300">Chapters</div>
+                            </div>
+                            <div class="text-center p-4 bg-gray-800/50 rounded-xl">
+                                <div class="text-2xl font-bold text-math mb-1">120+</div>
+                                <div class="text-sm text-gray-300">Video Lessons</div>
+                            </div>
+                            <div class="text-center p-4 bg-gray-800/50 rounded-xl">
+                                <div class="text-2xl font-bold text-math mb-1">500+</div>
+                                <div class="text-sm text-gray-300">Practice Questions</div>
+                            </div>
+                            <div class="text-center p-4 bg-gray-800/50 rounded-xl">
+                                <div class="text-2xl font-bold text-math mb-1">50+</div>
+                                <div class="text-sm text-gray-300">Past Papers</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- Chapters -->
-                <div class="lg:col-span-2">
-                    <h2 class="text-3xl font-bold mb-8">Course Modules</h2>
+                <section id="chapters" class="mb-12">
+                    <h2 class="text-3xl font-bold text-white mb-6">Course Chapters</h2>
                     
                     <div class="space-y-4">
                         <!-- Chapter 1 -->
-                        <div class="card p-6">
-                            <div class="flex items-start">
-                                <div class="w-12 h-12 bg-pure-math/10 rounded-xl flex items-center justify-center mr-4">
-                                    <span class="text-pure-math font-bold">1</span>
-                                </div>
-                                <div class="flex-1">
-                                    <h3 class="text-xl font-bold mb-2">Algebra & Functions</h3>
-                                    <p class="text-gray-600 mb-4">
-                                        Master algebraic manipulation, quadratic equations, and function notation.
-                                    </p>
-                                    <div class="flex items-center text-sm text-gray-500">
-                                        <span class="mr-4"><i class="fas fa-clock mr-1"></i> 10 hours</span>
-                                        <span><i class="fas fa-file-alt mr-1"></i> 5 lessons</span>
+                        <div class="glass rounded-xl p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-lg bg-math/20 flex items-center justify-center">
+                                        <span class="text-math font-bold">1</span>
                                     </div>
-                                    <div class="mt-4">
-                                        <a href="#" class="text-pure-math font-semibold hover:underline">
-                                            Start Chapter <i class="fas fa-arrow-right ml-2"></i>
-                                        </a>
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white">Algebra Fundamentals</h3>
+                                        <p class="text-gray-400">Expressions, equations, and inequalities</p>
+                                    </div>
+                                </div>
+                                <button onclick="toggleChapter(1)" class="text-math">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            
+                            <div id="chapter1-content" class="hidden">
+                                <div class="border-t border-gray-800 pt-4">
+                                    <h4 class="text-white font-bold mb-3">Topics Covered:</h4>
+                                    <ul class="grid grid-cols-2 gap-2 mb-4">
+                                        <li class="flex items-center text-gray-300">
+                                            <i class="fas fa-check text-math mr-2"></i>
+                                            Algebraic expressions
+                                        </li>
+                                        <li class="flex items-center text-gray-300">
+                                            <i class="fas fa-check text-math mr-2"></i>
+                                            Linear equations
+                                        </li>
+                                        <li class="flex items-center text-gray-300">
+                                            <i class="fas fa-check text-math mr-2"></i>
+                                            Quadratic equations
+                                        </li>
+                                        <li class="flex items-center text-gray-300">
+                                            <i class="fas fa-check text-math mr-2"></i>
+                                            Simultaneous equations
+                                        </li>
+                                        <li class="flex items-center text-gray-300">
+                                            <i class="fas fa-check text-math mr-2"></i>
+                                            Inequalities
+                                        </li>
+                                        <li class="flex items-center text-gray-300">
+                                            <i class="fas fa-check text-math mr-2"></i>
+                                            Polynomials
+                                        </li>
+                                    </ul>
+                                    
+                                    <div class="mb-6">
+                                        <h4 class="text-white font-bold mb-2">Key Concept: Quadratic Formula</h4>
+                                        <div class="math-equation">
+                                            For a quadratic equation \( ax^2 + bx + c = 0 \), the solutions are given by:
+                                            $$ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex gap-4">
+                                        <button onclick="startChapter(1)" class="px-4 py-2 rounded-lg bg-math hover:bg-math/80 text-white font-semibold">
+                                            Start Chapter
+                                        </button>
+                                        <button onclick="practiceChapter(1)" class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-white font-semibold">
+                                            Practice Questions
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Chapter 2 -->
-                        <div class="card p-6">
-                            <div class="flex items-start">
-                                <div class="w-12 h-12 bg-pure-math/10 rounded-xl flex items-center justify-center mr-4">
-                                    <span class="text-pure-math font-bold">2</span>
-                                </div>
-                                <div class="flex-1">
-                                    <h3 class="text-xl font-bold mb-2">Calculus: Differentiation</h3>
-                                    <p class="text-gray-600 mb-4">
-                                        Understand limits, derivatives, and their applications in optimization.
-                                    </p>
-                                    <div class="flex items-center text-sm text-gray-500">
-                                        <span class="mr-4"><i class="fas fa-clock mr-1"></i> 15 hours</span>
-                                        <span><i class="fas fa-file-alt mr-1"></i> 8 lessons</span>
+                        <div class="glass rounded-xl p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-lg bg-math/20 flex items-center justify-center">
+                                        <span class="text-math font-bold">2</span>
                                     </div>
-                                    <div class="mt-4">
-                                        <a href="#" class="text-pure-math font-semibold hover:underline">
-                                            Start Chapter <i class="fas fa-arrow-right ml-2"></i>
-                                        </a>
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white">Functions and Graphs</h3>
+                                        <p class="text-gray-400">Understanding mathematical relationships</p>
+                                    </div>
+                                </div>
+                                <button onclick="toggleChapter(2)" class="text-math">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            
+                            <div id="chapter2-content" class="hidden">
+                                <div class="border-t border-gray-800 pt-4">
+                                    <!-- Interactive Graph Example -->
+                                    <div class="mb-6">
+                                        <h4 class="text-white font-bold mb-2">Interactive Example: Plot a Function</h4>
+                                        <div class="math-example" data-type="function" data-function="x^2">
+                                            <!-- Rendered by interactive-lessons.js -->
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Add more chapters similarly -->
+                        <!-- Add more chapters as needed -->
+                    </div>
+                </section>
+
+                <!-- Interactive Examples -->
+                <section class="mb-12">
+                    <h2 class="text-3xl font-bold text-white mb-6">Interactive Learning</h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Calculus Example -->
+                        <div class="glass rounded-xl p-6">
+                            <h3 class="text-xl font-bold text-white mb-4">Calculus: Differentiation</h3>
+                            <p class="text-gray-300 mb-4">
+                                Learn how to find derivatives of functions using first principles and rules.
+                            </p>
+                            
+                            <div class="theorem">
+                                <div class="theorem-header">
+                                    <i class="fas fa-lightbulb"></i>
+                                    Power Rule
+                                </div>
+                                <div class="math-equation">
+                                    If \( f(x) = x^n \), then \( f'(x) = nx^{n-1} \)
+                                </div>
+                            </div>
+                            
+                            <div class="example">
+                                <h4 class="text-white font-bold mb-2">Example:</h4>
+                                <p class="text-gray-300 mb-2">Differentiate \( f(x) = 3x^4 + 2x^2 - 5 \)</p>
+                                <button onclick="showSolution('diff-example')" class="text-math hover:text-math/80">
+                                    Show Solution
+                                </button>
+                                <div id="diff-example" class="solution">
+                                    <p class="text-gray-300 mb-2">Using the power rule:</p>
+                                    <div class="math-equation">
+                                        $$ f'(x) = 3 \cdot 4x^{3} + 2 \cdot 2x^{1} - 0 $$
+                                        $$ f'(x) = 12x^3 + 4x $$
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Trigonometry Example -->
+                        <div class="glass rounded-xl p-6">
+                            <h3 class="text-xl font-bold text-white mb-4">Trigonometry: Identities</h3>
+                            <p class="text-gray-300 mb-4">
+                                Master trigonometric identities and their applications.
+                            </p>
+                            
+                            <div class="theorem">
+                                <div class="theorem-header">
+                                    <i class="fas fa-lightbulb"></i>
+                                    Pythagorean Identity
+                                </div>
+                                <div class="math-equation">
+                                    $$ \sin^2\theta + \cos^2\theta = 1 $$
+                                </div>
+                            </div>
+                            
+                            <div class="example">
+                                <h4 class="text-white font-bold mb-2">Interactive Practice:</h4>
+                                <div class="mb-4">
+                                    <label class="block text-gray-300 mb-2">If \( \sin\theta = 0.6 \), find \( \cos\theta \):</label>
+                                    <input type="number" id="cos-theta" class="w-32 bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-white" 
+                                           placeholder="Enter value" step="0.01">
+                                    <button onclick="checkTrigAnswer()" class="ml-2 px-4 py-2 rounded-lg bg-math hover:bg-math/80 text-white">
+                                        Check
+                                    </button>
+                                </div>
+                                <div id="trig-feedback" class="text-sm"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Column: Progress & Resources -->
+            <div>
+                <!-- Quick Links -->
+                <div class="glass rounded-2xl p-6 mb-6">
+                    <h3 class="text-white font-bold mb-4">Quick Links</h3>
+                    <div class="space-y-3">
+                        <a href="#exercises" class="flex items-center p-3 rounded-lg bg-gray-800/50 hover:bg-gray-800">
+                            <i class="fas fa-tasks text-math mr-3"></i>
+                            <span>Practice Exercises</span>
+                        </a>
+                        <a href="#resources" class="flex items-center p-3 rounded-lg bg-gray-800/50 hover:bg-gray-800">
+                            <i class="fas fa-download text-math mr-3"></i>
+                            <span>Download Resources</span>
+                        </a>
+                        <a href="#" class="flex items-center p-3 rounded-lg bg-gray-800/50 hover:bg-gray-800">
+                            <i class="fas fa-video text-math mr-3"></i>
+                            <span>Video Lessons</span>
+                        </a>
+                        <a href="#" class="flex items-center p-3 rounded-lg bg-gray-800/50 hover:bg-gray-800">
+                            <i class="fas fa-question-circle text-math mr-3"></i>
+                            <span>Ask a Question</span>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Sidebar -->
-                <div>
-                    <!-- Progress -->
-                    <div class="card p-6 mb-6">
-                        <h3 class="text-xl font-bold mb-4">Your Progress</h3>
-                        <div class="mb-4">
-                            <div class="flex justify-between text-sm mb-1">
-                                <span>Overall Progress</span>
-                                <span>25%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 25%"></div>
-                            </div>
+                <!-- Study Tips -->
+                <div class="glass rounded-2xl p-6 mb-6">
+                    <h3 class="text-white font-bold mb-4">Study Tips</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <i class="fas fa-check text-math mr-3 mt-1"></i>
+                            <span class="text-gray-300">Practice regularly, not just before exams</span>
                         </div>
-                        <div class="space-y-2">
-                            <div class="flex justify-between text-sm">
-                                <span>Chapters Completed</span>
-                                <span>3/12</span>
-                            </div>
-                            <div class="flex justify-between text-sm">
-                                <span>Practice Questions</span>
-                                <span>42/300</span>
-                            </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check text-math mr-3 mt-1"></i>
+                            <span class="text-gray-300">Understand concepts, don't just memorize</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check text-math mr-3 mt-1"></i>
+                            <span class="text-gray-300">Use graphing to visualize functions</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check text-math mr-3 mt-1"></i>
+                            <span class="text-gray-300">Check your work step by step</span>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Resources -->
-                    <div class="card p-6">
-                        <h3 class="text-xl font-bold mb-4">Resources</h3>
-                        <div class="space-y-3">
-                            <a href="#" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                                <i class="fas fa-file-pdf text-pure-math text-xl mr-3"></i>
-                                <div>
-                                    <div class="font-medium">Formula Sheet</div>
-                                    <div class="text-sm text-gray-500">PDF • 2MB</div>
-                                </div>
-                            </a>
-                            <a href="#" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                                <i class="fas fa-video text-pure-math text-xl mr-3"></i>
-                                <div>
-                                    <div class="font-medium">Video Solutions</div>
-                                    <div class="text-sm text-gray-500">50+ videos</div>
-                                </div>
-                            </a>
-                            <a href="#" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                                <i class="fas fa-tasks text-pure-math text-xl mr-3"></i>
-                                <div>
-                                    <div class="font-medium">Practice Papers</div>
-                                    <div class="text-sm text-gray-500">15 papers</div>
-                                </div>
-                            </a>
+                <!-- Upcoming Topics -->
+                <div class="glass rounded-2xl p-6">
+                    <h3 class="text-white font-bold mb-4">Coming Soon</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="text-gray-300 font-semibold mb-2">Chapter 5: Calculus Applications</h4>
+                            <div class="h-2 bg-gray-800 rounded-full">
+                                <div class="h-full bg-math rounded-full" style="width: 40%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-gray-300 font-semibold mb-2">Chapter 8: Complex Numbers</h4>
+                            <div class="h-2 bg-gray-800 rounded-full">
+                                <div class="h-full bg-math rounded-full" style="width: 25%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-gray-300 font-semibold mb-2">Chapter 12: Advanced Calculus</h4>
+                            <div class="h-2 bg-gray-800 rounded-full">
+                                <div class="h-full bg-math rounded-full" style="width: 10%"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </main>
 
-    <!-- Interactive Example -->
-    <section class="py-20 px-4 bg-white">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-4">Try It Yourself</h2>
-            <p class="text-gray-600 mb-8">Interactive differentiation example</p>
-            
-            <div class="card p-8">
-                <div class="mb-6">
-                    <div class="text-lg font-mono mb-4">Differentiate: \( f(x) = 3x^2 + 2x + 1 \)</div>
-                    <div class="interactive-graph p-4 mb-4" id="graph-container">
-                        <!-- Graph will be rendered here -->
-                    </div>
-                </div>
-                <button onclick="checkDerivative()" class="btn-primary px-6 py-3 rounded-lg">
-                    Check Your Answer
-                </button>
-                <div id="answer-feedback" class="mt-4 hidden"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer (same as index.html) -->
-    
+    <!-- JavaScript -->
     <script>
-        // Interactive example script
-        function checkDerivative() {
-            const feedback = document.getElementById('answer-feedback');
-            feedback.className = 'mt-4 p-4 rounded-lg bg-green-50 border border-green-200 text-green-700';
-            feedback.innerHTML = `
-                <div class="font-bold mb-2">Correct! 🎉</div>
-                <div>The derivative is: \( f'(x) = 6x + 2 \)</div>
-                <div class="mt-2 text-sm">
-                    Explanation: Using the power rule: \( d/dx[x^n] = nx^{n-1} \)
-                </div>
-            `;
-            feedback.classList.remove('hidden');
+        // Load course progress
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCourseProgress();
+            setupInteractiveElements();
+        });
+
+        function loadCourseProgress() {
+            // Load progress from localStorage
+            const progress = JSON.parse(localStorage.getItem('aplus_course_progress') || '{}');
+            const courseProgress = progress['pure-mathematics'] || { progress: 0, chaptersData: [] };
+            
+            // Update progress display
+            document.getElementById('courseProgress').textContent = `${courseProgress.progress || 0}%`;
+            document.getElementById('progressBar').style.width = `${courseProgress.progress || 0}%`;
+            
+            // Update chapters completed
+            const completedChapters = (courseProgress.chaptersData || []).filter(c => c.completed).length;
+            document.getElementById('chaptersCompleted').textContent = `${completedChapters}/14`;
         }
+
+        function toggleChapter(chapterNumber) {
+            const content = document.getElementById(`chapter${chapterNumber}-content`);
+            const icon = content.previousElementSibling.querySelector('i');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+
+        function startChapter(chapterNumber) {
+            // Navigate to chapter start
+            showToast(`Starting Chapter ${chapterNumber}...`, 'info');
+            // In a real implementation, this would load the chapter content
+        }
+
+        function practiceChapter(chapterNumber) {
+            // Navigate to practice questions
+            showToast(`Loading practice questions for Chapter ${chapterNumber}...`, 'info');
+            // In a real implementation, this would load the practice questions
+        }
+
+        function showSolution(solutionId) {
+            const solution = document.getElementById(solutionId);
+            solution.classList.toggle('show');
+        }
+
+        function checkTrigAnswer() {
+            const input = document.getElementById('cos-theta');
+            const feedback = document.getElementById('trig-feedback');
+            
+            if (!input.value) {
+                feedback.textContent = 'Please enter a value';
+                feedback.className = 'text-sm text-yellow-400';
+                return;
+            }
+            
+            const userAnswer = parseFloat(input.value);
+            const correctAnswer = 0.8; // cosθ = √(1 - 0.6²) = 0.8
+            
+            if (Math.abs(userAnswer - correctAnswer) < 0.01) {
+                feedback.textContent = 'Correct! Well done!';
+                feedback.className = 'text-sm text-green-400';
+            } else {
+                feedback.textContent = `Not quite. Remember: cos²θ = 1 - sin²θ. The correct answer is ${correctAnswer}`;
+                feedback.className = 'text-sm text-red-400';
+            }
+        }
+
+        function startLearning() {
+            // Start from beginning or continue
+            showToast('Starting your learning journey!', 'success');
+        }
+
+        function continueLearning() {
+            // Continue from last position
+            showToast('Continuing from where you left off...', 'info');
+        }
+
+        function downloadResources() {
+            // Trigger resource download
+            showToast('Preparing resources for download...', 'info');
+        }
+
+        function setupInteractiveElements() {
+            // Setup MathJax
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        function showToast(message, type = 'info') {
+            // Simple toast notification
+            const toast = document.createElement('div');
+            toast.className = `fixed bottom-4 right-4 px-4 py-3 rounded-lg ${
+                type === 'success' ? 'bg-green-900/90 text-green-100' :
+                type === 'error' ? 'bg-red-900/90 text-red-100' :
+                'bg-blue-900/90 text-blue-100'
+            } border-l-4 ${type === 'success' ? 'border-green-500' : type === 'error' ? 'border-red-500' : 'border-blue-500'}`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        // Export functions for global access
+        window.toggleChapter = toggleChapter;
+        window.startChapter = startChapter;
+        window.practiceChapter = practiceChapter;
+        window.showSolution = showSolution;
+        window.checkTrigAnswer = checkTrigAnswer;
+        window.startLearning = startLearning;
+        window.continueLearning = continueLearning;
+        window.downloadResources = downloadResources;
     </script>
 </body>
 </html>
