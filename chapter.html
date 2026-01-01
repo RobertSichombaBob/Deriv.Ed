@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter - A+ Initiative</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .chapter-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+            min-height: calc(100vh - 80px);
+            padding-top: 80px;
+        }
+        
+        .chapter-sidebar {
+            background: rgba(10, 10, 10, 0.95);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            height: 100vh;
+            position: fixed;
+            width: 280px;
+            overflow-y: auto;
+            padding: 2rem 0;
+        }
+        
+        .chapter-content {
+            margin-left: 280px;
+            padding: 2rem;
+            max-width: 900px;
+        }
+        
+        .course-title {
+            padding: 0 1.5rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        .course-title h2 {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .course-title p {
+            color: var(--gray-400);
+            font-size: 0.875rem;
+        }
+        
+        .chapter-list {
+            padding: 0 1.5rem;
+        }
+        
+        .chapter-item {
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .chapter-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .chapter-item.active {
+            background: rgba(5, 150, 105, 0.1);
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .chapter-item i {
+            margin-right: 0.75rem;
+            width: 1.25rem;
+        }
+        
+        .chapter-number {
+            font-weight: 600;
+            margin-right: 0.75rem;
+        }
+        
+        .chapter-progress {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        
+        .chapter-progress-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+        
+        .chapter-header {
+            background: linear-gradient(135deg, rgba(30, 30, 30, 0.9) 0%, rgba(10, 10, 10, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .chapter-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .chapter-meta {
+            display: flex;
+            gap: 1.5rem;
+            color: var(--gray-400);
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .chapter-body {
+            font-size: 1.125rem;
+            line-height: 1.7;
+        }
+        
+        .chapter-body h2 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .chapter-body h3 {
+            font-size: 1.25rem;
+            margin: 1.5rem 0 1rem;
+        }
+        
+        .chapter-body p {
+            margin-bottom: 1rem;
+        }
+        
+        .chapter-body ul, .chapter-body ol {
+            margin: 1rem 0 1rem 1.5rem;
+        }
+        
+        .chapter-body li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .chapter-body pre {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.875rem;
+        }
+        
+        .chapter-body code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.875rem;
+        }
+        
+        .formula-box {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 1.25rem;
+            text-align: center;
+        }
+        
+        .example-box {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .example-box h4 {
+            color: var(--physics);
+            margin-bottom: 1rem;
+        }
+        
+        .exercise-box {
+            background: rgba(5, 150, 105, 0.1);
+            border: 1px solid rgba(5, 150, 105, 0.3);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .exercise-box h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .chapter-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .chapter-controls {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .control-btn {
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .control-btn.primary {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .control-btn.primary:hover {
+            background: var(--primary-dark);
+        }
+        
+        .quiz-container {
+            background: rgba(30, 30, 30, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .quiz-question {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .quiz-options {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .quiz-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .quiz-option.selected {
+            background: rgba(5, 150, 105, 0.2);
+            border-color: var(--primary);
+        }
+        
+        .quiz-option.correct {
+            background: rgba(5, 150, 105, 0.3);
+            border-color: var(--primary);
+        }
+        
+        .quiz-option.incorrect {
+            background: rgba(220, 38, 38, 0.3);
+            border-color: var(--secondary);
+        }
+        
+        .quiz-option input {
+            margin-right: 1rem;
+        }
+        
+        .quiz-feedback {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            display: none;
+        }
+        
+        .quiz-feedback.correct {
+            background: rgba(5, 150, 105, 0.1);
+            color: var(--primary);
+            display: block;
+        }
+        
+        .quiz-feedback.incorrect {
+            background: rgba(220, 38, 38, 0.1);
+            color: var(--secondary);
+            display: block;
+        }
+        
+        .notes-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .notes-textarea {
+            width: 100%;
+            min-height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            resize: vertical;
+        }
+        
+        .notes-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .mobile-chapter-toggle {
+            display: none;
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: var(--primary);
+            border-radius: 50%;
+            border: none;
+            color: white;
+            font-size: 1.25rem;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .mobile-chapter-sidebar {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        .mobile-chapter-sidebar.show {
+            display: block;
+        }
+        
+        .mobile-sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .chapter-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .chapter-sidebar {
+                display: none;
+            }
+            
+            .chapter-content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+            
+            .mobile-chapter-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .chapter-title {
+                font-size: 1.75rem;
+            }
+            
+            .chapter-body {
+                font-size: 1rem;
+            }
+            
+            .chapter-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .chapter-controls {
+                flex-direction: column;
+            }
+            
+            .control-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <div class="text-xl font-bold text-primary mt-4">A+ Initiative</div>
+            <div class="text-sm text-gray-400">Loading Chapter Content</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="mainNav">
+        <div class="nav-container">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">
+                    <div>A+ Initiative</div>
+                    <div class="logo-subtitle">A-Levels Excellence</div>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home mr-2"></i>Home
+                </a>
+                <a href="course_list.html" class="nav-link">
+                    <i class="fas fa-book-open mr-2"></i>Courses
+                </a>
+                <a href="resources.html" class="nav-link">
+                    <i class="fas fa-tools mr-2"></i>Resources
+                </a>
+                <a href="dashboard.html" class="nav-link">
+                    <i class="fas fa-chart-line mr-2"></i>Dashboard
+                </a>
+                <div class="nav-progress">
+                    <span class="text-sm text-gray-400 mr-2">Progress:</span>
+                    <div class="progress-bar" style="width: 100px;">
+                        <div class="progress-fill" id="headerProgress" style="width: 30%"></div>
+                    </div>
+                    <span class="text-sm text-primary ml-2" id="headerProgressText">30%</span>
+                </div>
+            </div>
+
+            <!-- Auth Buttons -->
+            <div class="nav-auth">
+                <button id="loginBtn" class="btn btn-outline">
+                    <i class="fas fa-sign-in-alt mr-2"></i>Sign In
+                </button>
+                <button id="signupBtn" class="btn btn-primary">
+                    <i class="fas fa-user-plus mr-2"></i>Get Started
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuBtn" class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Sidebar Toggle -->
+    <button id="mobileChapterToggle" class="mobile-chapter-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Mobile Chapter Sidebar -->
+    <div id="mobileChapterSidebar" class="mobile-chapter-sidebar">
+        <div class="mobile-sidebar-header">
+            <h3 class="text-xl font-bold text-white">Chapters</h3>
+            <button id="closeMobileSidebar" class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div id="mobileChapterList"></div>
+    </div>
+
+    <div class="chapter-container">
+        <!-- Desktop Sidebar -->
+        <aside class="chapter-sidebar">
+            <div class="course-title">
+                <h2 id="sidebarCourseTitle">Pure Mathematics</h2>
+                <p id="sidebarCourseCode">A-Level Mathematics</p>
+            </div>
+            
+            <div class="chapter-progress">
+                <div class="chapter-progress-fill" id="sidebarProgress" style="width: 30%"></div>
+            </div>
+            
+            <div class="chapter-list" id="chapterList">
+                <!-- Chapters will be loaded by JavaScript -->
+            </div>
+            
+            <div class="sidebar-resources p-6">
+                <h3 class="font-bold text-white mb-4">Resources</h3>
+                <div class="space-y-2">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-download"></i> Download Notes
+                    </a>
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-video"></i> Video Lecture
+                    </a>
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-tasks"></i> Practice Exercises
+                    </a>
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-question-circle"></i> Quiz
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="chapter-content">
+            <!-- Chapter Header -->
+            <div class="chapter-header">
+                <div class="chapter-meta">
+                    <span><i class="fas fa-clock mr-1"></i> 45 minutes</span>
+                    <span><i class="fas fa-book mr-1"></i> Chapter 3</span>
+                    <span><i class="fas fa-chart-line mr-1"></i> Intermediate</span>
+                </div>
+                <h1 class="chapter-title" id="currentChapterTitle">Differential Calculus</h1>
+                <p class="text-gray-300" id="chapterDescription">
+                    Learn the fundamentals of differentiation and its applications in solving real-world problems.
+                </p>
+            </div>
+
+            <!-- Chapter Controls -->
+            <div class="chapter-controls">
+                <button class="control-btn" id="markComplete">
+                    <i class="fas fa-check-circle"></i> Mark Complete
+                </button>
+                <button class="control-btn" id="saveNotes">
+                    <i class="fas fa-save"></i> Save Notes
+                </button>
+                <button class="control-btn" id="bookmarkChapter">
+                    <i class="fas fa-bookmark"></i> Bookmark
+                </button>
+                <button class="control-btn primary" id="startQuiz">
+                    <i class="fas fa-question-circle"></i> Start Quiz
+                </button>
+            </div>
+
+            <!-- Chapter Body -->
+            <div class="chapter-body" id="chapterBody">
+                <h2>Introduction to Differentiation</h2>
+                <p>Differentiation is a fundamental concept in calculus that deals with rates of change. It allows us to find the gradient of a curve at any point, which has numerous applications in physics, engineering, economics, and other fields.</p>
+                
+                <h2>The Derivative</h2>
+                <p>The derivative of a function f(x) is denoted as f'(x) or dy/dx. It represents the rate of change of y with respect to x.</p>
+                
+                <div class="formula-box">
+                    f'(x) = lim<sub>h→0</sub> [f(x+h) - f(x)] / h
+                </div>
+                
+                <h2>Basic Rules of Differentiation</h2>
+                
+                <div class="example-box">
+                    <h4>Power Rule</h4>
+                    <p>If f(x) = x<sup>n</sup>, then f'(x) = nx<sup>n-1</sup></p>
+                    <p><strong>Example:</strong> If f(x) = x<sup>3</sup>, then f'(x) = 3x<sup>2</sup></p>
+                </div>
+                
+                <div class="example-box">
+                    <h4>Sum Rule</h4>
+                    <p>The derivative of a sum is the sum of the derivatives:</p>
+                    <p>d/dx [f(x) + g(x)] = f'(x) + g'(x)</p>
+                </div>
+                
+                <div class="example-box">
+                    <h4>Product Rule</h4>
+                    <p>For the product of two functions:</p>
+                    <p>d/dx [f(x)g(x)] = f'(x)g(x) + f(x)g'(x)</p>
+                </div>
+                
+                <div class="example-box">
+                    <h4>Quotient Rule</h4>
+                    <p>For the quotient of two functions:</p>
+                    <p>d/dx [f(x)/g(x)] = [f'(x)g(x) - f(x)g'(x)] / [g(x)]<sup>2</sup></p>
+                </div>
+                
+                <h2>Applications of Differentiation</h2>
+                <ul>
+                    <li><strong>Finding Tangents:</strong> The derivative gives the slope of the tangent line at any point on a curve.</li>
+                    <li><strong>Optimization:</strong> Finding maximum and minimum values of functions.</li>
+                    <li><strong>Related Rates:</strong> Solving problems where multiple quantities change together.</li>
+                    <li><strong>Curve Sketching:</strong> Analyzing the behavior of functions.</li>
+                </ul>
+                
+                <div class="exercise-box">
+                    <h4>Practice Exercise</h4>
+                    <p>Differentiate the following function:</p>
+                    <p>f(x) = 3x<sup>4</sup> - 2x<sup>3</sup> + 5x - 7</p>
+                    <div class="exercise-solution" style="display: none;">
+                        <p><strong>Solution:</strong> f'(x) = 12x<sup>3</sup> - 6x<sup>2</sup> + 5</p>
+                    </div>
+                    <button class="btn btn-outline mt-3" id="showSolution">
+                        Show Solution
+                    </button>
+                </div>
+                
+                <!-- Interactive Quiz -->
+                <div class="quiz-container" id="quizSection" style="display: none;">
+                    <h3>Chapter Quiz</h3>
+                    <div id="quizContent">
+                        <!-- Quiz will be loaded here -->
+                    </div>
+                    <button class="btn btn-primary mt-4" id="submitQuiz">
+                        Submit Answers
+                    </button>
+                </div>
+                
+                <!-- Code Example for CS Chapters -->
+                <div id="codeExample" style="display: none;">
+                    <h2>Code Example</h2>
+                    <pre><code class="language-python">
+def differentiate_power_function(x, n):
+    """
+    Differentiate x^n using the power rule
+    """
+    return n * x ** (n - 1)
+
+# Example usage
+result = differentiate_power_function(2, 3)  # Should return 12
+print(f"Derivative at x=2 for x^3 is: {result}")
+                    </code></pre>
+                </div>
+            </div>
+
+            <!-- Notes Section -->
+            <div class="notes-section">
+                <h3>My Notes</h3>
+                <textarea class="notes-textarea" id="chapterNotes" placeholder="Add your notes here... Press Ctrl+S to save."></textarea>
+                <div class="flex gap-3">
+                    <button class="btn btn-primary" id="saveNoteBtn">
+                        <i class="fas fa-save mr-2"></i> Save Notes
+                    </button>
+                    <button class="btn btn-outline" id="clearNotes">
+                        <i class="fas fa-trash mr-2"></i> Clear
+                    </button>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="chapter-navigation">
+                <a href="#" class="nav-btn" id="prevChapter">
+                    <i class="fas fa-chevron-left"></i>
+                    <span>Previous Chapter</span>
+                </a>
+                
+                <div class="text-center">
+                    <div class="text-sm text-gray-400">Progress</div>
+                    <div class="text-xl font-bold text-primary" id="chapterProgressText">30% Complete</div>
+                </div>
+                
+                <a href="#" class="nav-btn" id="nextChapter">
+                    <span>Next Chapter</span>
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand -->
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="logo-text">
+                            <div>A+ Initiative</div>
+                            <div class="logo-subtitle">A-Levels Excellence</div>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        Empowering students to achieve academic excellence through innovative, interactive learning.
+                    </p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Platform</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="course_list.html">Courses</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Chapter Tools -->
+                <div class="footer-section">
+                    <h3>Chapter Tools</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" id="printChapter">Print Chapter</a></li>
+                        <li><a href="#" id="downloadChapter">Download PDF</a></li>
+                        <li><a href="#" id="shareChapter">Share</a></li>
+                        <li><a href="#" id="reportIssue">Report Issue</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Support</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 A+ Initiative. All rights reserved. Transforming education across multiple disciplines.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <button id="closeAuthModal" class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="auth-modal-header">
+                <h3>Welcome to A+ Initiative</h3>
+                <p>Start your journey to A-Level success</p>
+            </div>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Sign In</button>
+                <button class="auth-tab" data-tab="signup">Create Account</button>
+            </div>
+            
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form active" data-form="login">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" required placeholder="Enter your password">
+                </div>
+                <div class="form-options">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="#" class="text-link">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn btn-primary w-full">Sign In</button>
+            </form>
+            
+            <!-- Signup Form -->
+            <form id="signupForm" class="auth-form" data-form="signup">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" required placeholder="Create a password">
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" required placeholder="Confirm your password">
+                </div>
+                <label class="checkbox">
+                    <input type="checkbox" required>
+                    <span>I agree to the Terms of Service and Privacy Policy</span>
+                </label>
+                <button type="submit" class="btn btn-primary w-full mt-4">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- JavaScript -->
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/interactive-lessons.js"></script>
+    <script>
+        class ChapterManager {
+            constructor() {
+                this.currentChapter = 1;
+                this.totalChapters = 10;
+                this.progress = 30;
+                this.notes = '';
+                this.bookmarkedChapters = new Set();
+                this.completedChapters = new Set([1, 2]);
+                this.init();
+            }
+            
+            init() {
+                // Get chapter from URL or use default
+                const urlParams = new URLSearchParams(window.location.search);
+                this.currentChapter = parseInt(urlParams.get('chapter')) || 1;
+                
+                this.loadChapters();
+                this.setupEventListeners();
+                this.loadProgress();
+                this.loadNotes();
+                this.updateUI();
+                
+                // Remove loading screen
+                setTimeout(() => {
+                    const loadingScreen = document.getElementById('loadingScreen');
+                    if (loadingScreen) {
+                        loadingScreen.style.opacity = '0';
+                        setTimeout(() => {
+                            loadingScreen.style.display = 'none';
+                        }, 300);
+                    }
+                }, 1000);
+            }
+            
+            loadChapters() {
+                const chapters = [
+                    { id: 1, title: "Algebra Fundamentals", duration: "30 min", difficulty: "Beginner" },
+                    { id: 2, title: "Functions and Graphs", duration: "45 min", difficulty: "Beginner" },
+                    { id: 3, title: "Differential Calculus", duration: "60 min", difficulty: "Intermediate" },
+                    { id: 4, title: "Integral Calculus", duration: "60 min", difficulty: "Intermediate" },
+                    { id: 5, title: "Trigonometry", duration: "50 min", difficulty: "Intermediate" },
+                    { id: 6, title: "Sequences and Series", duration: "45 min", difficulty: "Intermediate" },
+                    { id: 7, title: "Vectors", duration: "55 min", difficulty: "Advanced" },
+                    { id: 8, title: "Complex Numbers", duration: "60 min", difficulty: "Advanced" },
+                    { id: 9, title: "Differential Equations", duration: "70 min", difficulty: "Advanced" },
+                    { id: 10, title: "Applications in Physics", duration: "65 min", difficulty: "Advanced" }
+                ];
+                
+                // Update sidebar
+                const chapterList = document.getElementById('chapterList');
+                const mobileChapterList = document.getElementById('mobileChapterList');
+                
+                if (chapterList) {
+                    chapterList.innerHTML = chapters.map(chapter => `
+                        <div class="chapter-item ${this.currentChapter === chapter.id ? 'active' : ''}" 
+                             data-chapter="${chapter.id}">
+                            <i class="fas fa-${this.completedChapters.has(chapter.id) ? 'check-circle text-primary' : 'circle'}"></i>
+                            <span class="chapter-number">${chapter.id}.</span>
+                            <span class="flex-1">${chapter.title}</span>
+                            <span class="text-xs text-gray-500">${chapter.duration}</span>
+                        </div>
+                    `).join('');
+                }
+                
+                if (mobileChapterList) {
+                    mobileChapterList.innerHTML = chapters.map(chapter => `
+                        <div class="chapter-item ${this.currentChapter === chapter.id ? 'active' : ''}" 
+                             data-chapter="${chapter.id}">
+                            <i class="fas fa-${this.completedChapters.has(chapter.id) ? 'check-circle text-primary' : 'circle'}"></i>
+                            <span class="chapter-number">${chapter.id}.</span>
+                            <span class="flex-1">${chapter.title}</span>
+                            <span class="text-xs text-gray-500">${chapter.duration}</span>
+                        </div>
+                    `).join('');
+                }
+                
+                // Add click events
+                document.querySelectorAll('.chapter-item').forEach(item => {
+                    item.addEventListener('click', () => {
+                        const chapterId = parseInt(item.dataset.chapter);
+                        this.navigateToChapter(chapterId);
+                    });
+                });
+            }
+            
+            setupEventListeners() {
+                // Navigation buttons
+                document.getElementById('prevChapter')?.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (this.currentChapter > 1) {
+                        this.navigateToChapter(this.currentChapter - 1);
+                    }
+                });
+                
+                document.getElementById('nextChapter')?.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (this.currentChapter < this.totalChapters) {
+                        this.navigateToChapter(this.currentChapter + 1);
+                    }
+                });
+                
+                // Control buttons
+                document.getElementById('markComplete')?.addEventListener('click', () => {
+                    this.markChapterComplete();
+                });
+                
+                document.getElementById('saveNotes')?.addEventListener('click', () => {
+                    this.saveChapterNotes();
+                });
+                
+                document.getElementById('bookmarkChapter')?.addEventListener('click', () => {
+                    this.toggleBookmark();
+                });
+                
+                document.getElementById('startQuiz')?.addEventListener('click', () => {
+                    this.startChapterQuiz();
+                });
+                
+                document.getElementById('showSolution')?.addEventListener('click', () => {
+                    this.toggleSolution();
+                });
+                
+                document.getElementById('saveNoteBtn')?.addEventListener('click', () => {
+                    this.saveChapterNotes();
+                });
+                
+                document.getElementById('clearNotes')?.addEventListener('click', () => {
+                    this.clearNotes();
+                });
+                
+                // Mobile sidebar
+                document.getElementById('mobileChapterToggle')?.addEventListener('click', () => {
+                    document.getElementById('mobileChapterSidebar').classList.add('show');
+                });
+                
+                document.getElementById('closeMobileSidebar')?.addEventListener('click', () => {
+                    document.getElementById('mobileChapterSidebar').classList.remove('show');
+                });
+                
+                // Keyboard shortcuts
+                document.addEventListener('keydown', (e) => {
+                    // Save notes with Ctrl+S
+                    if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                        e.preventDefault();
+                        this.saveChapterNotes();
+                    }
+                    
+                    // Navigation with arrow keys
+                    if (e.key === 'ArrowLeft' && this.currentChapter > 1) {
+                        this.navigateToChapter(this.currentChapter - 1);
+                    }
+                    
+                    if (e.key === 'ArrowRight' && this.currentChapter < this.totalChapters) {
+                        this.navigateToChapter(this.currentChapter + 1);
+                    }
+                    
+                    // Toggle quiz with 'q'
+                    if (e.key === 'q' && !e.ctrlKey && !e.metaKey) {
+                        this.startChapterQuiz();
+                    }
+                });
+                
+                // Auto-save notes
+                const notesTextarea = document.getElementById('chapterNotes');
+                if (notesTextarea) {
+                    let saveTimeout;
+                    notesTextarea.addEventListener('input', () => {
+                        clearTimeout(saveTimeout);
+                        saveTimeout = setTimeout(() => {
+                            this.saveChapterNotes();
+                        }, 2000);
+                    });
+                }
+            }
+            
+            navigateToChapter(chapterId) {
+                // Update URL without reloading
+                const url = new URL(window.location);
+                url.searchParams.set('chapter', chapterId);
+                window.history.pushState({}, '', url);
+                
+                // Update current chapter
+                this.currentChapter = chapterId;
+                
+                // Update UI
+                this.updateUI();
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // Close mobile sidebar
+                document.getElementById('mobileChapterSidebar')?.classList.remove('show');
+                
+                // Show notification
+                if (window.aplus) {
+                    window.aplus.showToast(`Loading Chapter ${chapterId}...`, 'info');
+                }
+            }
+            
+            updateUI() {
+                // Update chapter title
+                const chapterTitles = [
+                    "Algebra Fundamentals",
+                    "Functions and Graphs",
+                    "Differential Calculus",
+                    "Integral Calculus",
+                    "Trigonometry",
+                    "Sequences and Series",
+                    "Vectors",
+                    "Complex Numbers",
+                    "Differential Equations",
+                    "Applications in Physics"
+                ];
+                
+                const chapterTitle = chapterTitles[this.currentChapter - 1] || `Chapter ${this.currentChapter}`;
+                document.getElementById('currentChapterTitle').textContent = chapterTitle;
+                
+                // Update active chapter in sidebar
+                document.querySelectorAll('.chapter-item').forEach(item => {
+                    item.classList.remove('active');
+                    if (parseInt(item.dataset.chapter) === this.currentChapter) {
+                        item.classList.add('active');
+                    }
+                });
+                
+                // Update progress
+                const progress = this.calculateProgress();
+                this.updateProgressUI(progress);
+                
+                // Update navigation buttons state
+                const prevBtn = document.getElementById('prevChapter');
+                const nextBtn = document.getElementById('nextChapter');
+                
+                if (prevBtn) {
+                    prevBtn.style.opacity = this.currentChapter === 1 ? '0.5' : '1';
+                    prevBtn.style.cursor = this.currentChapter === 1 ? 'not-allowed' : 'pointer';
+                }
+                
+                if (nextBtn) {
+                    nextBtn.style.opacity = this.currentChapter === this.totalChapters ? '0.5' : '1';
+                    nextBtn.style.cursor = this.currentChapter === this.totalChapters ? 'not-allowed' : 'pointer';
+                }
+                
+                // Update bookmark button
+                const bookmarkBtn = document.getElementById('bookmarkChapter');
+                if (bookmarkBtn) {
+                    const isBookmarked = this.bookmarkedChapters.has(this.currentChapter);
+                    bookmarkBtn.innerHTML = isBookmarked ? 
+                        '<i class="fas fa-bookmark"></i> Bookmarked' :
+                        '<i class="far fa-bookmark"></i> Bookmark';
+                }
+                
+                // Update complete button
+                const completeBtn = document.getElementById('markComplete');
+                if (completeBtn) {
+                    const isCompleted = this.completedChapters.has(this.currentChapter);
+                    completeBtn.innerHTML = isCompleted ? 
+                        '<i class="fas fa-check-circle"></i> Completed' :
+                        '<i class="far fa-check-circle"></i> Mark Complete';
+                    completeBtn.style.background = isCompleted ? 'rgba(5, 150, 105, 0.2)' : '';
+                }
+                
+                // Load chapter-specific content
+                this.loadChapterContent();
+            }
+            
+            loadChapterContent() {
+                // In a real app, this would load content from an API
+                // For now, we'll just update some example content
+                
+                // Show/hide code example for CS chapters
+                const codeExample = document.getElementById('codeExample');
+                if (codeExample) {
+                    // Show for chapters that might have code
+                    if ([3, 4, 9].includes(this.currentChapter)) {
+                        codeExample.style.display = 'block';
+                    } else {
+                        codeExample.style.display = 'none';
+                    }
+                }
+            }
+            
+            calculateProgress() {
+                return Math.floor((this.completedChapters.size / this.totalChapters) * 100);
+            }
+            
+            updateProgressUI(progress) {
+                this.progress = progress;
+                
+                // Update progress bars
+                const progressBars = [
+                    document.getElementById('sidebarProgress'),
+                    document.getElementById('headerProgress'),
+                    document.querySelector('.chapter-progress-fill')
+                ];
+                
+                progressBars.forEach(bar => {
+                    if (bar) bar.style.width = `${progress}%`;
+                });
+                
+                // Update progress text
+                const progressTexts = [
+                    document.getElementById('chapterProgressText'),
+                    document.getElementById('headerProgressText')
+                ];
+                
+                progressTexts.forEach(text => {
+                    if (text) text.textContent = `${progress}%`;
+                });
+            }
+            
+            markChapterComplete() {
+                if (this.completedChapters.has(this.currentChapter)) {
+                    // Already completed, mark as incomplete
+                    this.completedChapters.delete(this.currentChapter);
+                    if (window.aplus) {
+                        window.aplus.showToast('Chapter marked as incomplete', 'info');
+                    }
+                } else {
+                    // Mark as complete
+                    this.completedChapters.add(this.currentChapter);
+                    if (window.aplus) {
+                        window.aplus.showToast('Chapter marked as complete! 🎉', 'success');
+                    }
+                    
+                    // Award achievement for completing multiple chapters
+                    if (this.completedChapters.size % 5 === 0) {
+                        if (window.aplus) {
+                            window.aplus.showToast(`Achievement Unlocked: Completed ${this.completedChapters.size} chapters!`, 'success');
+                        }
+                    }
+                }
+                
+                // Update progress
+                const newProgress = this.calculateProgress();
+                this.updateProgressUI(newProgress);
+                
+                // Save to localStorage
+                this.saveProgress();
+                
+                // Update UI
+                this.updateUI();
+            }
+            
+            saveChapterNotes() {
+                const notesTextarea = document.getElementById('chapterNotes');
+                if (notesTextarea) {
+                    this.notes = notesTextarea.value;
+                    localStorage.setItem(`chapter_notes_${this.currentChapter}`, this.notes);
+                    
+                    if (window.aplus) {
+                        window.aplus.showToast('Notes saved successfully!', 'success');
+                    }
+                }
+            }
+            
+            loadNotes() {
+                const savedNotes = localStorage.getItem(`chapter_notes_${this.currentChapter}`);
+                if (savedNotes) {
+                    this.notes = savedNotes;
+                    const notesTextarea = document.getElementById('chapterNotes');
+                    if (notesTextarea) {
+                        notesTextarea.value = this.notes;
+                    }
+                }
+            }
+            
+            clearNotes() {
+                if (confirm('Are you sure you want to clear all notes for this chapter?')) {
+                    const notesTextarea = document.getElementById('chapterNotes');
+                    if (notesTextarea) {
+                        notesTextarea.value = '';
+                        this.notes = '';
+                        localStorage.removeItem(`chapter_notes_${this.currentChapter}`);
+                        
+                        if (window.aplus) {
+                            window.aplus.showToast('Notes cleared', 'info');
+                        }
+                    }
+                }
+            }
+            
+            toggleBookmark() {
+                if (this.bookmarkedChapters.has(this.currentChapter)) {
+                    this.bookmarkedChapters.delete(this.currentChapter);
+                    if (window.aplus) {
+                        window.aplus.showToast('Removed from bookmarks', 'info');
+                    }
+                } else {
+                    this.bookmarkedChapters.add(this.currentChapter);
+                    if (window.aplus) {
+                        window.aplus.showToast('Chapter bookmarked!', 'success');
+                    }
+                }
+                
+                this.updateUI();
+            }
+            
+            startChapterQuiz() {
+                const quizSection = document.getElementById('quizSection');
+                const quizContent = document.getElementById('quizContent');
+                
+                if (!quizSection || !quizContent) return;
+                
+                // Toggle visibility
+                if (quizSection.style.display === 'none') {
+                    quizSection.style.display = 'block';
+                    
+                    // Load quiz questions
+                    const quiz = this.getChapterQuiz();
+                    quizContent.innerHTML = quiz.map((q, index) => `
+                        <div class="quiz-question mb-6">
+                            ${index + 1}. ${q.question}
+                        </div>
+                        <div class="quiz-options mb-6">
+                            ${q.options.map((opt, optIndex) => `
+                                <div class="quiz-option" data-question="${index}" data-option="${optIndex}">
+                                    <input type="radio" name="question_${index}" id="q${index}_opt${optIndex}">
+                                    <label for="q${index}_opt${optIndex}">${opt}</label>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `).join('');
+                    
+                    // Add option selection
+                    document.querySelectorAll('.quiz-option').forEach(option => {
+                        option.addEventListener('click', (e) => {
+                            const questionIndex = parseInt(option.dataset.question);
+                            const optionIndex = parseInt(option.dataset.option);
+                            
+                            // Remove selected class from other options in this question
+                            const questionOptions = document.querySelectorAll(`[data-question="${questionIndex}"]`);
+                            questionOptions.forEach(opt => opt.classList.remove('selected'));
+                            
+                            // Add selected class to clicked option
+                            option.classList.add('selected');
+                            
+                            // Check the radio button
+                            const radio = option.querySelector('input[type="radio"]');
+                            if (radio) radio.checked = true;
+                        });
+                    });
+                    
+                    // Setup submit button
+                    const submitBtn = document.getElementById('submitQuiz');
+                    if (submitBtn) {
+                        submitBtn.onclick = () => this.submitQuiz();
+                    }
+                    
+                } else {
+                    quizSection.style.display = 'none';
+                }
+            }
+            
+            getChapterQuiz() {
+                // Return quiz questions for current chapter
+                return [
+                    {
+                        question: "What is the derivative of f(x) = x³?",
+                        options: [
+                            "3x²",
+                            "3x",
+                            "x²",
+                            "2x³"
+                        ],
+                        correct: 0,
+                        explanation: "Using the power rule: d/dx(x³) = 3x²"
+                    },
+                    {
+                        question: "What does the derivative represent?",
+                        options: [
+                            "Area under the curve",
+                            "Slope of the tangent line",
+                            "Volume of revolution",
+                            "Integral of the function"
+                        ],
+                        correct: 1,
+                        explanation: "The derivative represents the instantaneous rate of change, which geometrically is the slope of the tangent line."
+                    },
+                    {
+                        question: "What is d/dx(sin x)?",
+                        options: [
+                            "cos x",
+                            "-cos x",
+                            "-sin x",
+                            "tan x"
+                        ],
+                        correct: 0,
+                        explanation: "The derivative of sin x is cos x."
+                    }
+                ];
+            }
+            
+            submitQuiz() {
+                const quiz = this.getChapterQuiz();
+                let score = 0;
+                let total = quiz.length;
+                
+                quiz.forEach((question, index) => {
+                    const selectedOption = document.querySelector(`[data-question="${index}"] input:checked`);
+                    
+                    if (selectedOption) {
+                        const optionIndex = parseInt(selectedOption.parentElement.dataset.option);
+                        
+                        if (optionIndex === question.correct) {
+                            score++;
+                            selectedOption.parentElement.classList.add('correct');
+                        } else {
+                            selectedOption.parentElement.classList.add('incorrect');
+                        }
+                        
+                        // Show correct answer
+                        const correctOption = document.querySelector(`[data-question="${index}"][data-option="${question.correct}"]`);
+                        if (correctOption) {
+                            correctOption.classList.add('correct');
+                        }
+                    }
+                });
+                
+                const percentage = Math.round((score / total) * 100);
+                
+                if (window.aplus) {
+                    window.aplus.showToast(`Quiz Complete! Score: ${percentage}%`, percentage >= 70 ? 'success' : 'warning');
+                }
+                
+                // Award achievement for perfect score
+                if (percentage === 100) {
+                    if (window.aplus) {
+                        window.aplus.showToast('Perfect Score! Achievement Unlocked! 🏆', 'success');
+                    }
+                }
+            }
+            
+            toggleSolution() {
+                const solution = document.querySelector('.exercise-solution');
+                const button = document.getElementById('showSolution');
+                
+                if (solution && button) {
+                    if (solution.style.display === 'none') {
+                        solution.style.display = 'block';
+                        button.innerHTML = 'Hide Solution';
+                    } else {
+                        solution.style.display = 'none';
+                        button.innerHTML = 'Show Solution';
+                    }
+                }
+            }
+            
+            loadProgress() {
+                const savedProgress = localStorage.getItem('chapter_progress');
+                if (savedProgress) {
+                    const progress = JSON.parse(savedProgress);
+                    this.completedChapters = new Set(progress.completedChapters || []);
+                    this.bookmarkedChapters = new Set(progress.bookmarkedChapters || []);
+                }
+            }
+            
+            saveProgress() {
+                const progress = {
+                    completedChapters: Array.from(this.completedChapters),
+                    bookmarkedChapters: Array.from(this.bookmarkedChapters),
+                    lastUpdated: new Date().toISOString()
+                };
+                
+                localStorage.setItem('chapter_progress', JSON.stringify(progress));
+            }
+            
+            // Study timer integration
+            startStudyTimer() {
+                if (window.aplus && window.aplus.startStudyTimer) {
+                    window.aplus.startStudyTimer();
+                }
+            }
+            
+            stopStudyTimer() {
+                if (window.aplus && window.aplus.stopStudyTimer) {
+                    window.aplus.stopStudyTimer();
+                }
+            }
+        }
+        
+        // Initialize chapter manager
+        document.addEventListener('DOMContentLoaded', () => {
+            window.chapterManager = new ChapterManager();
+            
+            // Auto-start study timer when chapter loads
+            setTimeout(() => {
+                if (window.chapterManager) {
+                    window.chapterManager.startStudyTimer();
+                }
+            }, 3000);
+            
+            // Save progress when leaving page
+            window.addEventListener('beforeunload', () => {
+                if (window.chapterManager) {
+                    window.chapterManager.stopStudyTimer();
+                    window.chapterManager.saveProgress();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

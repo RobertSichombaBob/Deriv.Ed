@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - A+ Initiative</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation (Same as index.html) -->
+    <nav class="navbar" id="mainNav">
+        <!-- Navigation content from index.html -->
+    </nav>
+
+    <!-- Course List Header -->
+    <section class="hero" style="min-height: 60vh; padding-top: 100px;">
+        <div class="container">
+            <div class="hero-content text-left">
+                <h1 class="hero-title">
+                    All Courses
+                </h1>
+                <p class="hero-subtitle">
+                    Explore comprehensive A-Level courses designed for academic excellence
+                </p>
+                
+                <!-- School Filter -->
+                <div class="school-filter">
+                    <a href="course_list.html" class="filter-btn active">All Schools</a>
+                    <a href="course_list.html?school=mathematics" class="filter-btn">Mathematics & Sciences</a>
+                    <a href="course_list.html?school=built" class="filter-btn">Built Environment</a>
+                    <a href="course_list.html?school=business" class="filter-btn">Business & Humanities</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Grid -->
+    <section class="section">
+        <div class="container">
+            <!-- Search and Sort -->
+            <div class="course-controls">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search courses..." id="courseSearch">
+                </div>
+                <div class="sort-dropdown">
+                    <select id="courseSort">
+                        <option value="popular">Most Popular</option>
+                        <option value="newest">Newest First</option>
+                        <option value="difficulty">Difficulty Level</option>
+                        <option value="rating">Highest Rated</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Courses Grid -->
+            <div class="courses-grid" id="coursesGrid">
+                <!-- Courses will be loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Same as index.html) -->
+    <footer class="footer">
+        <!-- Footer content from index.html -->
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/course-manager.js"></script>
+</body>
+</html>

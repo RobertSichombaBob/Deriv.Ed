@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - A+ Initiative</title>
+    <meta name="description" content="Free A-Level resources including past papers, formula sheets, study guides, and interactive tools.">
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .resource-category {
+            background: linear-gradient(135deg, rgba(30, 30, 30, 0.9) 0%, rgba(10, 10, 10, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .resource-category:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(5, 150, 105, 0.2);
+        }
+        
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .resource-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .resource-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .resource-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .resource-icon.math {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--math);
+        }
+        
+        .resource-icon.physics {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--physics);
+        }
+        
+        .resource-icon.cs {
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--cs);
+        }
+        
+        .resource-icon.general {
+            background: rgba(5, 150, 105, 0.1);
+            color: var(--primary);
+        }
+        
+        .resource-stats {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--gray-400);
+            font-size: 0.875rem;
+            margin-top: 1rem;
+        }
+        
+        .resource-download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(5, 150, 105, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .resource-download-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .interactive-tool {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+        
+        .tool-header {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .tool-content {
+            padding: 2rem;
+            background: rgba(10, 10, 10, 0.8);
+        }
+        
+        .tool-controls {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .tool-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .tool-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .tool-canvas {
+            width: 100%;
+            height: 400px;
+            background: #0a0a0a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .search-resources {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+        
+        .search-box {
+            position: relative;
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-400);
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+        }
+        
+        .filter-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        
+        .filter-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 2rem;
+            color: var(--gray-300);
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-tag:hover,
+        .filter-tag.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--gray-400);
+            font-size: 0.875rem;
+        }
+        
+        @media (max-width: 768px) {
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tool-controls {
+                flex-direction: column;
+            }
+            
+            .tool-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <div class="text-xl font-bold text-primary mt-4">A+ Initiative</div>
+            <div class="text-sm text-gray-400">Loading Resources</div>
+        </div>
+    </div>
+
+    <!-- Navigation (from index.html) -->
+    <nav class="navbar" id="mainNav">
+        <div class="nav-container">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">
+                    <div>A+ Initiative</div>
+                    <div class="logo-subtitle">A-Levels Excellence</div>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home mr-2"></i>Home
+                </a>
+                <a href="course_list.html" class="nav-link">
+                    <i class="fas fa-book-open mr-2"></i>Courses
+                </a>
+                <a href="resources.html" class="nav-link active">
+                    <i class="fas fa-tools mr-2"></i>Resources
+                </a>
+                <a href="dashboard.html" class="nav-link">
+                    <i class="fas fa-chart-line mr-2"></i>Dashboard
+                </a>
+                <a href="#testimonials" class="nav-link">
+                    <i class="fas fa-star mr-2"></i>Success Stories
+                </a>
+            </div>
+
+            <!-- Auth Buttons -->
+            <div class="nav-auth">
+                <button id="loginBtn" class="btn btn-outline">
+                    <i class="fas fa-sign-in-alt mr-2"></i>Sign In
+                </button>
+                <button id="signupBtn" class="btn btn-primary">
+                    <i class="fas fa-user-plus mr-2"></i>Get Started
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuBtn" class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu">
+            <div class="mobile-menu-header">
+                <div class="mobile-logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="logo-text">
+                        <div>A+ Initiative</div>
+                        <div class="logo-subtitle">A-Levels Excellence</div>
+                    </div>
+                </div>
+                <button id="mobileMenuClose" class="mobile-menu-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="mobile-menu-content">
+                <a href="index.html" class="mobile-nav-link">
+                    <i class="fas fa-home"></i>Home
+                </a>
+                <a href="course_list.html" class="mobile-nav-link">
+                    <i class="fas fa-book-open"></i>Courses
+                </a>
+                <a href="resources.html" class="mobile-nav-link active">
+                    <i class="fas fa-tools"></i>Resources
+                </a>
+                <a href="dashboard.html" class="mobile-nav-link">
+                    <i class="fas fa-chart-line"></i>Dashboard
+                </a>
+                <a href="#testimonials" class="mobile-nav-link">
+                    <i class="fas fa-star"></i>Success Stories
+                </a>
+            </div>
+            
+            <div class="mobile-menu-auth">
+                <button id="mobileLoginBtn" class="btn btn-outline w-full">
+                    <i class="fas fa-sign-in-alt mr-2"></i>Sign In
+                </button>
+                <button id="mobileSignupBtn" class="btn btn-primary w-full mt-3">
+                    <i class="fas fa-user-plus mr-2"></i>Get Started
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 40vh; padding-top: 100px;">
+        <div class="container">
+            <div class="hero-content text-left">
+                <h1 class="hero-title">
+                    Free Learning
+                    <span class="hero-title-gradient">Resources</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Access valuable study materials to supplement your A-Level preparation. 
+                    Download past papers, formula sheets, and interactive tools.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Stats -->
+    <section class="section">
+        <div class="container">
+            <!-- Search -->
+            <div class="search-resources">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="resourceSearch" placeholder="Search resources (past papers, formulas, study guides...)" autocomplete="off">
+                </div>
+                
+                <div class="filter-tags" id="resourceFilters">
+                    <div class="filter-tag active" data-filter="all">All Resources</div>
+                    <div class="filter-tag" data-filter="mathematics">Mathematics</div>
+                    <div class="filter-tag" data-filter="physics">Physics</div>
+                    <div class="filter-tag" data-filter="cs">Computer Science</div>
+                    <div class="filter-tag" data-filter="past-papers">Past Papers</div>
+                    <div class="filter-tag" data-filter="formulas">Formula Sheets</div>
+                    <div class="filter-tag" data-filter="guides">Study Guides</div>
+                    <div class="filter-tag" data-filter="tools">Interactive Tools</div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalResources">127</div>
+                    <div class="stat-label">Total Resources</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="downloadsCount">12,458</div>
+                    <div class="stat-label">Total Downloads</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">94%</div>
+                    <div class="stat-label">User Satisfaction</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Access Available</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Resources -->
+    <section class="section bg-dark">
+        <div class="container">
+            <!-- Past Papers -->
+            <div class="resource-category" data-category="past-papers">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-white mb-2">
+                            <i class="fas fa-file-pdf text-red-400 mr-2"></i>
+                            Past Papers & Mark Schemes
+                        </h2>
+                        <p class="text-gray-400">
+                            Official A-Level past papers with detailed mark schemes from major exam boards.
+                        </p>
+                    </div>
+                    <span class="bg-red-400/20 text-red-400 px-3 py-1 rounded-full text-sm font-semibold">
+                        48 Resources
+                    </span>
+                </div>
+                
+                <div class="resource-grid">
+                    <!-- Pure Mathematics -->
+                    <div class="resource-card" data-subject="mathematics" data-type="past-paper">
+                        <div class="resource-icon math">
+                            <i class="fas fa-superscript"></i>
+                        </div>
+                        <h3 class="font-bold text-white mb-2">Pure Mathematics</h3>
+                        <p class="text-gray-400 text-sm">
+                            AQA, Edexcel & OCR past papers (2018-2023)
+                        </p>
+                        <div class="resource-stats">
+                            <span><i class="fas fa-download mr-1"></i> 1,245 downloads</span>
+                            <span><i class="fas fa-file-pdf mr-1"></i> 14 papers</span>
+                        </div>
+                        <a href="#" class="resource-download-btn" data-resource="pure-math-past-papers">
+                            <i class="fas fa-download"></i>
+                            Download Bundle
+                        </a>
+                    </div>
+                    
+                    <!-- Physics -->
+                    <div class="resource-card" data-subject="physics" data-type="past-paper">
+                        <div class="resource-icon physics">
+                            <i class="fas fa-atom"></i>
+                        </div>
+                        <h3 class="font-bold text-white mb-2">Physics</h3>
+                        <p class="text-gray-400 text-sm">
+                            Complete physics past papers with practical assessments
+                        </p>
+                        <div class="resource-stats">
+                            <span><i class="fas fa-download mr-1"></i> 987 downloads</span>
+                            <span><i class="fas fa-file-pdf mr-1"></i> 12 papers</span>
+                        </div>
+                        <a href="#" class="resource-download-btn" data-resource="physics-past-papers">
+                            <i class="fas fa-download"></i>
+                            Download Bundle
+                        </a>
+                    </div>
+                    
+                    <!-- Computer Science -->
+                    <div class="resource-card" data-subject="cs" data-type="past-paper">
+                        <div class="resource-icon cs">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="font-bold text-white mb-2">Computer Science</h3>
+                        <p class="text-gray-400 text-sm">
+                            Programming and theory papers with mark schemes
+                        </p>
+                        <div class="resource-stats">
+                            <span><i class="fas fa-download mr-1"></i> 834 downloads</span>
+                            <span><i class="fas fa-file-pdf mr-1"></i> 10 papers</span>
+                        </div>
+                        <a href="#" class="resource-download-btn" data-resource="cs-past-papers">
+                            <i class="fas fa-download"></i>
+                            Download Bundle
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formula Sheets -->
+            <div class="resource-category" data-category="formulas">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-white mb-2">
+                            <i class="fas fa-calculator text-primary mr-2"></i>
+                            Formula Sheets & Reference
+                        </h2>
+                        <p class="text-gray-400">
+                            Essential formulas, equations, and reference materials for quick revision.
+                        </p>
+                    </div>
+                    <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm font-semibold">
+                        32 Resources
+                    </span>
+                </div>
+                
+                <div class="resource-grid">
+                    <!-- Mathematics Formulas -->
+                    <div class="resource-card" data-subject="mathematics" data-type="formula">
+                        <div class="resource-icon math">
+                            <i class="fas fa-square-root-alt"></i>
+                        </div>
+                        <h3 class="font-bold text-white mb-2">Mathematics Formulas</h3>
+                        <p class="text-gray-400 text-sm">
+                            Complete formula sheet for Pure Mathematics and Statistics
+                        </p>
+                        <div class="resource-stats">
+                            <span><i class="fas fa-download mr-1"></i> 2,145 downloads</span>
+                            <span><i class="fas fa-file-alt mr-1"></i> PDF & Printable</span>
+                        </div>
+                        <a href="#" class="resource-download-btn" data-resource="math-formulas">
+                            <i class="fas fa-download"></i>
+                            Download Now
+                        </a>
+                    </div>
+                    
+                    <!-- Physics Formulas -->
+                    <div class="resource-card" data-subject="physics" data-type="formula">
+                        <div class="resource-icon physics">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 class="font-bold text-white mb-2">Physics Equations</h3>
+                        <p class="text-gray-400 text-sm">
+                            All A-Level physics equations categorized by topic
+                        </p>
+                        <div class="resource-stats">
+                            <span><i class="fas fa-download mr-1"></i> 1,876 downloads</span>
+                            <span><i class="fas fa-file-alt mr-1"></i> Color-coded</span>
+                        </div>
+                        <a href="#" class="resource-download-btn" data-resource="physics-formulas">
+                            <i class="fas fa-download"></i>
+                            Download Now
+                        </a>
+                    </div>
+                    
+                    <!-- Mechanics Formulas -->
+                    <div class="resource-card" data-subject="mathematics" data-type="formula">
+                        <div class="resource-icon general">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3 class="font-bold text-white mb-2">Mechanics Reference</h3>
+                        <p class="text-gray-400 text-sm">
+                            Kinematics, dynamics, and statics formulas with examples
+                        </p>
+                        <div class="resource-stats">
+                            <span><i class="fas fa-download mr-1"></i> 1,234 downloads</span>
+                            <span><i class="fas fa-file-alt mr-1"></i> Includes diagrams</span>
+                        </div>
+                        <a href="#" class="resource-download-btn" data-resource="mechanics-formulas">
+                            <i class="fas fa-download"></i>
+                            Download Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Tools -->
+            <div class="resource-category" data-category="tools">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-white mb-2">
+                            <i class="fas fa-tools text-accent mr-2"></i>
+                            Interactive Learning Tools
+                        </h2>
+                        <p class="text-gray-400">
+                            Web-based tools for practicing and visualizing complex concepts.
+                        </p>
+                    </div>
+                    <span class="bg-accent/20 text-accent px-3 py-1 rounded-full text-sm font-semibold">
+                        8 Tools
+                    </span>
+                </div>
+                
+                <!-- Math Grapher -->
+                <div class="interactive-tool">
+                    <div class="tool-header">
+                        <h3 class="font-bold text-white">
+                            <i class="fas fa-chart-line text-math mr-2"></i>
+                            Math Function Grapher
+                        </h3>
+                        <button class="tool-btn" id="resetGraph">
+                            <i class="fas fa-redo"></i> Reset
+                        </button>
+                    </div>
+                    <div class="tool-content">
+                        <div class="tool-controls">
+                            <input type="text" id="functionInput" 
+                                   class="tool-input"
+                                   placeholder="Enter function (e.g., sin(x), x^2, exp(x))"
+                                   value="sin(x) * exp(-0.1*x)">
+                            <button class="tool-btn" id="plotGraph">
+                                <i class="fas fa-play"></i> Plot Function
+                            </button>
+                            <button class="tool-btn" id="addFunction">
+                                <i class="fas fa-plus"></i> Add Function
+                            </button>
+                            <select class="tool-btn" id="functionType">
+                                <option value="linear">Linear</option>
+                                <option value="quadratic">Quadratic</option>
+                                <option value="trigonometric">Trigonometric</option>
+                                <option value="exponential">Exponential</option>
+                                <option value="logarithmic">Logarithmic</option>
+                            </select>
+                        </div>
+                        <canvas id="graphCanvas" class="tool-canvas"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Physics Simulator -->
+                <div class="interactive-tool mt-8">
+                    <div class="tool-header">
+                        <h3 class="font-bold text-white">
+                            <i class="fas fa-atom text-physics mr-2"></i>
+                            Projectile Motion Simulator
+                        </h3>
+                        <button class="tool-btn" id="resetSimulation">
+                            <i class="fas fa-redo"></i> Reset
+                        </button>
+                    </div>
+                    <div class="tool-content">
+                        <div class="tool-controls">
+                            <div class="control-group">
+                                <label class="text-gray-300 text-sm">Initial Velocity (m/s)</label>
+                                <input type="range" id="velocitySlider" min="10" max="100" value="50" class="w-full">
+                                <span id="velocityValue" class="text-primary font-semibold">50</span>
+                            </div>
+                            <div class="control-group">
+                                <label class="text-gray-300 text-sm">Angle (degrees)</label>
+                                <input type="range" id="angleSlider" min="10" max="80" value="45" class="w-full">
+                                <span id="angleValue" class="text-primary font-semibold">45</span>
+                            </div>
+                            <div class="control-group">
+                                <label class="text-gray-300 text-sm">Gravity (m/s²)</label>
+                                <input type="range" id="gravitySlider" min="1" max="20" value="9.8" step="0.1" class="w-full">
+                                <span id="gravityValue" class="text-primary font-semibold">9.8</span>
+                            </div>
+                            <button class="tool-btn" id="startSimulation">
+                                <i class="fas fa-play"></i> Launch
+                            </button>
+                        </div>
+                        <canvas id="physicsCanvas" class="tool-canvas"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Study Guides -->
+            <div class="resource-category" data-category="guides">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-white mb-2">
+                            <i class="fas fa-lightbulb text-yellow-400 mr-2"></i>
+                            Study Guides & Strategies
+                        </h2>
+                        <p class="text-gray-400">
+                            Expert tips, revision strategies, and exam preparation guides.
+                        </p>
+                    </div>
+                    <span class="bg-yellow-400/20 text-yellow-400 px-3 py-1 rounded-full text-sm font-semibold">
+                        24 Resources
+                    </span>
+                </div>
+                
+                <div class="resource-grid">
+                    <!-- Exam Strategies -->
+                    <div class="resource-card" data-type="guide">
+                        <div class="resource-icon general">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h3 class="font-bold text-white mb-2">Exam Success Guide</h3>
+                        <p class="text-gray-400 text-sm">
+                            Time management, question analysis, and stress management
+                        </p>
+                        <div class="resource-stats">
+                            <span><i class="fas fa-download mr-1"></i> 3,421 downloads</span>
+                            <span><i class="fas fa-file-pdf mr-1"></i> 28 pages</span>
+                        </div>
+                        <a href="#" class="resource-download-btn" data-resource="exam-guide">
+                            <i class="fas fa-download"></i>
+                            Download Guide
+                        </a>
+                    </div>
+                    
+                    <!-- Revision Timetable -->
+                    <div class="resource-card" data-type="guide">
+                        <div class="resource-icon general">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="font-bold text-white mb-2">Revision Timetable</h3>
+                        <p class="text-gray-400 text-sm">
+                            Customizable 12-week revision schedule template
+                        </p>
+                        <div class="resource-stats">
+                            <span><i class="fas fa-download mr-1"></i> 2,987 downloads</span>
+                            <span><i class="fas fa-file-excel mr-1"></i> Excel & PDF</span>
+                        </div>
+                        <a href="#" class="resource-download-btn" data-resource="revision-timetable">
+                            <i class="fas fa-download"></i>
+                            Download Template
+                        </a>
+                    </div>
+                    
+                    <!-- Topic Checklists -->
+                    <div class="resource-card" data-type="guide">
+                        <div class="resource-icon general">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h3 class="font-bold text-white mb-2">Topic Checklists</h3>
+                        <p class="text-gray-400 text-sm">
+                            Comprehensive checklists for all A-Level subjects
+                        </p>
+                        <div class="resource-stats">
+                            <span><i class="fas fa-download mr-1"></i> 4,123 downloads</span>
+                            <span><i class="fas fa-file-pdf mr-1"></i> Printable</span>
+                        </div>
+                        <a href="#" class="resource-download-btn" data-resource="topic-checklists">
+                            <i class="fas fa-download"></i>
+                            Download Checklists
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand -->
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="logo-text">
+                            <div>A+ Initiative</div>
+                            <div class="logo-subtitle">A-Levels Excellence</div>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        Empowering students to achieve academic excellence through innovative, interactive learning.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Platform</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="course_list.html">Courses</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Resource Types -->
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#past-papers">Past Papers</a></li>
+                        <li><a href="#formula-sheets">Formula Sheets</a></li>
+                        <li><a href="#study-guides">Study Guides</a></li>
+                        <li><a href="#interactive-tools">Interactive Tools</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Support</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 A+ Initiative. All rights reserved. Transforming education across multiple disciplines.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <button id="closeAuthModal" class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="auth-modal-header">
+                <h3>Welcome to A+ Initiative</h3>
+                <p>Start your journey to A-Level success</p>
+            </div>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Sign In</button>
+                <button class="auth-tab" data-tab="signup">Create Account</button>
+            </div>
+            
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form active" data-form="login">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" required placeholder="Enter your password">
+                </div>
+                <div class="form-options">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="#" class="text-link">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn btn-primary w-full">Sign In</button>
+            </form>
+            
+            <!-- Signup Form -->
+            <form id="signupForm" class="auth-form" data-form="signup">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" required placeholder="Create a password">
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" required placeholder="Confirm your password">
+                </div>
+                <label class="checkbox">
+                    <input type="checkbox" required>
+                    <span>I agree to the Terms of Service and Privacy Policy</span>
+                </label>
+                <button type="submit" class="btn btn-primary w-full mt-4">Create Account</button>
+            </form>
+            
+            <div class="auth-divider">
+                <span>Or continue with</span>
+            </div>
+            
+            <div class="social-auth">
+                <button class="btn btn-outline w-full">
+                    <i class="fab fa-google"></i>
+                    Continue with Google
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- JavaScript -->
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/interactive-lessons.js"></script>
+    <script>
+        // Resource Management
+        class ResourceManager {
+            constructor() {
+                this.resources = [
+                    {
+                        id: 1,
+                        title: "Pure Mathematics Past Papers",
+                        subject: "mathematics",
+                        type: "past-paper",
+                        downloads: 1245,
+                        description: "AQA, Edexcel & OCR past papers (2018-2023)",
+                        icon: "fa-superscript"
+                    },
+                    {
+                        id: 2,
+                        title: "Physics Past Papers",
+                        subject: "physics",
+                        type: "past-paper",
+                        downloads: 987,
+                        description: "Complete physics past papers with practical assessments",
+                        icon: "fa-atom"
+                    },
+                    {
+                        id: 3,
+                        title: "Computer Science Past Papers",
+                        subject: "cs",
+                        type: "past-paper",
+                        downloads: 834,
+                        description: "Programming and theory papers with mark schemes",
+                        icon: "fa-laptop-code"
+                    },
+                    {
+                        id: 4,
+                        title: "Mathematics Formulas",
+                        subject: "mathematics",
+                        type: "formula",
+                        downloads: 2145,
+                        description: "Complete formula sheet for Pure Mathematics and Statistics",
+                        icon: "fa-square-root-alt"
+                    },
+                    {
+                        id: 5,
+                        title: "Physics Equations",
+                        subject: "physics",
+                        type: "formula",
+                        downloads: 1876,
+                        description: "All A-Level physics equations categorized by topic",
+                        icon: "fa-bolt"
+                    },
+                    {
+                        id: 6,
+                        title: "Mechanics Reference",
+                        subject: "mathematics",
+                        type: "formula",
+                        downloads: 1234,
+                        description: "Kinematics, dynamics, and statics formulas with examples",
+                        icon: "fa-cogs"
+                    },
+                    {
+                        id: 7,
+                        title: "Exam Success Guide",
+                        subject: "general",
+                        type: "guide",
+                        downloads: 3421,
+                        description: "Time management, question analysis, and stress management",
+                        icon: "fa-clipboard-check"
+                    },
+                    {
+                        id: 8,
+                        title: "Revision Timetable",
+                        subject: "general",
+                        type: "guide",
+                        downloads: 2987,
+                        description: "Customizable 12-week revision schedule template",
+                        icon: "fa-calendar-alt"
+                    },
+                    {
+                        id: 9,
+                        title: "Topic Checklists",
+                        subject: "general",
+                        type: "guide",
+                        downloads: 4123,
+                        description: "Comprehensive checklists for all A-Level subjects",
+                        icon: "fa-tasks"
+                    }
+                ];
+                
+                this.currentFilter = 'all';
+                this.init();
+            }
+            
+            init() {
+                this.setupSearch();
+                this.setupFilters();
+                this.setupDownloadButtons();
+                this.updateStats();
+            }
+            
+            setupSearch() {
+                const searchInput = document.getElementById('resourceSearch');
+                if (searchInput) {
+                    searchInput.addEventListener('input', (e) => {
+                        this.searchResources(e.target.value.toLowerCase());
+                    });
+                }
+            }
+            
+            setupFilters() {
+                const filterTags = document.querySelectorAll('.filter-tag');
+                filterTags.forEach(tag => {
+                    tag.addEventListener('click', () => {
+                        // Remove active class from all tags
+                        filterTags.forEach(t => t.classList.remove('active'));
+                        
+                        // Add active class to clicked tag
+                        tag.classList.add('active');
+                        
+                        // Get filter value
+                        const filterValue = tag.dataset.filter;
+                        this.currentFilter = filterValue;
+                        
+                        // Apply filter
+                        this.filterResources(filterValue);
+                        
+                        // Scroll to relevant section if filter is specific
+                        if (filterValue !== 'all') {
+                            const section = document.querySelector(`[data-category="${filterValue}"]`);
+                            if (section) {
+                                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
+                        }
+                    });
+                });
+            }
+            
+            searchResources(query) {
+                const resourceCards = document.querySelectorAll('.resource-card');
+                let visibleCount = 0;
+                
+                resourceCards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    const subject = card.dataset.subject || '';
+                    const type = card.dataset.type || '';
+                    
+                    const matchesSearch = title.includes(query) || description.includes(query);
+                    const matchesFilter = this.currentFilter === 'all' || 
+                                          subject === this.currentFilter || 
+                                          type === this.currentFilter;
+                    
+                    if (matchesSearch && matchesFilter) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                        
+                        // Add highlight effect
+                        card.classList.add('animate-pulse');
+                        setTimeout(() => card.classList.remove('animate-pulse'), 500);
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Update visible count in UI
+                if (window.aplus) {
+                    window.aplus.showToast(`Found ${visibleCount} resources`, 'info');
+                }
+            }
+            
+            filterResources(filter) {
+                const resourceCards = document.querySelectorAll('.resource-card');
+                const categories = document.querySelectorAll('.resource-category');
+                
+                if (filter === 'all') {
+                    // Show all categories and resources
+                    categories.forEach(cat => {
+                        cat.style.display = 'block';
+                        cat.querySelectorAll('.resource-card').forEach(card => {
+                            card.style.display = 'block';
+                        });
+                    });
+                } else {
+                    // Show only matching categories and resources
+                    categories.forEach(cat => {
+                        const categoryType = cat.dataset.category;
+                        if (categoryType === filter) {
+                            cat.style.display = 'block';
+                            cat.querySelectorAll('.resource-card').forEach(card => {
+                                card.style.display = 'block';
+                            });
+                        } else {
+                            // Check if any resources in this category match the filter
+                            const matchingCards = Array.from(cat.querySelectorAll('.resource-card')).filter(card => {
+                                const subject = card.dataset.subject || '';
+                                const type = card.dataset.type || '';
+                                return subject === filter || type === filter;
+                            });
+                            
+                            if (matchingCards.length > 0) {
+                                cat.style.display = 'block';
+                                cat.querySelectorAll('.resource-card').forEach(card => {
+                                    const subject = card.dataset.subject || '';
+                                    const type = card.dataset.type || '';
+                                    if (subject === filter || type === filter) {
+                                        card.style.display = 'block';
+                                    } else {
+                                        card.style.display = 'none';
+                                    }
+                                });
+                            } else {
+                                cat.style.display = 'none';
+                            }
+                        }
+                    });
+                }
+            }
+            
+            setupDownloadButtons() {
+                const downloadButtons = document.querySelectorAll('.resource-download-btn');
+                downloadButtons.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const resourceId = btn.dataset.resource;
+                        this.downloadResource(resourceId, btn);
+                    });
+                });
+            }
+            
+            downloadResource(resourceId, button) {
+                // Simulate download
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
+                button.disabled = true;
+                
+                // Increment download count
+                this.incrementDownloadCount();
+                
+                // Update UI
+                setTimeout(() => {
+                    button.innerHTML = '<i class="fas fa-check"></i> Downloaded';
+                    
+                    if (window.aplus) {
+                        window.aplus.showToast('Resource downloaded successfully!', 'success');
+                    }
+                    
+                    // Reset button after 2 seconds
+                    setTimeout(() => {
+                        button.innerHTML = originalText;
+                        button.disabled = false;
+                    }, 2000);
+                }, 1500);
+            }
+            
+            incrementDownloadCount() {
+                const downloadsElement = document.getElementById('downloadsCount');
+                if (downloadsElement) {
+                    let currentCount = parseInt(downloadsElement.textContent.replace(/,/g, '')) || 0;
+                    currentCount++;
+                    downloadsElement.textContent = currentCount.toLocaleString();
+                }
+            }
+            
+            updateStats() {
+                // Animate resource count
+                this.animateCounter('totalResources', 127);
+                this.animateCounter('downloadsCount', 12458);
+            }
+            
+            animateCounter(elementId, target) {
+                const element = document.getElementById(elementId);
+                if (!element) return;
+                
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        element.textContent = target.toLocaleString();
+                        clearInterval(timer);
+                    } else {
+                        element.textContent = Math.floor(current).toLocaleString();
+                    }
+                }, 30);
+            }
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            window.resourceManager = new ResourceManager();
+        });
+    </script>
+</body>
+</html>

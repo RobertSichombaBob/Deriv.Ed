@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="courseTitle">Course Details - A+ Initiative</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="mainNav">
+        <!-- Navigation content -->
+    </nav>
+
+    <!-- Course Header -->
+    <section class="course-header">
+        <div class="container">
+            <div class="course-header-content">
+                <div class="course-header-left">
+                    <div class="course-badges">
+                        <span class="course-level" id="courseLevel">A-Level</span>
+                        <span class="course-difficulty" id="courseDifficulty">Intermediate</span>
+                        <span class="course-rating">
+                            <i class="fas fa-star"></i>
+                            <span id="courseRating">4.8</span>
+                        </span>
+                    </div>
+                    <h1 id="courseName">Loading Course...</h1>
+                    <p class="course-description" id="courseDescription">
+                        Comprehensive A-Level course covering all topics and concepts.
+                    </p>
+                    
+                    <div class="course-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span id="courseDuration">14 weeks</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-book"></i>
+                            <span id="courseChapters">10 chapters</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-users"></i>
+                            <span id="courseStudents">1,234 students</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-tasks"></i>
+                            <span id="courseAssignments">5 assignments</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-header-right">
+                    <div class="course-enrollment">
+                        <div class="course-price">
+                            <span class="price-current">£49</span>
+                            <span class="price-original">£99</span>
+                        </div>
+                        <button class="btn btn-primary btn-lg w-full" id="enrollBtn">
+                            Enroll Now
+                        </button>
+                        <button class="btn btn-outline w-full mt-3" id="addToWishlist">
+                            <i class="far fa-heart"></i> Add to Wishlist
+                        </button>
+                        <div class="course-guarantee">
+                            <i class="fas fa-shield-alt"></i>
+                            30-day money-back guarantee
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Navigation -->
+    <nav class="course-nav">
+        <div class="container">
+            <a href="#overview" class="course-nav-link active">Overview</a>
+            <a href="#curriculum" class="course-nav-link">Curriculum</a>
+            <a href="#instructor" class="course-nav-link">Instructor</a>
+            <a href="#reviews" class="course-nav-link">Reviews</a>
+            <a href="#resources" class="course-nav-link">Resources</a>
+        </div>
+    </nav>
+
+    <!-- Course Content -->
+    <section class="section">
+        <div class="container">
+            <div class="course-content">
+                <!-- Overview -->
+                <div id="overview" class="course-section">
+                    <h2>What You'll Learn</h2>
+                    <div class="learning-objectives" id="learningObjectives">
+                        <!-- Loaded by JavaScript -->
+                    </div>
+                    
+                    <h2 class="mt-12">Course Description</h2>
+                    <div class="course-full-description" id="courseFullDescription">
+                        <!-- Loaded by JavaScript -->
+                    </div>
+                    
+                    <h2 class="mt-12">Who This Course Is For</h2>
+                    <div class="target-audience" id="targetAudience">
+                        <!-- Loaded by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Curriculum -->
+                <div id="curriculum" class="course-section" style="display: none;">
+                    <h2>Course Curriculum</h2>
+                    <div class="curriculum-list" id="curriculumList">
+                        <!-- Loaded by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Instructor -->
+                <div id="instructor" class="course-section" style="display: none;">
+                    <div class="instructor-card">
+                        <div class="instructor-avatar" id="instructorAvatar"></div>
+                        <div class="instructor-info">
+                            <h3 id="instructorName">Loading...</h3>
+                            <p class="instructor-title" id="instructorTitle">Course Instructor</p>
+                            <p class="instructor-bio" id="instructorBio">
+                                Experienced instructor with years of teaching experience.
+                            </p>
+                            <div class="instructor-stats">
+                                <div class="instructor-stat">
+                                    <div class="stat-number" id="instructorStudents">5,000+</div>
+                                    <div class="stat-label">Students</div>
+                                </div>
+                                <div class="instructor-stat">
+                                    <div class="stat-number" id="instructorCourses">10+</div>
+                                    <div class="stat-label">Courses</div>
+                                </div>
+                                <div class="instructor-stat">
+                                    <div class="stat-number" id="instructorRating">4.9</div>
+                                    <div class="stat-label">Rating</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reviews -->
+                <div id="reviews" class="course-section" style="display: none;">
+                    <div class="reviews-summary">
+                        <div class="average-rating">
+                            <div class="rating-number" id="averageRating">4.8</div>
+                            <div class="rating-stars">
+                                <!-- Stars will be generated by JavaScript -->
+                            </div>
+                            <div class="rating-count" id="ratingCount">Based on 234 reviews</div>
+                        </div>
+                        <div class="rating-distribution">
+                            <!-- Distribution bars will be generated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="reviews-list" id="reviewsList">
+                        <!-- Reviews will be loaded by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Resources -->
+                <div id="resources" class="course-section" style="display: none;">
+                    <h2>Course Resources</h2>
+                    <div class="resources-list" id="resourcesList">
+                        <!-- Resources will be loaded by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="course-sidebar">
+                <div class="sidebar-card">
+                    <h3>Course Progress</h3>
+                    <div class="progress-circle">
+                        <svg width="120" height="120">
+                            <circle cx="60" cy="60" r="54" fill="none" stroke="#374151" stroke-width="8"/>
+                            <circle cx="60" cy="60" r="54" fill="none" stroke="#059669" stroke-width="8" 
+                                    stroke-dasharray="339.292" stroke-dashoffset="0" 
+                                    id="progressCircle"/>
+                        </svg>
+                        <div class="progress-text">
+                            <span id="progressPercent">0%</span>
+                            <small>Complete</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h3>Quick Links</h3>
+                    <div class="sidebar-links">
+                        <a href="#" class="sidebar-link">
+                            <i class="fas fa-download"></i>
+                            Download Syllabus
+                        </a>
+                        <a href="#" class="sidebar-link">
+                            <i class="fas fa-question-circle"></i>
+                            FAQ
+                        </a>
+                        <a href="#" class="sidebar-link">
+                            <i class="fas fa-comments"></i>
+                            Discussion Forum
+                        </a>
+                        <a href="#" class="sidebar-link">
+                            <i class="fas fa-certificate"></i>
+                            Get Certificate
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h3>Share Course</h3>
+                    <div class="social-share">
+                        <button class="share-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </button>
+                        <button class="share-btn twitter">
+                            <i class="fab fa-twitter"></i>
+                        </button>
+                        <button class="share-btn linkedin">
+                            <i class="fab fa-linkedin-in"></i>
+                        </button>
+                        <button class="share-btn copy">
+                            <i class="fas fa-link"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Footer content -->
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/course-manager.js"></script>
+    <script src="assets/js/course-detail.js"></script>
+</body>
+</html>
