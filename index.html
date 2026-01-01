@@ -3,57 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A+ Initiative | AI-Powered A-Levels Mastery - 94% A/A* Rate</title>
+    <title>A+ Initiative | Elite A-Levels Mastery Platform</title>
+    <meta name="description" content="Master A-Levels with expert-led courses in Mathematics, Physics, Computer Science, Statistics, and Mechanics. 94% A/A* success rate.">
     
-    <!-- Meta Tags for SEO & Social -->
-    <meta name="description" content="Revolutionary AI-powered A-Levels platform. Interactive learning, adaptive algorithms, and guaranteed academic excellence. Join 5,237+ successful students.">
-    <meta name="keywords" content="A-Levels, Mathematics, Physics, Computer Science, Statistics, Mechanics, AI Learning, Adaptive Education">
-    <meta name="author" content="A+ Initiative">
-    <meta name="theme-color" content="#0ea5e9">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Open Graph -->
-    <meta property="og:title" content="A+ Initiative | Master A-Levels with AI">
-    <meta property="og:description" content="94% A/A* Success Rate. Join thousands mastering A-Levels with revolutionary AI-powered learning.">
-    <meta property="og:image" content="https://aplusinitiative.com/social-preview.jpg">
-    <meta property="og:url" content="https://aplusinitiative.com">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:creator" content="@aplus_initiative">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Preconnect for Performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
-    <!-- Core Styles -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                            950: '#052e16',
+                        },
+                        secondary: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12',
+                            950: '#431407',
+                        },
+                        math: {
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                        },
+                        physics: {
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        },
+                        cs: {
+                            500: '#06b6d4',
+                            600: '#0891b2',
+                            700: '#0e7490',
+                        },
+                        dark: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'serif': ['Source Serif Pro', 'Georgia', 'serif'],
+                        'mono': ['JetBrains Mono', 'Monaco', 'monospace'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+                        'slide-in': 'slideIn 0.5s ease-out',
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'gradient-shift': 'gradientShift 3s ease infinite',
+                        'shimmer': 'shimmer 2s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { 
+                                boxShadow: '0 0 20px rgba(34, 197, 94, 0.3)' 
+                            },
+                            '50%': { 
+                                boxShadow: '0 0 40px rgba(34, 197, 94, 0.6)' 
+                            },
+                        },
+                        slideIn: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        gradientShift: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                        },
+                        shimmer: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(100%)' },
+                        },
+                    },
+                    backgroundImage: {
+                        'gradient-primary': 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
+                        'gradient-secondary': 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)',
+                        'gradient-dark': 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+    
     <style>
         :root {
-            --primary: #0ea5e9;
-            --primary-dark: #0369a1;
-            --secondary: #3b82f6;
-            --accent-math: #d946ef;
-            --accent-physics: #f59e0b;
-            --accent-cs: #3b82f6;
-            --accent-stats: #22c55e;
+            --primary: #22c55e;
+            --primary-dark: #166534;
+            --secondary: #f97316;
+            --secondary-dark: #c2410c;
+            --math: #8b5cf6;
+            --physics: #3b82f6;
+            --cs: #06b6d4;
+            --stats: #22c55e;
+            --mechanics: #f97316;
             --dark: #0f172a;
-            --dark-lighter: #1e293b;
             --light: #f8fafc;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            
-            /* Gradients */
-            --gradient-primary: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
-            --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            --gradient-math: linear-gradient(135deg, #d946ef 0%, #a855f7 100%);
-            --gradient-success: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
-            
-            /* Shadows */
-            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.4);
-            --shadow-glow: 0 0 40px rgba(14, 165, 233, 0.3);
         }
         
-        /* Reset & Base */
         * {
             margin: 0;
             padding: 0;
@@ -66,8 +158,8 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: var(--gradient-dark);
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: #e2e8f0;
             min-height: 100vh;
             overflow-x: hidden;
@@ -75,741 +167,1021 @@
         
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 12px;
+            width: 10px;
         }
         
         ::-webkit-scrollbar-track {
-            background: var(--dark-lighter);
+            background: #1e293b;
+            border-radius: 5px;
         }
         
         ::-webkit-scrollbar-thumb {
-            background: var(--gradient-primary);
-            border-radius: 6px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, var(--secondary), var(--primary));
         }
         
         /* Selection */
         ::selection {
-            background: rgba(14, 165, 233, 0.3);
+            background-color: rgba(34, 197, 94, 0.3);
             color: white;
         }
         
-        /* Glass Effect */
+        /* Glass Morphism */
         .glass {
             background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
         
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        @keyframes gradient-shift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        @keyframes pulse-glow {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-        
-        /* Utility Classes */
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-        
+        /* Gradient Text */
         .gradient-text {
-            background: var(--gradient-primary);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: gradientShift 3s ease infinite;
         }
         
-        .page-transition {
-            animation: fadeIn 0.8s ease-out;
+        /* Course Card */
+        .course-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .course-card:hover {
+            transform: translateY(-10px) scale(1.02);
         }
-    </style>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <!-- MathJax -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#0ea5e9',
-                        math: '#d946ef',
-                        physics: '#f59e0b',
-                        cs: '#3b82f6',
-                        stats: '#22c55e',
-                        dark: '#0f172a',
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
-                    }
-                }
+        
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+        
+        .course-card:hover::before {
+            left: 100%;
+        }
+        
+        /* Loading Spinner */
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Floating Elements */
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            top: 5rem;
+            right: 2rem;
+            padding: 1rem 1.5rem;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: translateX(400px);
+            transition: transform 0.4s ease;
+            z-index: 1000;
+            max-width: 350px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .toast.show {
+            transform: translateX(0);
+        }
+        
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+        }
+        
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 23, 42, 0.95);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        /* Responsive */
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2.5rem !important;
+            }
+            
+            .section-title {
+                font-size: 2rem !important;
             }
         }
-    </script>
+    </style>
 </head>
 
 <body class="antialiased">
     <!-- Loading Screen -->
-    <div id="loadingScreen" class="fixed inset-0 bg-dark z-50 flex items-center justify-center">
+    <div id="loadingScreen" class="fixed inset-0 bg-dark-950 z-50 flex items-center justify-center">
         <div class="text-center">
-            <div class="w-16 h-16 border-4 border-primary/30 border-t-primary rounded-full animate-spin mb-8"></div>
-            <h2 class="text-2xl font-bold text-white mb-2">Loading A+ Initiative</h2>
-            <p class="text-gray-400">Preparing your personalized learning experience...</p>
+            <div class="spinner w-16 h-16 mb-8"></div>
+            <div class="text-white font-bold text-2xl">A+ Initiative</div>
+            <div class="text-primary-400 text-sm mt-2">Loading Excellence Platform</div>
         </div>
     </div>
 
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top fixed bottom-8 right-8 z-40 w-12 h-12 rounded-full bg-gradient-primary text-white shadow-lg hover:shadow-xl transition-all duration-300">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <!-- Navigation -->
-    <nav class="glass fixed top-0 left-0 right-0 z-40 border-b border-gray-800/50">
+    <nav class="glass fixed top-0 left-0 right-0 z-50 border-b border-gray-800/50">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="flex items-center justify-between h-20">
+            <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
-                <a href="#hero" class="flex items-center space-x-3 group">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center">
+                <a href="#home" class="flex items-center space-x-3 group">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
                         <i class="fas fa-graduation-cap text-white text-xl"></i>
                     </div>
                     <div>
                         <div class="text-xl font-bold text-white">A+ Initiative</div>
-                        <div class="text-sm text-primary font-semibold">A-Levels Excellence</div>
+                        <div class="text-xs text-primary-400 font-semibold">A-Levels Excellence</div>
                     </div>
                 </a>
 
                 <!-- Desktop Navigation -->
                 <div class="hidden lg:flex items-center space-x-8">
-                    <a href="#hero" class="text-gray-300 hover:text-white transition-colors">Home</a>
-                    <a href="#courses" class="text-gray-300 hover:text-white transition-colors">Courses</a>
-                    <a href="#features" class="text-gray-300 hover:text-white transition-colors">Features</a>
-                    <a href="#testimonials" class="text-gray-300 hover:text-white transition-colors">Success Stories</a>
-                    <a href="#resources" class="text-gray-300 hover:text-white transition-colors">Resources</a>
+                    <a href="#home" class="text-gray-300 hover:text-primary transition-colors font-medium">Home</a>
+                    <a href="#courses" class="text-gray-300 hover:text-primary transition-colors font-medium">Courses</a>
+                    <a href="#features" class="text-gray-300 hover:text-primary transition-colors font-medium">Features</a>
+                    <a href="#testimonials" class="text-gray-300 hover:text-primary transition-colors font-medium">Success Stories</a>
+                    <a href="#resources" class="text-gray-300 hover:text-primary transition-colors font-medium">Resources</a>
                     
                     <div class="flex items-center space-x-4">
-                        <button class="px-6 py-2 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white transition-all">
+                        <button id="loginBtn" class="px-6 py-2 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 font-medium">
                             Sign In
                         </button>
-                        <button class="px-6 py-2 rounded-lg bg-gradient-to-r from-primary to-blue-600 text-white hover:shadow-lg transition-all">
+                        <button id="signupBtn" class="px-6 py-2 rounded-lg bg-gradient-primary text-white hover:shadow-lg hover:scale-105 transition-all duration-300 font-medium">
                             Get Started
                         </button>
                     </div>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobileMenuBtn" class="lg:hidden text-gray-300 hover:text-white">
+                <button id="mobileMenuBtn" class="lg:hidden text-gray-300 hover:text-primary transition-colors">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
-    </nav>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="lg:hidden fixed inset-0 bg-dark/95 z-30 hidden">
-        <div class="flex flex-col h-full p-6">
-            <div class="flex justify-between items-center mb-8">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center">
-                        <i class="fas fa-graduation-cap text-white"></i>
-                    </div>
-                    <div>
-                        <div class="text-lg font-bold text-white">A+ Initiative</div>
-                        <div class="text-xs text-primary font-semibold">A-Levels Excellence</div>
-                    </div>
-                </div>
-                <button id="mobileMenuClose" class="text-gray-400 hover:text-white">
-                    <i class="fas fa-times text-xl"></i>
-                </button>
-            </div>
-            
-            <div class="space-y-6">
-                <a href="#hero" class="block text-gray-300 hover:text-white text-lg py-3">Home</a>
-                <a href="#courses" class="block text-gray-300 hover:text-white text-lg py-3">Courses</a>
-                <a href="#features" class="block text-gray-300 hover:text-white text-lg py-3">Features</a>
-                <a href="#testimonials" class="block text-gray-300 hover:text-white text-lg py-3">Success Stories</a>
-                <a href="#resources" class="block text-gray-300 hover:text-white text-lg py-3">Resources</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Hero Section -->
-    <section id="hero" class="min-h-screen pt-20 flex items-center relative overflow-hidden">
-        <!-- Background Elements -->
-        <div class="absolute inset-0 bg-gradient-to-br from-dark via-gray-900 to-dark"></div>
-        <div class="absolute top-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
-        
-        <div class="relative z-10 max-w-7xl mx-auto px-4 py-20">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <!-- Content -->
-                <div class="space-y-8">
-                    <div class="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary font-semibold">
-                        <i class="fas fa-star mr-2"></i> 94% A/A* Success Rate
-                    </div>
-                    
-                    <h1 class="text-5xl lg:text-6xl font-bold text-white leading-tight">
-                        Master Your A-Levels with
-                        <span class="gradient-text block">AI-Powered Learning</span>
-                    </h1>
-                    
-                    <p class="text-xl text-gray-300">
-                        Transform your academic journey with adaptive AI, interactive simulations, and expert-led courses designed for A-Level excellence.
-                    </p>
-                    
-                    <div class="flex flex-wrap gap-4">
-                        <button class="px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-blue-600 text-white font-semibold hover:shadow-xl transition-all">
-                            Start Free Trial
-                        </button>
-                        <button class="px-8 py-4 rounded-xl glass border border-gray-700 text-white font-semibold hover:border-primary transition-all">
-                            <i class="fas fa-play-circle mr-2"></i>
-                            Watch Demo
-                        </button>
-                    </div>
-                    
-                    <!-- Stats -->
-                    <div class="grid grid-cols-3 gap-6 pt-8">
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-primary" id="studentsCount">5,237</div>
-                            <div class="text-sm text-gray-400">Successful Students</div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="lg:hidden fixed inset-0 bg-dark-900/95 backdrop-blur-sm z-40 hidden">
+            <div class="flex flex-col h-full p-6">
+                <div class="flex justify-between items-center mb-8">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white text-lg"></i>
                         </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-math">5</div>
-                            <div class="text-sm text-gray-400">A-Level Courses</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-stats">94%</div>
-                            <div class="text-sm text-gray-400">A/A* Rate</div>
+                        <div>
+                            <div class="text-lg font-bold text-white">A+ Initiative</div>
+                            <div class="text-xs text-primary-400 font-semibold">A-Levels Excellence</div>
                         </div>
                     </div>
+                    <button id="mobileMenuClose" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
                 </div>
                 
-                <!-- Interactive Preview -->
-                <div class="relative">
-                    <div class="glass rounded-3xl p-8">
-                        <div class="mb-6">
-                            <h3 class="text-white font-bold text-lg mb-4">Interactive AI Tutor Demo</h3>
-                            <div class="bg-gray-900/50 rounded-xl p-4 mb-4">
-                                <div class="text-gray-400 text-sm">Ask our AI anything:</div>
-                                <div class="text-white font-mono">"Explain quantum physics concepts"</div>
-                            </div>
-                            <button class="w-full py-3 rounded-lg bg-gradient-to-r from-primary to-blue-600 text-white font-semibold">
-                                <i class="fas fa-robot mr-2"></i>
-                                Get AI Explanation
+                <div class="space-y-6 flex-1">
+                    <a href="#home" class="block text-gray-300 hover:text-primary text-lg py-3">Home</a>
+                    <a href="#courses" class="block text-gray-300 hover:text-primary text-lg py-3">Courses</a>
+                    <a href="#features" class="block text-gray-300 hover:text-primary text-lg py-3">Features</a>
+                    <a href="#testimonials" class="block text-gray-300 hover:text-primary text-lg py-3">Success Stories</a>
+                    <a href="#resources" class="block text-gray-300 hover:text-primary text-lg py-3">Resources</a>
+                </div>
+                
+                <div class="space-y-4 pt-6 border-t border-gray-800">
+                    <button id="mobileLoginBtn" class="w-full py-3 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white transition-colors font-medium">
+                        Sign In
+                    </button>
+                    <button id="mobileSignupBtn" class="w-full py-3 rounded-lg bg-gradient-primary text-white hover:shadow-lg transition-colors font-medium">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="relative min-h-screen flex items-center pt-20">
+            <!-- Background -->
+            <div class="absolute inset-0 bg-gradient-dark"></div>
+            <div class="absolute top-0 left-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
+            
+            <div class="relative z-10 max-w-7xl mx-auto px-4 py-20">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Content -->
+                    <div class="space-y-8">
+                        <div class="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary font-semibold">
+                            <i class="fas fa-star mr-2"></i> 94% A/A* Success Rate
+                        </div>
+                        
+                        <h1 class="hero-title text-5xl lg:text-6xl font-bold text-white leading-tight">
+                            Master Your A-Levels
+                            <span class="gradient-text block">with Expert Guidance</span>
+                        </h1>
+                        
+                        <p class="text-xl text-gray-300">
+                            Transform your academic journey with comprehensive A-Level courses in Mathematics, Physics, Computer Science, Statistics, and Mechanics.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-4">
+                            <button id="exploreCourses" class="px-8 py-4 rounded-xl bg-gradient-primary text-white font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300">
+                                Explore All Courses
+                            </button>
+                            <button id="watchDemo" class="px-8 py-4 rounded-xl glass border border-gray-700 text-white font-semibold hover:border-primary transition-all duration-300">
+                                <i class="fas fa-play-circle mr-2"></i>
+                                Watch Demo
                             </button>
                         </div>
                         
-                        <div>
-                            <div class="flex justify-between items-center mb-4">
-                                <h4 class="text-white font-bold">Your Progress</h4>
-                                <span class="text-primary">25% Complete</span>
+                        <!-- Stats -->
+                        <div class="grid grid-cols-3 gap-6 pt-8">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-primary" id="studentsCount">5,237</div>
+                                <div class="text-sm text-gray-400">Successful Students</div>
                             </div>
-                            <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
-                                <div class="h-full bg-gradient-to-r from-primary to-blue-600 rounded-full w-1/4"></div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-secondary">5</div>
+                                <div class="text-sm text-gray-400">A-Level Courses</div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Courses Section -->
-    <section id="courses" class="py-20">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
-                    Comprehensive
-                    <span class="gradient-text">A-Level Courses</span>
-                </h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                    Expertly designed courses with interactive lessons, AI-powered practice, and real-time progress tracking.
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                <!-- Pure Mathematics -->
-                <div class="glass rounded-2xl overflow-hidden border border-math/30 hover:border-math transition-all">
-                    <div class="h-48 bg-gradient-to-br from-math/20 to-math/5 relative">
-                        <div class="absolute top-6 left-6">
-                            <div class="w-14 h-14 rounded-xl bg-math/30 flex items-center justify-center">
-                                <i class="fas fa-superscript text-white text-2xl"></i>
-                            </div>
-                        </div>
-                        <div class="absolute bottom-6 left-6">
-                            <h3 class="text-2xl font-bold text-white">Pure Mathematics</h3>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-gray-300 mb-6">
-                            Master calculus, algebra, and advanced mathematical concepts with interactive visualizations.
-                        </p>
-                        <div class="space-y-3 mb-6">
-                            <div class="flex items-center text-gray-400">
-                                <i class="fas fa-book mr-3 text-math"></i>
-                                <span>14 Chapters</span>
-                            </div>
-                            <div class="flex items-center text-gray-400">
-                                <i class="fas fa-clock mr-3 text-math"></i>
-                                <span>120+ Hours</span>
-                            </div>
-                        </div>
-                        <button class="w-full py-3 rounded-lg bg-math/10 hover:bg-math/20 text-math font-semibold transition-colors">
-                            Explore Course
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Physics -->
-                <div class="glass rounded-2xl overflow-hidden border border-physics/30 hover:border-physics transition-all">
-                    <div class="h-48 bg-gradient-to-br from-physics/20 to-physics/5 relative">
-                        <div class="absolute top-6 left-6">
-                            <div class="w-14 h-14 rounded-xl bg-physics/30 flex items-center justify-center">
-                                <i class="fas fa-atom text-white text-2xl"></i>
-                            </div>
-                        </div>
-                        <div class="absolute bottom-6 left-6">
-                            <h3 class="text-2xl font-bold text-white">Physics</h3>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-gray-300 mb-6">
-                            Understand fundamental physics principles through interactive simulations and experiments.
-                        </p>
-                        <div class="space-y-3 mb-6">
-                            <div class="flex items-center text-gray-400">
-                                <i class="fas fa-book mr-3 text-physics"></i>
-                                <span>16 Chapters</span>
-                            </div>
-                            <div class="flex items-center text-gray-400">
-                                <i class="fas fa-clock mr-3 text-physics"></i>
-                                <span>140+ Hours</span>
-                            </div>
-                        </div>
-                        <button class="w-full py-3 rounded-lg bg-physics/10 hover:bg-physics/20 text-physics font-semibold transition-colors">
-                            Explore Course
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Computer Science -->
-                <div class="glass rounded-2xl overflow-hidden border border-cs/30 hover:border-cs transition-all">
-                    <div class="h-48 bg-gradient-to-br from-cs/20 to-cs/5 relative">
-                        <div class="absolute top-6 left-6">
-                            <div class="w-14 h-14 rounded-xl bg-cs/30 flex items-center justify-center">
-                                <i class="fas fa-laptop-code text-white text-2xl"></i>
-                            </div>
-                        </div>
-                        <div class="absolute bottom-6 left-6">
-                            <h3 class="text-2xl font-bold text-white">Computer Science</h3>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-gray-300 mb-6">
-                            Learn programming, algorithms, and computational thinking with hands-on coding projects.
-                        </p>
-                        <div class="space-y-3 mb-6">
-                            <div class="flex items-center text-gray-400">
-                                <i class="fas fa-book mr-3 text-cs"></i>
-                                <span>18 Chapters</span>
-                            </div>
-                            <div class="flex items-center text-gray-400">
-                                <i class="fas fa-clock mr-3 text-cs"></i>
-                                <span>150+ Hours</span>
-                            </div>
-                        </div>
-                        <button class="w-full py-3 rounded-lg bg-cs/10 hover:bg-cs/20 text-cs font-semibold transition-colors">
-                            Explore Course
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="py-20 bg-gray-900/30">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
-                    Revolutionary
-                    <span class="gradient-text">Learning Features</span>
-                </h2>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- AI Tutor -->
-                <div class="glass rounded-2xl p-8">
-                    <div class="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                        <i class="fas fa-robot text-primary text-2xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">AI-Powered Tutor</h3>
-                    <p class="text-gray-300 mb-6">
-                        24/7 intelligent tutoring with adaptive learning paths and personalized explanations.
-                    </p>
-                    <ul class="space-y-2">
-                        <li class="flex items-center text-gray-400">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            <span>Instant problem solving</span>
-                        </li>
-                        <li class="flex items-center text-gray-400">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            <span>Personalized learning paths</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Interactive Simulations -->
-                <div class="glass rounded-2xl p-8">
-                    <div class="w-16 h-16 rounded-xl bg-math/10 flex items-center justify-center mb-6">
-                        <i class="fas fa-vr-cardboard text-math text-2xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Interactive Simulations</h3>
-                    <p class="text-gray-300 mb-6">
-                        Visualize complex concepts through interactive 3D models and simulations.
-                    </p>
-                    <ul class="space-y-2">
-                        <li class="flex items-center text-gray-400">
-                            <i class="fas fa-check text-math mr-3"></i>
-                            <span>3D mathematical models</span>
-                        </li>
-                        <li class="flex items-center text-gray-400">
-                            <i class="fas fa-check text-math mr-3"></i>
-                            <span>Physics simulations</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Progress Analytics -->
-                <div class="glass rounded-2xl p-8">
-                    <div class="w-16 h-16 rounded-xl bg-stats/10 flex items-center justify-center mb-6">
-                        <i class="fas fa-chart-network text-stats text-2xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Smart Analytics</h3>
-                    <p class="text-gray-300 mb-6">
-                        Real-time progress tracking with predictive analytics and performance insights.
-                    </p>
-                    <ul class="space-y-2">
-                        <li class="flex items-center text-gray-400">
-                            <i class="fas fa-check text-stats mr-3"></i>
-                            <span>Predictive grade analysis</span>
-                        </li>
-                        <li class="flex items-center text-gray-400">
-                            <i class="fas fa-check text-stats mr-3"></i>
-                            <span>Weakness identification</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- AI Study Assistant -->
-    <section class="py-20">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="glass rounded-3xl p-8 lg:p-12">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <h3 class="text-3xl font-bold text-white mb-6">
-                            Meet Your AI Study Assistant
-                        </h3>
-                        <p class="text-gray-300 mb-8">
-                            Our advanced AI assistant provides personalized guidance, instant problem-solving, and adaptive learning recommendations.
-                        </p>
-                        <div class="space-y-6">
-                            <div class="flex items-start">
-                                <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mr-4">
-                                    <i class="fas fa-brain text-primary"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-white font-bold mb-2">Adaptive Learning</h4>
-                                    <p class="text-gray-400">AI adjusts difficulty based on your performance</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="w-12 h-12 rounded-lg bg-math/10 flex items-center justify-center mr-4">
-                                    <i class="fas fa-lightbulb text-math"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-white font-bold mb-2">Smart Explanations</h4>
-                                    <p class="text-gray-400">Step-by-step solutions tailored to your level</p>
-                                </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-primary">94%</div>
+                                <div class="text-sm text-gray-400">A/A* Rate</div>
                             </div>
                         </div>
                     </div>
                     
-                    <div>
-                        <div class="bg-gray-900/50 rounded-2xl p-6 border border-gray-800">
-                            <div class="flex items-center mb-6">
-                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center mr-4">
-                                    <i class="fas fa-robot text-white"></i>
+                    <!-- Course Preview -->
+                    <div class="relative">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="glass rounded-2xl p-6 border border-primary/30 floating">
+                                <div class="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center mb-4">
+                                    <i class="fas fa-superscript text-primary text-xl"></i>
                                 </div>
-                                <div>
-                                    <div class="text-white font-bold">AI Tutor</div>
-                                    <div class="text-gray-400 text-sm">Online • Ready to help</div>
-                                </div>
+                                <h3 class="text-white font-bold mb-2">Mathematics</h3>
+                                <p class="text-gray-300 text-sm">Pure, Mechanics & Statistics</p>
                             </div>
                             
-                            <div class="space-y-4">
-                                <div class="bg-gray-800/50 rounded-lg p-4">
-                                    <div class="text-gray-400 text-sm mb-2">Ask me anything:</div>
-                                    <div class="text-white">"How do I solve differential equations?"</div>
+                            <div class="glass rounded-2xl p-6 border border-secondary/30 floating" style="animation-delay: 1s;">
+                                <div class="w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center mb-4">
+                                    <i class="fas fa-atom text-secondary text-xl"></i>
                                 </div>
-                                
-                                <button class="w-full py-3 rounded-lg bg-gradient-to-r from-primary to-blue-600 text-white font-semibold hover:shadow-lg transition-all">
-                                    <i class="fas fa-comment-dots mr-2"></i>
-                                    Chat with AI Tutor
+                                <h3 class="text-white font-bold mb-2">Physics</h3>
+                                <p class="text-gray-300 text-sm">Complete A-Level Syllabus</p>
+                            </div>
+                            
+                            <div class="glass rounded-2xl p-6 border border-cs/30 floating" style="animation-delay: 2s;">
+                                <div class="w-12 h-12 rounded-xl bg-cs/20 flex items-center justify-center mb-4">
+                                    <i class="fas fa-laptop-code text-cs text-xl"></i>
+                                </div>
+                                <h3 class="text-white font-bold mb-2">Computer Science</h3>
+                                <p class="text-gray-300 text-sm">Programming & Algorithms</p>
+                            </div>
+                            
+                            <div class="glass rounded-2xl p-6 border border-primary/30 floating" style="animation-delay: 3s;">
+                                <div class="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center mb-4">
+                                    <i class="fas fa-chart-bar text-primary text-xl"></i>
+                                </div>
+                                <h3 class="text-white font-bold mb-2">Statistics</h3>
+                                <p class="text-gray-300 text-sm">Data Analysis & Probability</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses Section -->
+        <section id="courses" class="py-20">
+            <div class="max-w-7xl mx-auto px-4">
+                <!-- Header -->
+                <div class="text-center mb-16">
+                    <h2 class="section-title text-4xl lg:text-5xl font-bold text-white mb-6">
+                        Comprehensive
+                        <span class="gradient-text">A-Level Courses</span>
+                    </h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                        Expertly designed courses with interactive lessons, practice questions, and personalized support.
+                    </p>
+                </div>
+                
+                <!-- Courses Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                    <!-- Pure Mathematics -->
+                    <div class="course-card glass rounded-2xl overflow-hidden border border-primary/30 hover:border-primary transition-all">
+                        <div class="h-48 bg-gradient-to-br from-primary/20 to-primary/5 relative">
+                            <div class="absolute top-6 left-6">
+                                <div class="w-14 h-14 rounded-xl bg-primary/30 flex items-center justify-center">
+                                    <i class="fas fa-superscript text-white text-2xl"></i>
+                                </div>
+                            </div>
+                            <div class="absolute bottom-6 left-6">
+                                <h3 class="text-2xl font-bold text-white">Pure Mathematics</h3>
+                                <div class="text-primary-200 text-sm">A-Level Course</div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-300 mb-6">
+                                Master calculus, algebra, trigonometry, and mathematical proof techniques with our comprehensive curriculum.
+                            </p>
+                            <div class="space-y-3 mb-6">
+                                <div class="flex items-center text-gray-400">
+                                    <i class="fas fa-book text-primary mr-3"></i>
+                                    <span>14 Chapters • 120+ Hours</span>
+                                </div>
+                                <div class="flex items-center text-gray-400">
+                                    <i class="fas fa-check-circle text-primary mr-3"></i>
+                                    <span>500+ Practice Questions</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-white">£49</span>
+                                <a href="courses/pure-mathematics.html" class="px-6 py-2 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary font-semibold transition-colors">
+                                    Start Learning
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Physics -->
+                    <div class="course-card glass rounded-2xl overflow-hidden border border-secondary/30 hover:border-secondary transition-all">
+                        <div class="h-48 bg-gradient-to-br from-secondary/20 to-secondary/5 relative">
+                            <div class="absolute top-6 left-6">
+                                <div class="w-14 h-14 rounded-xl bg-secondary/30 flex items-center justify-center">
+                                    <i class="fas fa-atom text-white text-2xl"></i>
+                                </div>
+                            </div>
+                            <div class="absolute bottom-6 left-6">
+                                <h3 class="text-2xl font-bold text-white">Physics</h3>
+                                <div class="text-secondary-200 text-sm">A-Level Course</div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-300 mb-6">
+                                Explore fundamental principles of physics including mechanics, waves, electricity, and quantum phenomena.
+                            </p>
+                            <div class="space-y-3 mb-6">
+                                <div class="flex items-center text-gray-400">
+                                    <i class="fas fa-book text-secondary mr-3"></i>
+                                    <span>16 Chapters • 140+ Hours</span>
+                                </div>
+                                <div class="flex items-center text-gray-400">
+                                    <i class="fas fa-check-circle text-secondary mr-3"></i>
+                                    <span>600+ Practice Questions</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-white">£49</span>
+                                <a href="courses/physics.html" class="px-6 py-2 rounded-lg bg-secondary/10 hover:bg-secondary/20 text-secondary font-semibold transition-colors">
+                                    Start Learning
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Computer Science -->
+                    <div class="course-card glass rounded-2xl overflow-hidden border border-cs/30 hover:border-cs transition-all">
+                        <div class="h-48 bg-gradient-to-br from-cs/20 to-cs/5 relative">
+                            <div class="absolute top-6 left-6">
+                                <div class="w-14 h-14 rounded-xl bg-cs/30 flex items-center justify-center">
+                                    <i class="fas fa-laptop-code text-white text-2xl"></i>
+                                </div>
+                            </div>
+                            <div class="absolute bottom-6 left-6">
+                                <h3 class="text-2xl font-bold text-white">Computer Science</h3>
+                                <div class="text-cs-200 text-sm">A-Level Course</div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-300 mb-6">
+                                Learn programming, algorithms, data structures, and computational thinking with hands-on projects.
+                            </p>
+                            <div class="space-y-3 mb-6">
+                                <div class="flex items-center text-gray-400">
+                                    <i class="fas fa-book text-cs mr-3"></i>
+                                    <span>18 Chapters • 150+ Hours</span>
+                                </div>
+                                <div class="flex items-center text-gray-400">
+                                    <i class="fas fa-check-circle text-cs mr-3"></i>
+                                    <span>50+ Coding Exercises</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-white">£49</span>
+                                <a href="courses/computer-science.html" class="px-6 py-2 rounded-lg bg-cs/10 hover:bg-cs/20 text-cs font-semibold transition-colors">
+                                    Start Learning
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Statistics -->
+                    <div class="course-card glass rounded-2xl overflow-hidden border border-primary/30 hover:border-primary transition-all">
+                        <div class="h-48 bg-gradient-to-br from-primary/20 to-primary/5 relative">
+                            <div class="absolute top-6 left-6">
+                                <div class="w-14 h-14 rounded-xl bg-primary/30 flex items-center justify-center">
+                                    <i class="fas fa-chart-bar text-white text-2xl"></i>
+                                </div>
+                            </div>
+                            <div class="absolute bottom-6 left-6">
+                                <h3 class="text-2xl font-bold text-white">Statistics</h3>
+                                <div class="text-primary-200 text-sm">A-Level Course</div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-300 mb-6">
+                                Master probability, statistical distributions, hypothesis testing, and data analysis techniques.
+                            </p>
+                            <div class="space-y-3 mb-6">
+                                <div class="flex items-center text-gray-400">
+                                    <i class="fas fa-book text-primary mr-3"></i>
+                                    <span>12 Chapters • 100+ Hours</span>
+                                </div>
+                                <div class="flex items-center text-gray-400">
+                                    <i class="fas fa-check-circle text-primary mr-3"></i>
+                                    <span>450+ Practice Questions</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-white">£49</span>
+                                <a href="courses/statistics.html" class="px-6 py-2 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary font-semibold transition-colors">
+                                    Start Learning
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mechanics -->
+                    <div class="course-card glass rounded-2xl overflow-hidden border border-secondary/30 hover:border-secondary transition-all">
+                        <div class="h-48 bg-gradient-to-br from-secondary/20 to-secondary/5 relative">
+                            <div class="absolute top-6 left-6">
+                                <div class="w-14 h-14 rounded-xl bg-secondary/30 flex items-center justify-center">
+                                    <i class="fas fa-cogs text-white text-2xl"></i>
+                                </div>
+                            </div>
+                            <div class="absolute bottom-6 left-6">
+                                <h3 class="text-2xl font-bold text-white">Mechanics</h3>
+                                <div class="text-secondary-200 text-sm">A-Level Course</div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-300 mb-6">
+                                Understand forces, motion, energy, and momentum with real-world applications and problem-solving.
+                            </p>
+                            <div class="space-y-3 mb-6">
+                                <div class="flex items-center text-gray-400">
+                                    <i class="fas fa-book text-secondary mr-3"></i>
+                                    <span>10 Chapters • 90+ Hours</span>
+                                </div>
+                                <div class="flex items-center text-gray-400">
+                                    <i class="fas fa-check-circle text-secondary mr-3"></i>
+                                    <span>400+ Practice Questions</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-white">£49</span>
+                                <a href="courses/mechanics.html" class="px-6 py-2 rounded-lg bg-secondary/10 hover:bg-secondary/20 text-secondary font-semibold transition-colors">
+                                    Start Learning
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Complete Bundle -->
+                    <div class="course-card glass rounded-2xl overflow-hidden border-2 border-primary/50 relative">
+                        <div class="absolute -top-3 -right-3">
+                            <div class="bg-gradient-primary text-white px-4 py-1 rounded-full text-sm font-bold">
+                                BEST VALUE
+                            </div>
+                        </div>
+                        <div class="h-48 bg-gradient-to-br from-primary/20 to-secondary/20 relative">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <i class="fas fa-crown text-6xl text-yellow-400 opacity-20"></i>
+                            </div>
+                            <div class="absolute bottom-6 left-6">
+                                <h3 class="text-2xl font-bold text-white">Complete Bundle</h3>
+                                <div class="text-primary-200 text-sm">All 5 A-Level Courses</div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-300 mb-6">
+                                Get full access to all A-Level subjects at a special discounted rate. Perfect for comprehensive preparation.
+                            </p>
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <div class="text-3xl font-bold text-white">£199</div>
+                                        <div class="text-gray-400 line-through">£299</div>
+                                    </div>
+                                    <div class="text-primary font-bold">Save £100</div>
+                                </div>
+                                <button id="bundleOffer" class="w-full py-3 rounded-lg bg-gradient-primary text-white font-semibold hover:shadow-xl transition-all duration-300">
+                                    Get Full Access
+                                </button>
+                                <div class="text-center text-gray-400 text-sm">
+                                    <i class="fas fa-shield-alt mr-2"></i>
+                                    30-day money-back guarantee
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-20 bg-gray-900/30">
+            <div class="max-w-7xl mx-auto px-4">
+                <!-- Header -->
+                <div class="text-center mb-16">
+                    <h2 class="section-title text-4xl lg:text-5xl font-bold text-white mb-6">
+                        Why Choose
+                        <span class="gradient-text">A+ Initiative</span>
+                    </h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                        Our platform combines expert teaching with innovative technology for optimal learning outcomes.
+                    </p>
+                </div>
+                
+                <!-- Features -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Expert Teachers -->
+                    <div class="glass rounded-2xl p-8">
+                        <div class="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                            <i class="fas fa-chalkboard-teacher text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Expert Teachers</h3>
+                        <p class="text-gray-300 mb-6">
+                            Learn from Oxford/Cambridge graduates with years of A-Level teaching experience.
+                        </p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-check text-primary mr-3"></i>
+                                <span>PhD-level subject expertise</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-check text-primary mr-3"></i>
+                                <span>Examiner experience</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Interactive Learning -->
+                    <div class="glass rounded-2xl p-8">
+                        <div class="w-16 h-16 rounded-xl bg-secondary/10 flex items-center justify-center mb-6">
+                            <i class="fas fa-video text-secondary text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Interactive Lessons</h3>
+                        <p class="text-gray-300 mb-6">
+                            Engage with dynamic video lessons, animations, and interactive simulations.
+                        </p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-check text-secondary mr-3"></i>
+                                <span>Step-by-step video explanations</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-check text-secondary mr-3"></i>
+                                <span>Interactive quizzes</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Progress Tracking -->
+                    <div class="glass rounded-2xl p-8">
+                        <div class="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                            <i class="fas fa-chart-line text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Smart Analytics</h3>
+                        <p class="text-gray-300 mb-6">
+                            Track your progress with detailed analytics and personalized recommendations.
+                        </p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-check text-primary mr-3"></i>
+                                <span>Performance tracking</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-check text-primary mr-3"></i>
+                                <span>Weakness identification</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Practice Materials -->
+                    <div class="glass rounded-2xl p-8">
+                        <div class="w-16 h-16 rounded-xl bg-secondary/10 flex items-center justify-center mb-6">
+                            <i class="fas fa-tasks text-secondary text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Comprehensive Practice</h3>
+                        <p class="text-gray-300 mb-6">
+                            Access thousands of exam-style questions with detailed solutions.
+                        </p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-check text-secondary mr-3"></i>
+                                <span>Past paper questions</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-check text-secondary mr-3"></i>
+                                <span>Step-by-step solutions</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Mobile Learning -->
+                    <div class="glass rounded-2xl p-8">
+                        <div class="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                            <i class="fas fa-mobile-alt text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Mobile Learning</h3>
+                        <p class="text-gray-300 mb-6">
+                            Learn anytime, anywhere with our mobile-optimized platform.
+                        </p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-check text-primary mr-3"></i>
+                                <span>Mobile-optimized lessons</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-check text-primary mr-3"></i>
+                                <span>Offline access</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Support -->
+                    <div class="glass rounded-2xl p-8">
+                        <div class="w-16 h-16 rounded-xl bg-secondary/10 flex items-center justify-center mb-6">
+                            <i class="fas fa-users text-secondary text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Expert Support</h3>
+                        <p class="text-gray-300 mb-6">
+                            Get help from experienced tutors through live Q&A and discussion forums.
+                        </p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-check text-secondary mr-3"></i>
+                                <span>Live Q&A sessions</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-check text-secondary mr-3"></i>
+                                <span>Discussion forums</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Student Dashboard Preview -->
+        <section class="py-20">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="glass rounded-3xl p-8 lg:p-12">
+                    <div class="grid lg:grid-cols-3 gap-8">
+                        <!-- Study Streak -->
+                        <div class="text-center">
+                            <div class="text-5xl font-bold text-primary mb-4" id="studyStreak">14</div>
+                            <div class="text-white font-semibold mb-2">Day Study Streak</div>
+                            <div class="text-gray-400">Keep it up! 🔥</div>
+                        </div>
+                        
+                        <!-- Progress -->
+                        <div>
+                            <h4 class="text-white font-bold mb-6">Weekly Progress</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-gray-300">Mathematics</span>
+                                        <span class="text-primary">75%</span>
+                                    </div>
+                                    <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+                                        <div class="h-full bg-gradient-primary rounded-full w-3/4"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-gray-300">Physics</span>
+                                        <span class="text-secondary">60%</span>
+                                    </div>
+                                    <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+                                        <div class="h-full bg-gradient-secondary rounded-full w-3/5"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Quick Actions -->
+                        <div>
+                            <h4 class="text-white font-bold mb-6">Quick Actions</h4>
+                            <div class="space-y-3">
+                                <button class="w-full flex items-center justify-between p-4 rounded-lg bg-gray-800/50 hover:bg-gray-800 transition-colors">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-play-circle text-primary mr-3"></i>
+                                        <span class="text-white">Continue Last Lesson</span>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-gray-400"></i>
+                                </button>
+                                <button class="w-full flex items-center justify-between p-4 rounded-lg bg-gray-800/50 hover:bg-gray-800 transition-colors">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-question-circle text-secondary mr-3"></i>
+                                        <span class="text-white">Practice Problems</span>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-gray-400"></i>
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Student Dashboard Preview -->
-    <section class="py-20 bg-gray-900/30">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="glass rounded-3xl p-8">
-                <h3 class="text-3xl font-bold text-white mb-8 text-center">Your Personal Learning Dashboard</h3>
+        <!-- Success Stories -->
+        <section id="testimonials" class="py-20 bg-gray-900/30">
+            <div class="max-w-7xl mx-auto px-4">
+                <!-- Header -->
+                <div class="text-center mb-16">
+                    <h2 class="section-title text-4xl lg:text-5xl font-bold text-white mb-6">
+                        Student
+                        <span class="gradient-text">Success Stories</span>
+                    </h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                        Hear from students who transformed their academic performance with A+ Initiative.
+                    </p>
+                </div>
                 
-                <div class="grid lg:grid-cols-3 gap-8">
-                    <!-- Study Streak -->
-                    <div class="text-center">
-                        <div class="text-5xl font-bold text-primary mb-4" id="streakCount">14</div>
-                        <div class="text-white font-semibold mb-2">Day Streak</div>
-                        <div class="text-gray-400">Keep it up! 🔥</div>
-                    </div>
-                    
-                    <!-- Weekly Progress -->
-                    <div>
-                        <h4 class="text-white font-bold mb-6">Weekly Progress</h4>
-                        <div class="space-y-4">
-                            <div>
-                                <div class="flex justify-between mb-2">
-                                    <span class="text-gray-300">Mathematics</span>
-                                    <span class="text-math">75%</span>
-                                </div>
-                                <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
-                                    <div class="h-full bg-gradient-to-r from-math to-purple-600 rounded-full w-3/4"></div>
-                                </div>
+                <!-- Testimonials -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="glass rounded-2xl p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 rounded-full bg-gradient-primary flex items-center justify-center text-white font-bold text-xl mr-4">
+                                SJ
                             </div>
                             <div>
-                                <div class="flex justify-between mb-2">
-                                    <span class="text-gray-300">Physics</span>
-                                    <span class="text-physics">60%</span>
-                                </div>
-                                <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
-                                    <div class="h-full bg-gradient-to-r from-physics to-orange-600 rounded-full w-3/5"></div>
-                                </div>
+                                <h4 class="text-white font-bold">Sarah Johnson</h4>
+                                <div class="text-primary text-sm">Mathematics A*</div>
                             </div>
+                        </div>
+                        <p class="text-gray-300 mb-6 italic">
+                            "The comprehensive curriculum and expert explanations helped me go from a B to an A* in just 6 months!"
+                        </p>
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
                     </div>
                     
-                    <!-- Upcoming Goals -->
-                    <div>
-                        <h4 class="text-white font-bold mb-6">Today's Goals</h4>
-                        <div class="space-y-3">
-                            <div class="flex items-center p-3 rounded-lg bg-gray-800/30">
-                                <i class="fas fa-check-circle text-success mr-3"></i>
-                                <span class="text-white">Complete Calculus lesson</span>
+                    <!-- Testimonial 2 -->
+                    <div class="glass rounded-2xl p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 rounded-full bg-gradient-secondary flex items-center justify-center text-white font-bold text-xl mr-4">
+                                MP
                             </div>
-                            <div class="flex items-center p-3 rounded-lg bg-gray-800/30">
-                                <i class="fas fa-clock text-warning mr-3"></i>
-                                <span class="text-white">Solve 10 practice problems</span>
+                            <div>
+                                <h4 class="text-white font-bold">Michael Patel</h4>
+                                <div class="text-secondary text-sm">Physics A*</div>
                             </div>
                         </div>
+                        <p class="text-gray-300 mb-6 italic">
+                            "The physics simulations and expert explanations made complex concepts click for me."
+                        </p>
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="glass rounded-2xl p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-cs flex items-center justify-center text-white font-bold text-xl mr-4">
+                                EC
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold">Emma Chen</h4>
+                                <div class="text-cs text-sm">Computer Science A*</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-6 italic">
+                            "The coding exercises and real-time feedback prepared me perfectly for my exams. Highly recommend!"
+                        </p>
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Testimonials -->
-    <section id="testimonials" class="py-20">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
-                    Student
-                    <span class="gradient-text">Success Stories</span>
-                </h2>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="glass rounded-2xl p-8">
-                    <div class="flex items-center mb-6">
-                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center text-white font-bold text-xl mr-4">
-                            SJ
-                        </div>
-                        <div>
-                            <h4 class="text-white font-bold">Sarah Johnson</h4>
-                            <div class="text-primary text-sm">Mathematics A*</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 mb-6 italic">
-                        "The AI tutor helped me understand complex calculus concepts that I struggled with for months. Went from a C to an A*!"
+        <!-- Resources -->
+        <section id="resources" class="py-20">
+            <div class="max-w-7xl mx-auto px-4">
+                <!-- Header -->
+                <div class="text-center mb-16">
+                    <h2 class="section-title text-4xl lg:text-5xl font-bold text-white mb-6">
+                        Free Learning
+                        <span class="gradient-text">Resources</span>
+                    </h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                        Access valuable study materials to supplement your A-Level preparation.
                     </p>
-                    <div class="flex text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
                 </div>
                 
-                <!-- Testimonial 2 -->
-                <div class="glass rounded-2xl p-8">
-                    <div class="flex items-center mb-6">
-                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-math to-purple-600 flex items-center justify-center text-white font-bold text-xl mr-4">
-                            MP
+                <!-- Resources Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                    <!-- Resource 1 -->
+                    <a href="resources/past-papers.pdf" class="glass rounded-xl p-6 text-center hover:border-primary border border-transparent transition-all">
+                        <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-file-pdf text-primary text-xl"></i>
                         </div>
-                        <div>
-                            <h4 class="text-white font-bold">Michael Patel</h4>
-                            <div class="text-math text-sm">Physics A*</div>
+                        <h4 class="text-white font-bold mb-2">Past Papers</h4>
+                        <p class="text-gray-400 text-sm">
+                            Download A-Level past papers with mark schemes
+                        </p>
+                    </a>
+                    
+                    <!-- Resource 2 -->
+                    <a href="resources/video-lessons" class="glass rounded-xl p-6 text-center hover:border-secondary border border-transparent transition-all">
+                        <div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-video text-secondary text-xl"></i>
                         </div>
-                    </div>
-                    <p class="text-gray-300 mb-6 italic">
-                        "The interactive simulations made quantum physics click for me. Best investment in my education!"
-                    </p>
-                    <div class="flex text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
+                        <h4 class="text-white font-bold mb-2">Video Lessons</h4>
+                        <p class="text-gray-400 text-sm">
+                            Free video tutorials on challenging topics
+                        </p>
+                    </a>
+                    
+                    <!-- Resource 3 -->
+                    <a href="resources/formula-sheets.pdf" class="glass rounded-xl p-6 text-center hover:border-primary border border-transparent transition-all">
+                        <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-calculator text-primary text-xl"></i>
+                        </div>
+                        <h4 class="text-white font-bold mb-2">Formula Sheets</h4>
+                        <p class="text-gray-400 text-sm">
+                            Essential formulas for quick revision
+                        </p>
+                    </a>
+                    
+                    <!-- Resource 4 -->
+                    <a href="resources/study-guides.pdf" class="glass rounded-xl p-6 text-center hover:border-secondary border border-transparent transition-all">
+                        <div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-lightbulb text-secondary text-xl"></i>
+                        </div>
+                        <h4 class="text-white font-bold mb-2">Study Guides</h4>
+                        <p class="text-gray-400 text-sm">
+                            Expert tips and revision strategies
+                        </p>
+                    </a>
                 </div>
                 
-                <!-- Testimonial 3 -->
-                <div class="glass rounded-2xl p-8">
-                    <div class="flex items-center mb-6">
-                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-stats to-green-600 flex items-center justify-center text-white font-bold text-xl mr-4">
-                            EC
-                        </div>
-                        <div>
-                            <h4 class="text-white font-bold">Emma Chen</h4>
-                            <div class="text-stats text-sm">Computer Science A*</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 mb-6 italic">
-                        "The coding exercises and real-time feedback prepared me perfectly for my exams. Highly recommend!"
+                <!-- Newsletter -->
+                <div class="glass rounded-3xl p-8 lg:p-12 text-center">
+                    <h3 class="text-3xl font-bold text-white mb-6">
+                        Start Your A-Levels Journey Today
+                    </h3>
+                    <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                        Join thousands of students achieving academic excellence with our proven learning methodology.
                     </p>
-                    <div class="flex text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <button id="freeTrial" class="px-8 py-4 rounded-xl bg-gradient-primary text-white font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300">
+                            Start 7-Day Free Trial
+                        </button>
+                        <button id="bookDemo" class="px-8 py-4 rounded-xl glass border border-gray-700 text-white font-semibold hover:border-primary transition-all duration-300">
+                            Book a Demo
+                        </button>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Resources -->
-    <section id="resources" class="py-20">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
-                    Free Learning
-                    <span class="gradient-text">Resources</span>
-                </h2>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-                <!-- Resource 1 -->
-                <div class="glass rounded-xl p-6 text-center">
-                    <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 mx-auto">
-                        <i class="fas fa-file-pdf text-primary text-xl"></i>
-                    </div>
-                    <h4 class="text-white font-bold mb-2">Past Papers</h4>
-                    <p class="text-gray-400 text-sm">
-                        Download A-Level past papers with mark schemes
-                    </p>
+        <!-- FAQ -->
+        <section class="py-20">
+            <div class="max-w-4xl mx-auto px-4">
+                <!-- Header -->
+                <div class="text-center mb-16">
+                    <h2 class="section-title text-4xl lg:text-5xl font-bold text-white mb-6">
+                        Frequently Asked
+                        <span class="gradient-text">Questions</span>
+                    </h2>
                 </div>
                 
-                <!-- Resource 2 -->
-                <div class="glass rounded-xl p-6 text-center">
-                    <div class="w-12 h-12 rounded-lg bg-math/10 flex items-center justify-center mb-4 mx-auto">
-                        <i class="fas fa-video text-math text-xl"></i>
+                <!-- FAQ Accordion -->
+                <div class="space-y-4">
+                    <!-- FAQ 1 -->
+                    <div class="glass rounded-2xl overflow-hidden">
+                        <button class="faq-question w-full px-8 py-6 text-left flex justify-between items-center">
+                            <span class="text-white font-bold text-lg">How does the free trial work?</span>
+                            <i class="fas fa-chevron-down text-primary transition-transform"></i>
+                        </button>
+                        <div class="faq-answer px-8 pb-6 hidden">
+                            <p class="text-gray-300">
+                                Our free trial gives you full access to all courses for 7 days. You can explore lessons, practice questions, and interactive tools. No credit card required.
+                            </p>
+                        </div>
                     </div>
-                    <h4 class="text-white font-bold mb-2">Video Lessons</h4>
-                    <p class="text-gray-400 text-sm">
-                        Free video tutorials on challenging topics
-                    </p>
-                </div>
-                
-                <!-- Resource 3 -->
-                <div class="glass rounded-xl p-6 text-center">
-                    <div class="w-12 h-12 rounded-lg bg-stats/10 flex items-center justify-center mb-4 mx-auto">
-                        <i class="fas fa-calculator text-stats text-xl"></i>
+                    
+                    <!-- FAQ 2 -->
+                    <div class="glass rounded-2xl overflow-hidden">
+                        <button class="faq-question w-full px-8 py-6 text-left flex justify-between items-center">
+                            <span class="text-white font-bold text-lg">Are courses aligned with exam boards?</span>
+                            <i class="fas fa-chevron-down text-primary transition-transform"></i>
+                        </button>
+                        <div class="faq-answer px-8 pb-6 hidden">
+                            <p class="text-gray-300">
+                                Yes, all courses match AQA, Edexcel, OCR, and Cambridge International specifications. We cover every topic in detail with exam-focused content.
+                            </p>
+                        </div>
                     </div>
-                    <h4 class="text-white font-bold mb-2">Formula Sheets</h4>
-                    <p class="text-gray-400 text-sm">
-                        Essential formulas for quick revision
-                    </p>
-                </div>
-                
-                <!-- Resource 4 -->
-                <div class="glass rounded-xl p-6 text-center">
-                    <div class="w-12 h-12 rounded-lg bg-physics/10 flex items-center justify-center mb-4 mx-auto">
-                        <i class="fas fa-lightbulb text-physics text-xl"></i>
+                    
+                    <!-- FAQ 3 -->
+                    <div class="glass rounded-2xl overflow-hidden">
+                        <button class="faq-question w-full px-8 py-6 text-left flex justify-between items-center">
+                            <span class="text-white font-bold text-lg">Can I access courses on mobile?</span>
+                            <i class="fas fa-chevron-down text-primary transition-transform"></i>
+                        </button>
+                        <div class="faq-answer px-8 pb-6 hidden">
+                            <p class="text-gray-300">
+                                Absolutely! Our platform is fully responsive and works perfectly on smartphones and tablets. You can also download lessons for offline viewing.
+                            </p>
+                        </div>
                     </div>
-                    <h4 class="text-white font-bold mb-2">Study Guides</h4>
-                    <p class="text-gray-400 text-sm">
-                        Expert tips and revision strategies
-                    </p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-20">
-        <div class="max-w-4xl mx-auto px-4">
-            <div class="glass rounded-3xl p-8 lg:p-12 text-center">
-                <h3 class="text-3xl font-bold text-white mb-6">
-                    Start Your A-Levels Journey Today
-                </h3>
-                <p class="text-xl text-gray-300 mb-8">
-                    Join thousands of students achieving academic excellence with our revolutionary platform.
-                </p>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <button class="px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-blue-600 text-white font-semibold hover:shadow-xl transition-all">
-                        Start Free Trial
-                    </button>
-                    <button class="px-8 py-4 rounded-xl glass border border-gray-700 text-white font-semibold hover:border-primary transition-all">
-                        Book a Demo
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="glass border-t border-gray-800/50">
@@ -817,7 +1189,7 @@
             <div class="grid md:grid-cols-4 gap-8 mb-8">
                 <div>
                     <div class="flex items-center space-x-3 mb-6">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center">
                             <i class="fas fa-graduation-cap text-white"></i>
                         </div>
                         <div>
@@ -826,17 +1198,18 @@
                         </div>
                     </div>
                     <p class="text-gray-400">
-                        Revolutionizing A-Levels education with AI-powered learning.
+                        Empowering students to achieve academic excellence through innovative, interactive learning.
                     </p>
                 </div>
                 
                 <div>
                     <h4 class="text-white font-bold mb-6">Courses</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-primary">Pure Mathematics</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-primary">Physics</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-primary">Computer Science</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-primary">Statistics</a></li>
+                        <li><a href="courses/pure-mathematics.html" class="text-gray-400 hover:text-primary">Pure Mathematics</a></li>
+                        <li><a href="courses/physics.html" class="text-gray-400 hover:text-secondary">Physics</a></li>
+                        <li><a href="courses/computer-science.html" class="text-gray-400 hover:text-cs">Computer Science</a></li>
+                        <li><a href="courses/statistics.html" class="text-gray-400 hover:text-primary">Statistics</a></li>
+                        <li><a href="courses/mechanics.html" class="text-gray-400 hover:text-secondary">Mechanics</a></li>
                     </ul>
                 </div>
                 
@@ -866,20 +1239,63 @@
         </div>
     </footer>
 
-    <!-- Back to Top -->
-    <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-gradient-to-br from-primary to-blue-600 text-white shadow-lg hover:shadow-xl transition-all opacity-0">
-        <i class="fas fa-chevron-up"></i>
-    </button>
+    <!-- Auth Modal -->
+    <div id="authModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="glass rounded-3xl max-w-md w-full p-8 relative">
+            <button id="closeAuthModal" class="absolute top-6 right-6 text-gray-400 hover:text-white">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold text-white mb-2">Welcome to A+ Initiative</h3>
+                <p class="text-gray-300">Start your journey to A-Level success</p>
+            </div>
+            
+            <!-- Login Form -->
+            <form id="loginForm" class="space-y-6">
+                <div>
+                    <label class="block text-gray-300 mb-2">Email Address</label>
+                    <input type="email" required class="w-full bg-gray-900/50 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary">
+                </div>
+                <div>
+                    <label class="block text-gray-300 mb-2">Password</label>
+                    <input type="password" required class="w-full bg-gray-900/50 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary">
+                </div>
+                <div class="flex items-center justify-between">
+                    <label class="flex items-center">
+                        <input type="checkbox" class="mr-2">
+                        <span class="text-gray-300 text-sm">Remember me</span>
+                    </label>
+                    <a href="#" class="text-primary hover:text-primary/80 text-sm">Forgot password?</a>
+                </div>
+                <button type="submit" class="w-full py-3 rounded-xl bg-gradient-primary text-white font-semibold hover:shadow-xl transition-all duration-300">
+                    Sign In
+                </button>
+            </form>
+            
+            <div class="mt-6 text-center">
+                <p class="text-gray-400">
+                    Don't have an account? 
+                    <button id="switchToSignup" class="text-primary hover:text-primary/80 font-medium">Sign up here</button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer"></div>
 
     <!-- JavaScript -->
     <script>
         class APlusPlatform {
             constructor() {
+                this.isLoggedIn = false;
+                this.studyStreak = 14;
                 this.initialize();
             }
 
             initialize() {
-                console.log('🚀 A+ Initiative Platform Initialized');
+                console.log('🎓 A+ Initiative Platform Initialized');
                 
                 // Hide loading screen
                 setTimeout(() => {
@@ -889,16 +1305,19 @@
                     }, 300);
                 }, 1500);
 
-                // Setup components
+                // Setup all components
                 this.setupNavigation();
                 this.setupMobileMenu();
+                this.setupAuthModal();
+                this.setupFAQ();
                 this.setupEventListeners();
                 this.setupBackToTop();
-                this.setupAnimations();
-                this.setupNotifications();
+                this.startAnimations();
                 
-                // Show welcome
-                this.showNotification('Welcome to A+ Initiative! Ready to master your A-Levels?', 'success');
+                // Show welcome message
+                setTimeout(() => {
+                    this.showToast('Welcome to A+ Initiative! 🎓', 'success');
+                }, 2000);
             }
 
             setupNavigation() {
@@ -921,6 +1340,7 @@
                             
                             // Close mobile menu if open
                             document.getElementById('mobileMenu').classList.add('hidden');
+                            document.body.style.overflow = '';
                         }
                     });
                 });
@@ -950,32 +1370,122 @@
                 });
             }
 
+            setupAuthModal() {
+                const authModal = document.getElementById('authModal');
+                const loginBtn = document.getElementById('loginBtn');
+                const signupBtn = document.getElementById('signupBtn');
+                const mobileLoginBtn = document.getElementById('mobileLoginBtn');
+                const mobileSignupBtn = document.getElementById('mobileSignupBtn');
+                const closeAuthModal = document.getElementById('closeAuthModal');
+                const switchToSignup = document.getElementById('switchToSignup');
+                const loginForm = document.getElementById('loginForm');
+
+                // Open modal
+                [loginBtn, mobileLoginBtn].forEach(btn => {
+                    if (btn) btn.addEventListener('click', () => {
+                        authModal.classList.remove('hidden');
+                        document.body.style.overflow = 'hidden';
+                    });
+                });
+
+                [signupBtn, mobileSignupBtn].forEach(btn => {
+                    if (btn) btn.addEventListener('click', () => {
+                        authModal.classList.remove('hidden');
+                        document.body.style.overflow = 'hidden';
+                    });
+                });
+
+                // Close modal
+                closeAuthModal.addEventListener('click', () => {
+                    authModal.classList.add('hidden');
+                    document.body.style.overflow = '';
+                });
+
+                // Close on outside click
+                authModal.addEventListener('click', (e) => {
+                    if (e.target === authModal) {
+                        authModal.classList.add('hidden');
+                        document.body.style.overflow = '';
+                    }
+                });
+
+                // Switch to signup
+                switchToSignup.addEventListener('click', () => {
+                    this.showToast('Signup form coming soon! 🚀', 'info');
+                });
+
+                // Login form
+                loginForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    authModal.classList.add('hidden');
+                    document.body.style.overflow = '';
+                    this.showToast('Welcome back! Redirecting to dashboard...', 'success');
+                });
+            }
+
+            setupFAQ() {
+                document.querySelectorAll('.faq-question').forEach(question => {
+                    question.addEventListener('click', () => {
+                        const answer = question.nextElementSibling;
+                        const icon = question.querySelector('i');
+                        
+                        // Toggle current
+                        answer.classList.toggle('hidden');
+                        icon.classList.toggle('rotate-180');
+                        
+                        // Close others
+                        document.querySelectorAll('.faq-question').forEach(other => {
+                            if (other !== question) {
+                                other.nextElementSibling.classList.add('hidden');
+                                other.querySelector('i').classList.remove('rotate-180');
+                            }
+                        });
+                    });
+                });
+            }
+
             setupEventListeners() {
-                // Start Free Trial buttons
-                document.querySelectorAll('button').forEach(btn => {
-                    if (btn.textContent.includes('Start Free Trial')) {
-                        btn.addEventListener('click', () => {
-                            this.showNotification('Starting your 7-day free trial! 🚀', 'success');
-                        });
-                    }
-                    
-                    if (btn.textContent.includes('Watch Demo')) {
-                        btn.addEventListener('click', () => {
-                            this.showNotification('Opening demo video...', 'info');
-                        });
-                    }
-                    
-                    if (btn.textContent.includes('Explore Course')) {
-                        btn.addEventListener('click', () => {
-                            this.showNotification('Opening course details...', 'info');
-                        });
-                    }
-                    
-                    if (btn.textContent.includes('Chat with AI Tutor')) {
-                        btn.addEventListener('click', () => {
-                            this.showNotification('Connecting to AI Tutor...', 'info');
-                        });
-                    }
+                // Explore Courses
+                document.getElementById('exploreCourses')?.addEventListener('click', () => {
+                    document.getElementById('courses').scrollIntoView({ behavior: 'smooth' });
+                });
+
+                // Watch Demo
+                document.getElementById('watchDemo')?.addEventListener('click', () => {
+                    this.showToast('Opening demo video...', 'info');
+                });
+
+                // Bundle Offer
+                document.getElementById('bundleOffer')?.addEventListener('click', () => {
+                    this.showToast('Bundle offer selected! Redirecting to checkout...', 'success');
+                });
+
+                // Free Trial
+                document.getElementById('freeTrial')?.addEventListener('click', () => {
+                    this.showToast('Starting your 7-day free trial! 🚀', 'success');
+                });
+
+                // Book Demo
+                document.getElementById('bookDemo')?.addEventListener('click', () => {
+                    this.showToast('Redirecting to booking system...', 'info');
+                });
+
+                // Course links
+                document.querySelectorAll('a[href*="courses/"]').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const course = link.getAttribute('href').split('/')[1].replace('.html', '');
+                        this.showToast(`Opening ${course.replace('-', ' ')} course...`, 'info');
+                    });
+                });
+
+                // Resource links
+                document.querySelectorAll('a[href*="resources/"]').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const resource = link.textContent;
+                        this.showToast(`Downloading ${resource}...`, 'info');
+                    });
                 });
             }
 
@@ -984,9 +1494,9 @@
                 
                 window.addEventListener('scroll', () => {
                     if (window.scrollY > 500) {
-                        backToTopBtn.style.opacity = '1';
+                        backToTopBtn.classList.add('show');
                     } else {
-                        backToTopBtn.style.opacity = '0';
+                        backToTopBtn.classList.remove('show');
                     }
                 });
 
@@ -998,44 +1508,10 @@
                 });
             }
 
-            setupAnimations() {
+            startAnimations() {
                 // Animate counters
                 this.animateCounter('studentsCount', 5237);
-                this.animateCounter('streakCount', 14);
-            }
-
-            setupNotifications() {
-                // Notification badge
-                const badge = document.createElement('div');
-                badge.className = 'notification-badge';
-                badge.style.cssText = `
-                    position: absolute;
-                    top: -2px;
-                    right: -2px;
-                    width: 10px;
-                    height: 10px;
-                    background: #ef4444;
-                    border-radius: 50%;
-                    border: 2px solid #0f172a;
-                    animation: pulse 2s infinite;
-                `;
-                
-                // Add pulse animation
-                const style = document.createElement('style');
-                style.textContent = `
-                    @keyframes pulse {
-                        0%, 100% { transform: scale(1); opacity: 1; }
-                        50% { transform: scale(1.2); opacity: 0.7; }
-                    }
-                `;
-                document.head.appendChild(style);
-                
-                // Add badge to notification button
-                const notificationBtn = document.querySelector('button');
-                if (notificationBtn) {
-                    notificationBtn.style.position = 'relative';
-                    notificationBtn.appendChild(badge);
-                }
+                this.animateCounter('studyStreak', 14);
             }
 
             animateCounter(elementId, target) {
@@ -1055,34 +1531,21 @@
                 }, 30);
             }
 
-            showNotification(message, type = 'info') {
-                const notification = document.createElement('div');
-                notification.className = 'toast';
-                notification.style.cssText = `
-                    position: fixed;
-                    top: 6rem;
-                    right: 2rem;
-                    background: rgba(15, 23, 42, 0.95);
-                    backdrop-filter: blur(10px);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    border-radius: 12px;
-                    padding: 1rem 1.5rem;
-                    color: white;
-                    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-                    transform: translateX(400px);
-                    transition: transform 0.4s ease;
-                    z-index: 1000;
-                    max-width: 350px;
-                    min-width: 300px;
-                `;
+            showToast(message, type = 'info') {
+                const container = document.createElement('div');
+                container.className = 'toast';
                 
-                const icon = type === 'success' ? 'fas fa-check-circle text-green-400' :
-                            type === 'error' ? 'fas fa-exclamation-circle text-red-400' :
-                            'fas fa-info-circle text-primary';
+                const icon = type === 'success' ? 'fas fa-check-circle' :
+                            type === 'error' ? 'fas fa-exclamation-circle' :
+                            'fas fa-info-circle';
                 
-                notification.innerHTML = `
+                const color = type === 'success' ? 'text-primary' :
+                             type === 'error' ? 'text-red-400' :
+                             'text-secondary';
+                
+                container.innerHTML = `
                     <div class="flex items-start space-x-3">
-                        <i class="${icon} text-xl mt-0.5"></i>
+                        <i class="${icon} ${color} text-xl mt-0.5"></i>
                         <div class="flex-1">
                             <p class="text-white font-medium">${message}</p>
                         </div>
@@ -1092,40 +1555,38 @@
                     </div>
                 `;
                 
-                document.body.appendChild(notification);
+                document.getElementById('toastContainer').appendChild(container);
                 
                 // Show
-                setTimeout(() => notification.style.transform = 'translateX(0)', 10);
+                setTimeout(() => container.classList.add('show'), 10);
                 
                 // Auto remove
                 setTimeout(() => {
-                    notification.style.transform = 'translateX(400px)';
-                    setTimeout(() => notification.remove(), 400);
+                    container.classList.remove('show');
+                    setTimeout(() => container.remove(), 400);
                 }, 5000);
                 
                 // Close button
-                notification.querySelector('button').addEventListener('click', () => {
-                    notification.style.transform = 'translateX(400px)';
-                    setTimeout(() => notification.remove(), 400);
+                container.querySelector('button').addEventListener('click', () => {
+                    container.classList.remove('show');
+                    setTimeout(() => container.remove(), 400);
                 });
             }
 
-            // AI Tutor simulation
-            simulateAITutor(question) {
-                const responses = {
-                    'calculus': 'Calculus involves studying rates of change (differential) and accumulation (integral). Would you like a step-by-step example?',
-                    'physics': 'Physics explores matter, energy, and their interactions. We can start with Newton\'s laws or quantum concepts.',
-                    'programming': 'Programming involves writing instructions for computers. Let\'s start with basic algorithms and data structures.'
-                };
-                
-                const lowerQuestion = question.toLowerCase();
-                for (const [key, response] of Object.entries(responses)) {
-                    if (lowerQuestion.includes(key)) {
-                        return response;
-                    }
+            // Simulate course enrollment
+            enrollInCourse(courseName) {
+                this.showToast(`Enrolling in ${courseName}...`, 'success');
+                setTimeout(() => {
+                    this.showToast(`Welcome to ${courseName}! Your learning journey begins now. 🎉`, 'success');
+                }, 1500);
+            }
+
+            // Simulate progress update
+            updateProgress(subject, progress) {
+                const progressBar = document.querySelector(`[data-subject="${subject}"] .progress-bar`);
+                if (progressBar) {
+                    progressBar.style.width = `${progress}%`;
                 }
-                
-                return 'I\'d be happy to help! Could you specify which topic or concept you need assistance with?';
             }
         }
 
