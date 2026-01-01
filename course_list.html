@@ -1,75 +1,784 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Courses - A+ Initiative</title>
+    <title>Course Resources - A+ Initiative | A-Levels Mastery</title>
+    <meta name="description" content="Download comprehensive A-Level resources: past papers, solutions, tutorial sheets, and recommended books for all subjects.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="assets/css/style.css" as="style">
+    <link rel="preload" href="assets/js/app.js" as="script">
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/animations.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-    <!-- Navigation (Same as index.html) -->
+
+<body class="antialiased">
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <div class="text-xl font-bold text-primary mt-4">A+ Initiative</div>
+            <div class="text-sm text-gray-400">Loading Resources</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
     <nav class="navbar" id="mainNav">
-        <!-- Navigation content from index.html -->
+        <div class="nav-container">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">
+                    <div>A+ Initiative</div>
+                    <div class="logo-subtitle">A-Levels Excellence</div>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home mr-2"></i>Home
+                </a>
+                <a href="course_list.html" class="nav-link active">
+                    <i class="fas fa-book-open mr-2"></i>Resources
+                </a>
+                <div class="nav-dropdown">
+                    <button class="nav-link">
+                        <i class="fas fa-graduation-cap mr-2"></i>Schools <i class="fas fa-chevron-down ml-1"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="#mathematics" class="dropdown-item">
+                            <i class="fas fa-calculator"></i>Mathematics & Sciences
+                        </a>
+                        <a href="#built" class="dropdown-item">
+                            <i class="fas fa-building"></i>Built Environment
+                        </a>
+                        <a href="#business" class="dropdown-item">
+                            <i class="fas fa-chart-line"></i>Business & Humanities
+                        </a>
+                    </div>
+                </div>
+                <a href="#quick-downloads" class="nav-link">
+                    <i class="fas fa-download mr-2"></i>Quick Downloads
+                </a>
+                <a href="#search-resources" class="nav-link">
+                    <i class="fas fa-search mr-2"></i>Search Resources
+                </a>
+            </div>
+
+            <!-- Auth Buttons -->
+            <div class="nav-auth">
+                <button id="loginBtn" class="btn btn-outline">
+                    <i class="fas fa-sign-in-alt mr-2"></i>Sign In
+                </button>
+                <button id="signupBtn" class="btn btn-primary">
+                    <i class="fas fa-user-plus mr-2"></i>Get Started
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuBtn" class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu">
+            <div class="mobile-menu-header">
+                <div class="mobile-logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="logo-text">
+                        <div>A+ Initiative</div>
+                        <div class="logo-subtitle">A-Levels Excellence</div>
+                    </div>
+                </div>
+                <button id="mobileMenuClose" class="mobile-menu-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="mobile-menu-content">
+                <a href="index.html" class="mobile-nav-link">
+                    <i class="fas fa-home"></i>Home
+                </a>
+                <a href="course_list.html" class="mobile-nav-link active">
+                    <i class="fas fa-book-open"></i>Resources
+                </a>
+                <div class="mobile-nav-section">
+                    <div class="mobile-nav-label">Schools</div>
+                    <a href="#mathematics" class="mobile-nav-link">
+                        <i class="fas fa-calculator"></i>Mathematics & Sciences
+                    </a>
+                    <a href="#built" class="mobile-nav-link">
+                        <i class="fas fa-building"></i>Built Environment
+                    </a>
+                    <a href="#business" class="mobile-nav-link">
+                        <i class="fas fa-chart-line"></i>Business & Humanities
+                    </a>
+                </div>
+                <a href="#quick-downloads" class="mobile-nav-link">
+                    <i class="fas fa-download"></i>Quick Downloads
+                </a>
+                <a href="#search-resources" class="mobile-nav-link">
+                    <i class="fas fa-search"></i>Search Resources
+                </a>
+            </div>
+            
+            <div class="mobile-menu-auth">
+                <button id="mobileLoginBtn" class="btn btn-outline w-full">
+                    <i class="fas fa-sign-in-alt mr-2"></i>Sign In
+                </button>
+                <button id="mobileSignupBtn" class="btn btn-primary w-full mt-3">
+                    <i class="fas fa-user-plus mr-2"></i>Get Started
+                </button>
+            </div>
+        </div>
     </nav>
 
-    <!-- Course List Header -->
-    <section class="hero" style="min-height: 60vh; padding-top: 100px;">
+    <!-- Resource Hero -->
+    <section class="hero bg-gradient-to-br from-primary/10 via-white to-secondary/10" style="min-height: 50vh; padding-top: 100px;">
         <div class="container">
-            <div class="hero-content text-left">
+            <div class="hero-content text-center">
+                <div class="hero-badge">
+                    <i class="fas fa-download mr-2"></i> 5000+ Resources Available
+                </div>
+                
                 <h1 class="hero-title">
-                    All Courses
+                    Complete A-Level
+                    <span class="hero-title-gradient">Resource Center</span>
                 </h1>
-                <p class="hero-subtitle">
-                    Explore comprehensive A-Level courses designed for academic excellence
+                
+                <p class="hero-subtitle max-w-3xl mx-auto">
+                    Access comprehensive study materials including past papers, solutions, tutorial sheets, and recommended textbooks for all A-Level subjects.
                 </p>
                 
-                <!-- School Filter -->
-                <div class="school-filter">
-                    <a href="course_list.html" class="filter-btn active">All Schools</a>
-                    <a href="course_list.html?school=mathematics" class="filter-btn">Mathematics & Sciences</a>
-                    <a href="course_list.html?school=built" class="filter-btn">Built Environment</a>
-                    <a href="course_list.html?school=business" class="filter-btn">Business & Humanities</a>
+                <!-- Quick Stats -->
+                <div class="hero-stats mt-8">
+                    <div class="stat">
+                        <div class="stat-number">2,500+</div>
+                        <div class="stat-label">Past Papers</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">1,200+</div>
+                        <div class="stat-label">Model Solutions</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">800+</div>
+                        <div class="stat-label">Tutorial Sheets</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">300+</div>
+                        <div class="stat-label">Recommended Books</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Course Grid -->
-    <section class="section">
+    <!-- Quick Download Section -->
+    <section class="section bg-light" id="quick-downloads">
         <div class="container">
-            <!-- Search and Sort -->
-            <div class="course-controls">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Most Popular
+                    <span class="gradient-text">Downloads</span>
+                </h2>
+                <p class="section-subtitle">
+                    Quick access to our most frequently downloaded resources
+                </p>
+            </div>
+
+            <div class="quick-download-grid">
+                <!-- Recent Past Papers -->
+                <div class="quick-download-card">
+                    <div class="download-icon">
+                        <i class="fas fa-file-pdf text-red-500"></i>
+                    </div>
+                    <h3>2023 Past Papers</h3>
+                    <p>Latest examination papers from all boards</p>
+                    <div class="download-links">
+                        <a href="https://drive.google.com/uc?export=download&id=SAMPLE_ID_1" class="download-link">
+                            <i class="fas fa-download mr-2"></i> Pure Mathematics 2023
+                        </a>
+                        <a href="https://drive.google.com/uc?export=download&id=SAMPLE_ID_2" class="download-link">
+                            <i class="fas fa-download mr-2"></i> Physics 2023
+                        </a>
+                        <a href="https://drive.google.com/uc?export=download&id=SAMPLE_ID_3" class="download-link">
+                            <i class="fas fa-download mr-2"></i> Computer Science 2023
+                        </a>
+                    </div>
+                    <a href="#past-papers" class="view-all-link">
+                        View All Past Papers <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Mark Schemes -->
+                <div class="quick-download-card">
+                    <div class="download-icon">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                    </div>
+                    <h3>Mark Schemes</h3>
+                    <p>Official solutions and marking guidelines</p>
+                    <div class="download-links">
+                        <a href="https://drive.google.com/uc?export=download&id=SAMPLE_ID_4" class="download-link">
+                            <i class="fas fa-download mr-2"></i> Maths Mark Scheme 2023
+                        </a>
+                        <a href="https://drive.google.com/uc?export=download&id=SAMPLE_ID_5" class="download-link">
+                            <i class="fas fa-download mr-2"></i> Physics Solutions 2023
+                        </a>
+                        <a href="https://drive.google.com/uc?export=download&id=SAMPLE_ID_6" class="download-link">
+                            <i class="fas fa-download mr-2"></i> CS Model Answers 2023
+                        </a>
+                    </div>
+                    <a href="#solutions" class="view-all-link">
+                        View All Solutions <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Essential Textbooks -->
+                <div class="quick-download-card">
+                    <div class="download-icon">
+                        <i class="fas fa-book text-blue-500"></i>
+                    </div>
+                    <h3>Essential Textbooks</h3>
+                    <p>Recommended textbooks and study guides</p>
+                    <div class="download-links">
+                        <a href="https://drive.google.com/uc?export=download&id=SAMPLE_ID_7" class="download-link">
+                            <i class="fas fa-download mr-2"></i> Complete Pure Maths
+                        </a>
+                        <a href="https://drive.google.com/uc?export=download&id=SAMPLE_ID_8" class="download-link">
+                            <i class="fas fa-download mr-2"></i> Physics for A-Level
+                        </a>
+                        <a href="https://drive.google.com/uc?export=download&id=SAMPLE_ID_9" class="download-link">
+                            <i class="fas fa-download mr-2"></i> Computer Science Guide
+                        </a>
+                    </div>
+                    <a href="#textbooks" class="view-all-link">
+                        View All Textbooks <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Resources Section -->
+    <section class="section" id="mathematics">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Mathematics & Sciences
+                    <span class="gradient-text">Resources</span>
+                </h2>
+                <p class="section-subtitle">
+                    Comprehensive materials for Mathematics, Physics, Statistics, and Mechanics
+                </p>
+            </div>
+
+            <!-- Pure Mathematics Resources -->
+            <div class="subject-section">
+                <div class="subject-header">
+                    <div class="subject-icon math">
+                        <i class="fas fa-superscript"></i>
+                    </div>
+                    <div>
+                        <h3>Pure Mathematics</h3>
+                        <p class="text-gray-600">Algebra, Calculus, Trigonometry, and more</p>
+                    </div>
+                </div>
+
+                <div class="resource-categories">
+                    <!-- Past Papers -->
+                    <div class="resource-category">
+                        <h4><i class="fas fa-file-pdf mr-2 text-red-500"></i> Past Papers</h4>
+                        <div class="resource-grid">
+                            <a href="https://drive.google.com/uc?export=download&id=MATH_PP_2023" class="resource-card">
+                                <div class="resource-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Pure Mathematics 2023</div>
+                                    <div class="resource-meta">
+                                        <span><i class="far fa-calendar"></i> 2023</span>
+                                        <span><i class="fas fa-file"></i> PDF</span>
+                                        <span><i class="fas fa-download"></i> 2.4 MB</span>
+                                    </div>
+                                </div>
+                                <div class="resource-action">
+                                    <i class="fas fa-download"></i>
+                                </div>
+                            </a>
+
+                            <a href="https://drive.google.com/uc?export=download&id=MATH_PP_2022" class="resource-card">
+                                <div class="resource-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Pure Mathematics 2022</div>
+                                    <div class="resource-meta">
+                                        <span><i class="far fa-calendar"></i> 2022</span>
+                                        <span><i class="fas fa-file"></i> PDF</span>
+                                        <span><i class="fas fa-download"></i> 2.1 MB</span>
+                                    </div>
+                                </div>
+                                <div class="resource-action">
+                                    <i class="fas fa-download"></i>
+                                </div>
+                            </a>
+
+                            <a href="https://drive.google.com/uc?export=download&id=MATH_PP_2021" class="resource-card">
+                                <div class="resource-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Pure Mathematics 2021</div>
+                                    <div class="resource-meta">
+                                        <span><i class="far fa-calendar"></i> 2021</span>
+                                        <span><i class="fas fa-file"></i> PDF</span>
+                                        <span><i class="fas fa-download"></i> 2.3 MB</span>
+                                    </div>
+                                </div>
+                                <div class="resource-action">
+                                    <i class="fas fa-download"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Solutions -->
+                    <div class="resource-category">
+                        <h4><i class="fas fa-check-circle mr-2 text-green-500"></i> Solutions & Mark Schemes</h4>
+                        <div class="resource-grid">
+                            <a href="https://drive.google.com/uc?export=download&id=MATH_SOL_2023" class="resource-card">
+                                <div class="resource-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="resource-info">
+                                    <div class="resource-title">2023 Mark Scheme</div>
+                                    <div class="resource-meta">
+                                        <span><i class="far fa-calendar"></i> 2023</span>
+                                        <span><i class="fas fa-file"></i> PDF</span>
+                                        <span><i class="fas fa-download"></i> 1.8 MB</span>
+                                    </div>
+                                </div>
+                                <div class="resource-action">
+                                    <i class="fas fa-download"></i>
+                                </div>
+                            </a>
+
+                            <a href="https://drive.google.com/uc?export=download&id=MATH_MODEL_ANS" class="resource-card">
+                                <div class="resource-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Model Answers</div>
+                                    <div class="resource-meta">
+                                        <span><i class="fas fa-book"></i> Comprehensive</span>
+                                        <span><i class="fas fa-file"></i> PDF</span>
+                                        <span><i class="fas fa-download"></i> 3.2 MB</span>
+                                    </div>
+                                </div>
+                                <div class="resource-action">
+                                    <i class="fas fa-download"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Tutorial Sheets -->
+                    <div class="resource-category">
+                        <h4><i class="fas fa-clipboard-list mr-2 text-purple-500"></i> Tutorial Sheets</h4>
+                        <div class="resource-grid">
+                            <a href="https://drive.google.com/uc?export=download&id=MATH_TUT_1" class="resource-card">
+                                <div class="resource-icon">
+                                    <i class="fas fa-clipboard-list"></i>
+                                </div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Algebra Tutorials</div>
+                                    <div class="resource-meta">
+                                        <span><i class="fas fa-list-ol"></i> 12 Sheets</span>
+                                        <span><i class="fas fa-file"></i> PDF</span>
+                                        <span><i class="fas fa-download"></i> 4.5 MB</span>
+                                    </div>
+                                </div>
+                                <div class="resource-action">
+                                    <i class="fas fa-download"></i>
+                                </div>
+                            </a>
+
+                            <a href="https://drive.google.com/uc?export=download&id=MATH_TUT_2" class="resource-card">
+                                <div class="resource-icon">
+                                    <i class="fas fa-clipboard-list"></i>
+                                </div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Calculus Practice</div>
+                                    <div class="resource-meta">
+                                        <span><i class="fas fa-list-ol"></i> 15 Sheets</span>
+                                        <span><i class="fas fa-file"></i> PDF</span>
+                                        <span><i class="fas fa-download"></i> 5.2 MB</span>
+                                    </div>
+                                </div>
+                                <div class="resource-action">
+                                    <i class="fas fa-download"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Recommended Books -->
+                    <div class="resource-category" id="textbooks">
+                        <h4><i class="fas fa-book mr-2 text-blue-500"></i> Recommended Textbooks</h4>
+                        <div class="resource-grid">
+                            <a href="https://www.amazon.com/Pure-Mathematics-Advanced-Level-Bostock/dp/0859500976" target="_blank" class="resource-card">
+                                <div class="resource-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Pure Mathematics 1 & 2</div>
+                                    <div class="resource-meta">
+                                        <span><i class="fas fa-user"></i> Bostock & Chandler</span>
+                                        <span><i class="fas fa-star"></i> Essential</span>
+                                    </div>
+                                </div>
+                                <div class="resource-action">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </div>
+                            </a>
+
+                            <a href="https://www.amazon.com/Complete-Pure-Mathematics-Advanced-Level/dp/0521646818" target="_blank" class="resource-card">
+                                <div class="resource-icon">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Complete Pure Mathematics</div>
+                                    <div class="resource-meta">
+                                        <span><i class="fas fa-user"></i> Quadling & Neill</span>
+                                        <span><i class="fas fa-star"></i> Recommended</span>
+                                    </div>
+                                </div>
+                                <div class="resource-action">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Physics Resources -->
+            <div class="subject-section mt-12">
+                <div class="subject-header">
+                    <div class="subject-icon physics">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <div>
+                        <h3>Physics</h3>
+                        <p class="text-gray-600">Mechanics, Waves, Electricity, and Modern Physics</p>
+                    </div>
+                </div>
+
+                <div class="resource-categories">
+                    <div class="resource-category">
+                        <h4><i class="fas fa-file-pdf mr-2 text-red-500"></i> Past Papers</h4>
+                        <div class="resource-grid">
+                            <a href="https://drive.google.com/uc?export=download&id=PHYS_PP_2023" class="resource-card">
+                                <div class="resource-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Physics 2023 Paper 1</div>
+                                    <div class="resource-meta">
+                                        <span><i class="far fa-calendar"></i> 2023</span>
+                                        <span><i class="fas fa-file"></i> PDF</span>
+                                        <span><i class="fas fa-download"></i> 3.1 MB</span>
+                                    </div>
+                                </div>
+                                <div class="resource-action">
+                                    <i class="fas fa-download"></i>
+                                </div>
+                            </a>
+
+                            <a href="https://drive.google.com/uc?export=download&id=PHYS_PP_2022" class="resource-card">
+                                <div class="resource-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Physics 2022 Paper 2</div>
+                                    <div class="resource-meta">
+                                        <span><i class="far fa-calendar"></i> 2022</span>
+                                        <span><i class="fas fa-file"></i> PDF</span>
+                                        <span><i class="fas fa-download"></i> 2.9 MB</span>
+                                    </div>
+                                </div>
+                                <div class="resource-action">
+                                    <i class="fas fa-download"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Computer Science Resources -->
+            <div class="subject-section mt-12">
+                <div class="subject-header">
+                    <div class="subject-icon cs">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div>
+                        <h3>Computer Science</h3>
+                        <p class="text-gray-600">Programming, Algorithms, Data Structures</p>
+                    </div>
+                </div>
+
+                <div class="resource-categories">
+                    <div class="resource-category">
+                        <h4><i class="fas fa-file-pdf mr-2 text-red-500"></i> Past Papers</h4>
+                        <div class="resource-grid">
+                            <a href="https://drive.google.com/uc?export=download&id=CS_PP_2023" class="resource-card">
+                                <div class="resource-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Computer Science 2023</div>
+                                    <div class="resource-meta">
+                                        <span><i class="far fa-calendar"></i> 2023</span>
+                                        <span><i class="fas fa-file"></i> PDF</span>
+                                        <span><i class="fas fa-download"></i> 2.7 MB</span>
+                                    </div>
+                                </div>
+                                <div class="resource-action">
+                                    <i class="fas fa-download"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="resource-category">
+                        <h4><i class="fas fa-code mr-2 text-yellow-500"></i> Programming Exercises</h4>
+                        <div class="resource-grid">
+                            <a href="https://drive.google.com/uc?export=download&id=CS_EXERCISES" class="resource-card">
+                                <div class="resource-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Python Exercises Set</div>
+                                    <div class="resource-meta">
+                                        <span><i class="fas fa-list-ol"></i> 50 Exercises</span>
+                                        <span><i class="fas fa-file"></i> PDF</span>
+                                        <span><i class="fas fa-download"></i> 1.8 MB</span>
+                                    </div>
+                                </div>
+                                <div class="resource-action">
+                                    <i class="fas fa-download"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Resources -->
+    <section class="section bg-light" id="search-resources">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Search All
+                    <span class="gradient-text">Resources</span>
+                </h2>
+                <p class="section-subtitle">
+                    Find specific materials by year, topic, or resource type
+                </p>
+            </div>
+
+            <div class="search-container">
                 <div class="search-box">
                     <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Search courses..." id="courseSearch">
+                    <input type="text" placeholder="Search for past papers, tutorial sheets, solutions..." id="resourceSearch">
+                    <button class="search-btn">Search</button>
                 </div>
-                <div class="sort-dropdown">
-                    <select id="courseSort">
-                        <option value="popular">Most Popular</option>
-                        <option value="newest">Newest First</option>
-                        <option value="difficulty">Difficulty Level</option>
-                        <option value="rating">Highest Rated</option>
-                    </select>
+
+                <div class="search-filters">
+                    <div class="filter-group">
+                        <label>Subject</label>
+                        <select id="subjectFilter">
+                            <option value="">All Subjects</option>
+                            <option value="mathematics">Mathematics</option>
+                            <option value="physics">Physics</option>
+                            <option value="computer-science">Computer Science</option>
+                            <option value="statistics">Statistics</option>
+                            <option value="mechanics">Mechanics</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Year</label>
+                        <select id="yearFilter">
+                            <option value="">All Years</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Resource Type</label>
+                        <select id="typeFilter">
+                            <option value="">All Types</option>
+                            <option value="past-paper">Past Papers</option>
+                            <option value="solution">Solutions</option>
+                            <option value="tutorial">Tutorial Sheets</option>
+                            <option value="textbook">Textbooks</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
-            <!-- Courses Grid -->
-            <div class="courses-grid" id="coursesGrid">
-                <!-- Courses will be loaded by JavaScript -->
+            <!-- Search Results -->
+            <div class="search-results mt-8" id="searchResults">
+                <!-- Results will be populated by JavaScript -->
             </div>
         </div>
     </section>
 
-    <!-- Footer (Same as index.html) -->
+    <!-- Download Instructions -->
+    <section class="section">
+        <div class="container">
+            <div class="instructions-card">
+                <h3><i class="fas fa-info-circle mr-3 text-primary"></i> How to Download Resources</h3>
+                <div class="instructions-grid">
+                    <div class="instruction-step">
+                        <div class="step-number">1</div>
+                        <h4>Click Download Link</h4>
+                        <p>Click on any resource link to initiate download</p>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="step-number">2</div>
+                        <h4>Access Google Drive</h4>
+                        <p>Resources are hosted on Google Drive for reliability</p>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="step-number">3</div>
+                        <h4>Direct Download</h4>
+                        <p>Click download button in Google Drive interface</p>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="step-number">4</div>
+                        <h4>Save to Device</h4>
+                        <p>Choose save location on your computer or mobile</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
-        <!-- Footer content from index.html -->
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand -->
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="logo-text">
+                            <div>A+ Initiative</div>
+                            <div class="logo-subtitle">A-Levels Excellence</div>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        Providing comprehensive A-Level resources for academic success.
+                    </p>
+                    <div class="footer-stats">
+                        <div class="footer-stat">
+                            <div class="footer-stat-number">5,000+</div>
+                            <div class="footer-stat-label">Resources</div>
+                        </div>
+                        <div class="footer-stat">
+                            <div class="footer-stat-number">Free</div>
+                            <div class="footer-stat-label">Access</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Quick Downloads</h3>
+                    <ul class="footer-links">
+                        <li><a href="#mathematics">Mathematics Papers</a></li>
+                        <li><a href="#physics">Physics Resources</a></li>
+                        <li><a href="#computer-science">CS Materials</a></li>
+                        <li><a href="#textbooks">Recommended Books</a></li>
+                        <li><a href="#quick-downloads">Latest 2023 Papers</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Resource Types -->
+                <div class="footer-section">
+                    <h3>Resource Types</h3>
+                    <ul class="footer-links">
+                        <li><a href="#past-papers">Past Papers</a></li>
+                        <li><a href="#solutions">Mark Schemes</a></li>
+                        <li><a href="#tutorials">Tutorial Sheets</a></li>
+                        <li><a href="#textbooks">Textbooks</a></li>
+                        <li><a href="#model-answers">Model Answers</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Download Help</a></li>
+                        <li><a href="#">Report Broken Link</a></li>
+                        <li><a href="#">Request Resources</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Contribute Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 A+ Initiative. All educational resources are provided for personal study use only.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Copyright Notice</a>
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <!-- Back to Top -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
     <!-- JavaScript -->
     <script src="assets/js/app.js"></script>
-    <script src="assets/js/course-manager.js"></script>
+    <script src="assets/js/resource-manager.js"></script>
 </body>
 </html>
