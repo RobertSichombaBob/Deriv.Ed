@@ -1,74 +1,220 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="courseTitle">Course Details - A+ Initiative</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/mit-style.css">
     <link rel="stylesheet" href="assets/css/animations.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 </head>
-<body>
+
+<body class="antialiased">
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <div class="text-xl font-bold text-primary mt-4">A+ Initiative</div>
+            <div class="text-sm text-gray-400">Loading Course</div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar" id="mainNav">
-        <!-- Navigation content -->
+        <div class="nav-container">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">
+                    <div>A+ Initiative</div>
+                    <div class="logo-subtitle">A-Levels Excellence</div>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home mr-2"></i>Home
+                </a>
+                <a href="#overview" class="nav-link active">
+                    <i class="fas fa-info-circle mr-2"></i>Overview
+                </a>
+                <a href="#schedule" class="nav-link">
+                    <i class="fas fa-calendar-alt mr-2"></i>Schedule
+                </a>
+                <a href="#team" class="nav-link">
+                    <i class="fas fa-users mr-2"></i>Team
+                </a>
+                <a href="#faq" class="nav-link">
+                    <i class="fas fa-question-circle mr-2"></i>F.A.Q.
+                </a>
+            </div>
+
+            <!-- Auth Buttons -->
+            <div class="nav-auth">
+                <a href="course_list.html" class="btn btn-outline">
+                    <i class="fas fa-book mr-2"></i>All Resources
+                </a>
+                <button id="enrollBtn" class="btn btn-primary">
+                    <i class="fas fa-user-plus mr-2"></i>Enroll Now
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuBtn" class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu">
+            <div class="mobile-menu-header">
+                <div class="mobile-logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="logo-text">
+                        <div>A+ Initiative</div>
+                        <div class="logo-subtitle">A-Levels Excellence</div>
+                    </div>
+                </div>
+                <button id="mobileMenuClose" class="mobile-menu-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="mobile-menu-content">
+                <a href="index.html" class="mobile-nav-link">
+                    <i class="fas fa-home"></i>Home
+                </a>
+                <a href="#overview" class="mobile-nav-link active">
+                    <i class="fas fa-info-circle"></i>Overview
+                </a>
+                <a href="#schedule" class="mobile-nav-link">
+                    <i class="fas fa-calendar-alt"></i>Schedule
+                </a>
+                <a href="#team" class="mobile-nav-link">
+                    <i class="fas fa-users"></i>Team
+                </a>
+                <a href="#faq" class="mobile-nav-link">
+                    <i class="fas fa-question-circle"></i>F.A.Q.
+                </a>
+            </div>
+            
+            <div class="mobile-menu-auth">
+                <a href="course_list.html" class="btn btn-outline w-full">
+                    <i class="fas fa-book mr-2"></i>All Resources
+                </a>
+                <button id="mobileEnrollBtn" class="btn btn-primary w-full mt-3">
+                    <i class="fas fa-user-plus mr-2"></i>Enroll Now
+                </button>
+            </div>
+        </div>
     </nav>
 
-    <!-- Course Header -->
-    <section class="course-header">
+    <!-- Hero Section -->
+    <section class="mit-hero" id="home">
+        <div class="mit-hero-background"></div>
         <div class="container">
-            <div class="course-header-content">
-                <div class="course-header-left">
-                    <div class="course-badges">
-                        <span class="course-level" id="courseLevel">A-Level</span>
-                        <span class="course-difficulty" id="courseDifficulty">Intermediate</span>
-                        <span class="course-rating">
-                            <i class="fas fa-star"></i>
-                            <span id="courseRating">4.8</span>
-                        </span>
+            <div class="mit-hero-content">
+                <h1 class="mit-hero-title" id="courseName">Loading Course...</h1>
+                <h2 class="mit-hero-subtitle" id="courseSubtitle">Introduction to A-Level Mastery</h2>
+                <p class="mit-hero-description" id="courseDescription">
+                    A comprehensive, high-intensity program designed to teach you the fundamentals of A-Level subjects as efficiently as possible!
+                </p>
+                
+                <!-- Enrollment Status -->
+                <div class="mit-enrollment-status">
+                    <div class="enrollment-badge">
+                        <i class="fas fa-graduation-cap mr-2"></i>
+                        <span>2024 Enrollment Open!</span>
                     </div>
-                    <h1 id="courseName">Loading Course...</h1>
-                    <p class="course-description" id="courseDescription">
-                        Comprehensive A-Level course covering all topics and concepts.
-                    </p>
-                    
-                    <div class="course-meta">
-                        <div class="meta-item">
-                            <i class="fas fa-clock"></i>
-                            <span id="courseDuration">14 weeks</span>
+                    <div class="enrollment-timer" id="enrollmentTimer">
+                        <div class="timer-unit">
+                            <span class="timer-number" id="days">04</span>
+                            <span class="timer-label">Days</span>
                         </div>
-                        <div class="meta-item">
-                            <i class="fas fa-book"></i>
-                            <span id="courseChapters">10 chapters</span>
+                        <div class="timer-unit">
+                            <span class="timer-number" id="hours">08</span>
+                            <span class="timer-label">Hours</span>
                         </div>
-                        <div class="meta-item">
-                            <i class="fas fa-users"></i>
-                            <span id="courseStudents">1,234 students</span>
+                        <div class="timer-unit">
+                            <span class="timer-number" id="minutes">29</span>
+                            <span class="timer-label">Minutes</span>
                         </div>
-                        <div class="meta-item">
-                            <i class="fas fa-tasks"></i>
-                            <span id="courseAssignments">5 assignments</span>
+                        <div class="timer-unit">
+                            <span class="timer-number" id="seconds">51</span>
+                            <span class="timer-label">Seconds</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="course-header-right">
-                    <div class="course-enrollment">
-                        <div class="course-price">
-                            <span class="price-current">£49</span>
-                            <span class="price-original">£99</span>
+                <!-- Audience Selector -->
+                <div class="audience-selector">
+                    <div class="audience-option active" data-audience="all">
+                        <i class="fas fa-globe"></i>
+                        <span>Everyone</span>
+                        <small>Public & Students</small>
+                    </div>
+                    <div class="audience-option" data-audience="current">
+                        <i class="fas fa-university"></i>
+                        <span>Current Students</span>
+                        <small>A-Level Students Only</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="mit-section" id="overview">
+        <div class="container">
+            <h2 class="mit-section-title">Overview</h2>
+            <div class="overview-content">
+                <div class="overview-description">
+                    <p id="courseOverview">
+                        An efficient and high-intensity program designed to teach you the fundamentals of A-Level subjects as quickly as possible! Our introductory program covers essential methods with applications to real-world problems, university preparation, and competitive examinations. Students will gain foundational knowledge, practical problem-solving skills, and understanding of advanced topics. The program concludes with a comprehensive mock examination and personalized feedback from expert instructors. Prerequisites assume basic mathematical knowledge; we'll explain everything else along the way! Experience with the subject is helpful but not necessary.
+                    </p>
+                </div>
+                
+                <div class="overview-details">
+                    <div class="detail-card">
+                        <i class="fas fa-clock detail-icon"></i>
+                        <div class="detail-content">
+                            <h3>Time and Location</h3>
+                            <p id="courseTime">Mon Jan 5 - Fri Jan 9, 2024</p>
+                            <p>Every day 1-4pm GMT</p>
+                            <p>Virtual Classroom + On-demand</p>
                         </div>
-                        <button class="btn btn-primary btn-lg w-full" id="enrollBtn">
-                            Enroll Now
-                        </button>
-                        <button class="btn btn-outline w-full mt-3" id="addToWishlist">
-                            <i class="far fa-heart"></i> Add to Wishlist
-                        </button>
-                        <div class="course-guarantee">
-                            <i class="fas fa-shield-alt"></i>
-                            30-day money-back guarantee
+                    </div>
+                    
+                    <div class="detail-card">
+                        <i class="fas fa-trophy detail-icon"></i>
+                        <div class="detail-content">
+                            <h3>What's Included</h3>
+                            <ul>
+                                <li>Complete video lectures</li>
+                                <li>Interactive problem sets</li>
+                                <li>Personalized feedback</li>
+                                <li>Past paper solutions</li>
+                                <li>Certificate of completion</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -76,173 +222,285 @@
         </div>
     </section>
 
-    <!-- Course Navigation -->
-    <nav class="course-nav">
+    <!-- Schedule Section -->
+    <section class="mit-section bg-light" id="schedule">
         <div class="container">
-            <a href="#overview" class="course-nav-link active">Overview</a>
-            <a href="#curriculum" class="course-nav-link">Curriculum</a>
-            <a href="#instructor" class="course-nav-link">Instructor</a>
-            <a href="#reviews" class="course-nav-link">Reviews</a>
-            <a href="#resources" class="course-nav-link">Resources</a>
+            <div class="schedule-header">
+                <h2 class="mit-section-title">Schedule</h2>
+                <p class="mit-section-subtitle">
+                    2024 Edition • Live sessions with on-demand access
+                </p>
+            </div>
+            
+            <div class="schedule-container">
+                <!-- Schedule filters -->
+                <div class="schedule-filters">
+                    <button class="schedule-filter active" data-filter="all">All Sessions</button>
+                    <button class="schedule-filter" data-filter="lecture">Lectures</button>
+                    <button class="schedule-filter" data-filter="lab">Practice Labs</button>
+                    <button class="schedule-filter" data-filter="workshop">Workshops</button>
+                </div>
+                
+                <!-- Schedule Grid -->
+                <div class="schedule-grid" id="scheduleGrid">
+                    <!-- Schedule items will be loaded by JavaScript -->
+                </div>
+                
+                <!-- Download Schedule -->
+                <div class="schedule-download">
+                    <a href="#" class="btn btn-primary" id="downloadFullSchedule">
+                        <i class="fas fa-download mr-2"></i> Download Full Schedule (PDF)
+                    </a>
+                    <a href="#" class="btn btn-outline" id="addToCalendar">
+                        <i class="fas fa-calendar-plus mr-2"></i> Add to Calendar
+                    </a>
+                </div>
+            </div>
         </div>
-    </nav>
+    </section>
 
-    <!-- Course Content -->
-    <section class="section">
+    <!-- Team Section -->
+    <section class="mit-section" id="team">
         <div class="container">
-            <div class="course-content">
-                <!-- Overview -->
-                <div id="overview" class="course-section">
-                    <h2>What You'll Learn</h2>
-                    <div class="learning-objectives" id="learningObjectives">
-                        <!-- Loaded by JavaScript -->
-                    </div>
-                    
-                    <h2 class="mt-12">Course Description</h2>
-                    <div class="course-full-description" id="courseFullDescription">
-                        <!-- Loaded by JavaScript -->
-                    </div>
-                    
-                    <h2 class="mt-12">Who This Course Is For</h2>
-                    <div class="target-audience" id="targetAudience">
-                        <!-- Loaded by JavaScript -->
-                    </div>
+            <h2 class="mit-section-title">Team</h2>
+            <p class="mit-section-subtitle">
+                Meet our expert instructors and teaching assistants
+            </p>
+            
+            <div class="team-container">
+                <!-- Team filters -->
+                <div class="team-filters">
+                    <button class="team-filter active" data-role="all">All Team</button>
+                    <button class="team-filter" data-role="instructor">Instructors</button>
+                    <button class="team-filter" data-role="ta">Teaching Assistants</button>
+                    <button class="team-filter" data-role="staff">Staff</button>
                 </div>
-
-                <!-- Curriculum -->
-                <div id="curriculum" class="course-section" style="display: none;">
-                    <h2>Course Curriculum</h2>
-                    <div class="curriculum-list" id="curriculumList">
-                        <!-- Loaded by JavaScript -->
-                    </div>
+                
+                <!-- Team Grid -->
+                <div class="team-grid" id="teamGrid">
+                    <!-- Team members will be loaded by JavaScript -->
                 </div>
+                
+                <!-- Join Team CTA -->
+                <div class="team-cta">
+                    <p>We are always accepting applications for teaching assistants. If you're interested in joining our team, please contact us.</p>
+                    <a href="mailto:team@aplusinitiative.org" class="btn btn-outline">
+                        <i class="fas fa-envelope mr-2"></i> Contact Team
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Instructor -->
-                <div id="instructor" class="course-section" style="display: none;">
-                    <div class="instructor-card">
-                        <div class="instructor-avatar" id="instructorAvatar"></div>
-                        <div class="instructor-info">
-                            <h3 id="instructorName">Loading...</h3>
-                            <p class="instructor-title" id="instructorTitle">Course Instructor</p>
-                            <p class="instructor-bio" id="instructorBio">
-                                Experienced instructor with years of teaching experience.
-                            </p>
-                            <div class="instructor-stats">
-                                <div class="instructor-stat">
-                                    <div class="stat-number" id="instructorStudents">5,000+</div>
-                                    <div class="stat-label">Students</div>
-                                </div>
-                                <div class="instructor-stat">
-                                    <div class="stat-number" id="instructorCourses">10+</div>
-                                    <div class="stat-label">Courses</div>
-                                </div>
-                                <div class="instructor-stat">
-                                    <div class="stat-number" id="instructorRating">4.9</div>
-                                    <div class="stat-label">Rating</div>
-                                </div>
+    <!-- FAQ Section -->
+    <section class="mit-section bg-light" id="faq">
+        <div class="container">
+            <h2 class="mit-section-title">Frequently Asked Questions</h2>
+            <p class="mit-section-subtitle">
+                For any other questions, please reach out to us at 
+                <a href="mailto:support@aplusinitiative.org">support@aplusinitiative.org</a>
+            </p>
+            
+            <div class="faq-container">
+                <div class="faq-grid">
+                    <!-- Left column -->
+                    <div class="faq-column">
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                Who can enroll in this course?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>This course is open to all A-Level students, regardless of school or background. Both current students and those preparing for A-Levels are welcome.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                What prerequisites are required?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Basic mathematical knowledge (GCSE level) is recommended. We'll cover everything else from the ground up, making it accessible even for beginners.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                How can I access the materials?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>All course materials including lecture videos, slides, practice problems, and solutions are available on our platform after enrollment. You'll have lifetime access to all materials.</p>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Reviews -->
-                <div id="reviews" class="course-section" style="display: none;">
-                    <div class="reviews-summary">
-                        <div class="average-rating">
-                            <div class="rating-number" id="averageRating">4.8</div>
-                            <div class="rating-stars">
-                                <!-- Stars will be generated by JavaScript -->
-                            </div>
-                            <div class="rating-count" id="ratingCount">Based on 234 reviews</div>
-                        </div>
-                        <div class="rating-distribution">
-                            <!-- Distribution bars will be generated by JavaScript -->
-                        </div>
-                    </div>
                     
-                    <div class="reviews-list" id="reviewsList">
-                        <!-- Reviews will be loaded by JavaScript -->
-                    </div>
-                </div>
-
-                <!-- Resources -->
-                <div id="resources" class="course-section" style="display: none;">
-                    <h2>Course Resources</h2>
-                    <div class="resources-list" id="resourcesList">
-                        <!-- Resources will be loaded by JavaScript -->
+                    <!-- Right column -->
+                    <div class="faq-column">
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                Is there a certificate of completion?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Yes! Students who complete all assignments and pass the final assessment will receive a certificate of completion from A+ Initiative.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                How are the courses structured?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Each course is divided into weekly modules with video lectures, practice problems, and assignments. Live Q&A sessions are held weekly.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                Can I download the materials?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Yes! All PDFs, slides, and problem sets are available for download. Videos are streamable with downloadable transcripts.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Sponsors Section -->
+    <section class="mit-section" id="sponsors">
+        <div class="container">
+            <h2 class="mit-section-title">Partners & Support</h2>
+            <p class="mit-section-subtitle">
+                This program would not be possible without the support of our educational partners
+            </p>
             
-            <!-- Sidebar -->
-            <div class="course-sidebar">
-                <div class="sidebar-card">
-                    <h3>Course Progress</h3>
-                    <div class="progress-circle">
-                        <svg width="120" height="120">
-                            <circle cx="60" cy="60" r="54" fill="none" stroke="#374151" stroke-width="8"/>
-                            <circle cx="60" cy="60" r="54" fill="none" stroke="#059669" stroke-width="8" 
-                                    stroke-dasharray="339.292" stroke-dashoffset="0" 
-                                    id="progressCircle"/>
-                        </svg>
-                        <div class="progress-text">
-                            <span id="progressPercent">0%</span>
-                            <small>Complete</small>
-                        </div>
+            <div class="sponsors-grid">
+                <div class="sponsor-card">
+                    <div class="sponsor-logo">
+                        <i class="fas fa-university"></i>
                     </div>
+                    <h3>University Partners</h3>
+                    <p>Collaboration with leading universities for curriculum development</p>
                 </div>
                 
-                <div class="sidebar-card">
-                    <h3>Quick Links</h3>
-                    <div class="sidebar-links">
-                        <a href="#" class="sidebar-link">
-                            <i class="fas fa-download"></i>
-                            Download Syllabus
-                        </a>
-                        <a href="#" class="sidebar-link">
-                            <i class="fas fa-question-circle"></i>
-                            FAQ
-                        </a>
-                        <a href="#" class="sidebar-link">
-                            <i class="fas fa-comments"></i>
-                            Discussion Forum
-                        </a>
-                        <a href="#" class="sidebar-link">
-                            <i class="fas fa-certificate"></i>
-                            Get Certificate
-                        </a>
+                <div class="sponsor-card">
+                    <div class="sponsor-logo">
+                        <i class="fas fa-chalkboard-teacher"></i>
                     </div>
+                    <h3>Educational Foundations</h3>
+                    <p>Support from educational trusts and foundations</p>
                 </div>
                 
-                <div class="sidebar-card">
-                    <h3>Share Course</h3>
-                    <div class="social-share">
-                        <button class="share-btn facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </button>
-                        <button class="share-btn twitter">
-                            <i class="fab fa-twitter"></i>
-                        </button>
-                        <button class="share-btn linkedin">
-                            <i class="fab fa-linkedin-in"></i>
-                        </button>
-                        <button class="share-btn copy">
-                            <i class="fas fa-link"></i>
-                        </button>
+                <div class="sponsor-card">
+                    <div class="sponsor-logo">
+                        <i class="fas fa-book"></i>
                     </div>
+                    <h3>Publishing Partners</h3>
+                    <p>Access to premium textbooks and resources</p>
                 </div>
+            </div>
+            
+            <div class="sponsors-cta">
+                <p>Interested in partnering with us? Contact our partnerships team.</p>
+                <a href="mailto:partners@aplusinitiative.org" class="btn btn-outline">
+                    <i class="fas fa-handshake mr-2"></i> Become a Partner
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <!-- Footer content -->
+    <footer class="mit-footer">
+        <div class="container">
+            <div class="mit-footer-content">
+                <div class="footer-logo">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="logo-text">
+                            <div>A+ Initiative</div>
+                            <div class="logo-subtitle">A-Levels Excellence</div>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        Teaching the foundations of A-Level subjects to students worldwide.
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h3>Courses</h3>
+                        <ul>
+                            <li><a href="course_detail.html?course=mathematics">Mathematics</a></li>
+                            <li><a href="course_detail.html?course=chemistry">Chemistry</a></li>
+                            <li><a href="course_detail.html?course=physics">Physics</a></li>
+                            <li><a href="course_detail.html?course=computer-science">Computer Science</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="course_list.html">All Resources</a></li>
+                            <li><a href="#">Past Papers</a></li>
+                            <li><a href="#">Solution Banks</a></li>
+                            <li><a href="#">Textbooks</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3>Connect</h3>
+                        <ul>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Community</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+                
+                <div class="footer-copyright">
+                    <p>&copy; 2024 A+ Initiative. All educational materials are open-source and available for personal use.</p>
+                    <p class="footer-note">
+                        Inspired by MIT OpenCourseWare. Delivering world-class A-Level education to students everywhere.
+                    </p>
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <!-- Back to Top -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
     <!-- JavaScript -->
     <script src="assets/js/app.js"></script>
-    <script src="assets/js/course-manager.js"></script>
-    <script src="assets/js/course-detail.js"></script>
+    <script src="assets/js/mit-course.js"></script>
 </body>
 </html>

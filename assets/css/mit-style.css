@@ -1,0 +1,861 @@
+/* MIT-inspired Course Detail Styles */
+:root {
+    --primary: #059669;
+    --primary-dark: #047857;
+    --primary-light: #10b981;
+    --secondary: #dc2626;
+    --secondary-dark: #b91c1c;
+    --accent: #1e40af;
+    --dark: #0a0a0a;
+    --darker: #050505;
+    --light: #f8fafc;
+    --bg-light: rgba(255, 255, 255, 0.03);
+}
+
+/* Hero Section */
+.mit-hero {
+    min-height: 100vh;
+    padding: 120px 0 80px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+}
+
+.mit-hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(5, 150, 105, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(220, 38, 38, 0.1) 0%, transparent 50%);
+}
+
+.mit-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.mit-hero-title {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: white;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.mit-hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2rem;
+}
+
+.mit-hero-description {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Enrollment Status */
+.mit-enrollment-status {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.enrollment-badge {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.enrollment-timer {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.timer-unit {
+    text-align: center;
+    min-width: 80px;
+}
+
+.timer-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+}
+
+.timer-label {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Audience Selector */
+.audience-selector {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.audience-option {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 200px;
+}
+
+.audience-option:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.audience-option.active {
+    background: rgba(5, 150, 105, 0.1);
+    border-color: var(--primary);
+    box-shadow: 0 8px 32px rgba(5, 150, 105, 0.1);
+}
+
+.audience-option i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.audience-option span {
+    display: block;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.25rem;
+}
+
+.audience-option small {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+}
+
+/* Section Styles */
+.mit-section {
+    padding: 5rem 0;
+}
+
+.mit-section.bg-light {
+    background: var(--bg-light);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mit-section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.mit-section-subtitle {
+    font-size: 1.125rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+}
+
+/* Overview Section */
+.overview-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.overview-description p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2rem;
+}
+
+.overview-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.detail-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.detail-icon {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+}
+
+.detail-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: white;
+}
+
+.detail-content p {
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.detail-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.detail-content li {
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+}
+
+.detail-content li:before {
+    content: "✓";
+    color: var(--primary);
+    margin-right: 0.5rem;
+    font-weight: bold;
+}
+
+/* Schedule Section */
+.schedule-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.schedule-filters {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.schedule-filter {
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.schedule-filter:hover {
+    color: white;
+    border-color: var(--primary);
+}
+
+.schedule-filter.active {
+    background: rgba(5, 150, 105, 0.1);
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.schedule-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.schedule-item:hover {
+    border-color: var(--primary);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(5, 150, 105, 0.1);
+}
+
+.schedule-item.lecture {
+    border-left: 4px solid var(--primary);
+}
+
+.schedule-item.lab {
+    border-left: 4px solid var(--accent);
+}
+
+.schedule-item.workshop {
+    border-left: 4px solid var(--secondary);
+}
+
+.schedule-type {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(5, 150, 105, 0.1);
+    color: var(--primary);
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.schedule-type.lab {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--accent);
+}
+
+.schedule-type.workshop {
+    background: rgba(220, 38, 38, 0.1);
+    color: var(--secondary);
+}
+
+.schedule-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.schedule-date {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.schedule-date i {
+    color: var(--primary);
+}
+
+.schedule-resources {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.resource-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+.resource-link:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.resource-link i {
+    font-size: 0.875rem;
+}
+
+.schedule-download {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* Team Section */
+.team-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.team-filters {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.team-filter {
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.team-filter:hover {
+    color: white;
+    border-color: var(--primary);
+}
+
+.team-filter.active {
+    background: rgba(5, 150, 105, 0.1);
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.team-member {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.team-member:hover {
+    border-color: var(--primary);
+    transform: translateY(-4px);
+}
+
+.member-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 700;
+}
+
+.member-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.member-role {
+    color: var(--primary);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.member-department {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.member-bio {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+}
+
+.team-cta {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+}
+
+.team-cta p {
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* FAQ Section */
+.faq-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.faq-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.faq-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 1.5rem;
+    background: none;
+    border: none;
+    text-align: left;
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s ease;
+}
+
+.faq-question:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.faq-question i {
+    transition: transform 0.3s ease;
+    color: var(--primary);
+}
+
+.faq-question.active i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-answer.active {
+    padding: 0 1.5rem 1.5rem;
+    max-height: 500px;
+}
+
+.faq-answer p {
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+}
+
+/* Sponsors Section */
+.sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.sponsor-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.sponsor-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-4px);
+}
+
+.sponsor-logo {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+}
+
+.sponsor-card h3 {
+    font-size: 1.25rem;
+    color: white;
+    margin-bottom: 0.75rem;
+}
+
+.sponsor-card p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+.sponsors-cta {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+}
+
+.sponsors-cta p {
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Footer */
+.mit-footer {
+    background: rgba(0, 0, 0, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 4rem 0 2rem;
+}
+
+.mit-footer-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+}
+
+.footer-logo {
+    max-width: 300px;
+}
+
+.footer-logo .logo {
+    margin-bottom: 1.5rem;
+}
+
+.footer-description {
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.footer-section h3 {
+    font-size: 1.125rem;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-section a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-section a:hover {
+    color: var(--primary);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+    text-align: center;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.social-link:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.footer-copyright p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-note {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.75rem;
+    font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .overview-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .mit-footer-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .footer-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .mit-hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .mit-hero-subtitle {
+        font-size: 1.25rem;
+    }
+    
+    .mit-hero-description {
+        font-size: 1rem;
+    }
+    
+    .enrollment-timer {
+        gap: 1rem;
+    }
+    
+    .timer-unit {
+        min-width: 60px;
+    }
+    
+    .timer-number {
+        font-size: 2rem;
+    }
+    
+    .audience-selector {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .audience-option {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .mit-section-title {
+        font-size: 2rem;
+    }
+    
+    .schedule-grid,
+    .team-grid,
+    .sponsors-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-links {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .mit-hero-title {
+        font-size: 2rem;
+    }
+    
+    .schedule-filters,
+    .team-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .schedule-filter,
+    .team-filter {
+        text-align: center;
+    }
+    
+    .enrollment-timer {
+        flex-wrap: wrap;
+    }
+    
+    .timer-unit {
+        min-width: 70px;
+    }
+}
