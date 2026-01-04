@@ -243,18 +243,131 @@ function initAudienceSelector() {
 // Generate schedule
 function generateSchedule(courseId) {
     const schedules = {
-        mathematics: [
-            { type: 'lecture', title: 'Introduction to Pure Mathematics', date: 'Sep 2, 2024', slides: '#', video: '#', notes: '#' },
-            { type: 'lecture', title: 'Algebra and Functions', date: 'Sep 9, 2024', slides: '#', video: '#', notes: '#' },
-            { type: 'lab', title: 'Calculus Practice Session', date: 'Sep 16, 2024', code: '#', problems: '#' },
-            { type: 'lecture', title: 'Coordinate Geometry', date: 'Sep 23, 2024', slides: '#', video: '#', notes: '#' },
-            { type: 'workshop', title: 'Trigonometry Workshop', date: 'Sep 30, 2024', slides: '#', problems: '#' },
-            { type: 'lecture', title: 'Introduction to Mechanics', date: 'Oct 7, 2024', slides: '#', video: '#', notes: '#' },
-            { type: 'lecture', title: 'Statistics Fundamentals', date: 'Oct 14, 2024', slides: '#', video: '#', notes: '#' },
-            { type: 'lab', title: 'Statistics Data Analysis', date: 'Oct 21, 2024', code: '#', data: '#' },
-            { type: 'lecture', title: 'Vectors and Matrices', date: 'Oct 28, 2024', slides: '#', video: '#', notes: '#' },
-            { type: 'workshop', title: 'Exam Technique Workshop', date: 'Nov 4, 2024', slides: '#', pastpapers: '#' }
-        ],
+       mathematics: [
+    // Week 1 (Jan 5-9, 2026)
+                    { type: 'lecture', title: 'Set Theory', date: 'Jan 5, 2026', slides: '#', video: '#', notes: '#' },
+                    { type: 'workshop', title: 'Set Theory Practice', date: 'Jan 6, 2026', slides: '#', problems: '#' },
+    
+    // Week 2 (Jan 12-16, 2026)
+                    { type: 'lecture', title: 'Set of Numbers', date: 'Jan 12, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Exponents and Indices', date: 'Jan 13, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 3 (Jan 19-23, 2026)
+    { type: 'lab', title: 'Surds Practice Session', date: 'Jan 19, 2026', code: '#', problems: '#' },
+    { type: 'lecture', title: 'Laws of Indices Review', date: 'Jan 20, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 4 (Jan 26-30, 2026)
+    { type: 'lecture', title: 'Complex Numbers - Introduction', date: 'Jan 26, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'workshop', title: 'Complex Numbers Workshop', date: 'Jan 27, 2026', slides: '#', problems: '#' },
+    
+    // Week 5 (Feb 2-6, 2026)
+    { type: 'lecture', title: 'Equations and Problem Solving', date: 'Feb 2, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Inequalities Fundamentals', date: 'Feb 3, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 6 (Feb 9-13, 2026)
+    { type: 'lab', title: 'Equations Practice Lab', date: 'Feb 9, 2026', code: '#', problems: '#' },
+    { type: 'workshop', title: 'Inequalities Workshop', date: 'Feb 10, 2026', slides: '#', problems: '#' },
+    
+    // Week 7 (Feb 16-20, 2026)
+    { type: 'lecture', title: 'Quadratic Equations', date: 'Feb 16, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Quadratic Formula Applications', date: 'Feb 17, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 8 (Feb 23-27, 2026)
+    { type: 'lab', title: 'Quadratic Equations Practice', date: 'Feb 23, 2026', code: '#', problems: '#' },
+    { type: 'lecture', title: 'Functions Introduction', date: 'Feb 24, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 9 (Mar 2-6, 2026)
+    { type: 'lecture', title: 'Function Properties and Graphs', date: 'Mar 2, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'workshop', title: 'Functions Workshop', date: 'Mar 3, 2026', slides: '#', problems: '#' },
+    
+    // Week 10 (Mar 9-13, 2026)
+    { type: 'lecture', title: 'Quadratic Functions', date: 'Mar 9, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Polynomial Functions', date: 'Mar 10, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 11 (Mar 16-20, 2026)
+    { type: 'lab', title: 'Polynomial Practice', date: 'Mar 16, 2026', code: '#', problems: '#' },
+    { type: 'lecture', title: 'Polynomial Equations', date: 'Mar 17, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 12 (Mar 23-27, 2026)
+    { type: 'lecture', title: 'Sketching Rational Functions', date: 'Mar 23, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'workshop', title: 'Piece-wise Functions Workshop', date: 'Mar 24, 2026', slides: '#', problems: '#' },
+    
+    // Week 13 (Mar 30 - Apr 3, 2026)
+    { type: 'lecture', title: 'Arithmetic Sequences', date: 'Mar 30, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Geometric Sequences', date: 'Mar 31, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 14 (Apr 6-10, 2026) - Spring Break Week
+    { type: 'workshop', title: 'Sequences Problem Solving', date: 'Apr 6, 2026', slides: '#', problems: '#' },
+    { type: 'review', title: 'Mid-Term Review Session', date: 'Apr 7, 2026', slides: '#', problems: '#' },
+    
+    // Week 15 (Apr 13-17, 2026)
+    { type: 'lecture', title: 'Mathematical Induction', date: 'Apr 13, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lab', title: 'Induction Practice Lab', date: 'Apr 14, 2026', code: '#', problems: '#' },
+    
+    // Week 16 (Apr 20-24, 2026)
+    { type: 'lecture', title: 'Partial Fractions', date: 'Apr 20, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'workshop', title: 'Partial Fractions Workshop', date: 'Apr 21, 2026', slides: '#', problems: '#' },
+    
+    // Week 17 (Apr 27 - May 1, 2026)
+    { type: 'lecture', title: 'Combinations and Permutations', date: 'Apr 27, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Binomial Theorem', date: 'Apr 28, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 18 (May 4-8, 2026)
+    { type: 'workshop', title: 'Binomial Expansion Workshop', date: 'May 4, 2026', slides: '#', problems: '#' },
+    { type: 'lab', title: 'Counting Problems Lab', date: 'May 5, 2026', code: '#', problems: '#' },
+    
+    // Week 19 (May 11-15, 2026)
+    { type: 'lecture', title: 'Matrices - Fundamentals', date: 'May 11, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Matrix Operations', date: 'May 12, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 20 (May 18-22, 2026)
+    { type: 'lab', title: 'Matrix Operations Lab', date: 'May 18, 2026', code: '#', problems: '#' },
+    { type: 'workshop', title: 'Matrix Applications Workshop', date: 'May 19, 2026', slides: '#', problems: '#' },
+    
+    // Week 21 (May 25-29, 2026)
+    { type: 'lecture', title: 'Exponential Functions', date: 'May 25, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Logarithmic Functions', date: 'May 26, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 22 (Jun 1-5, 2026)
+    { type: 'workshop', title: 'Exponential & Logarithm Workshop', date: 'Jun 1, 2026', slides: '#', problems: '#' },
+    { type: 'lab', title: 'Exponential Applications Lab', date: 'Jun 2, 2026', code: '#', problems: '#' },
+    
+    // Week 23 (Jun 8-12, 2026)
+    { type: 'lecture', title: 'Coordinate Geometry', date: 'Jun 8, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'workshop', title: 'Coordinate Geometry Workshop', date: 'Jun 9, 2026', slides: '#', problems: '#' },
+    
+    // Week 24 (Jun 15-19, 2026)
+    { type: 'lecture', title: 'Trigonometry Fundamentals', date: 'Jun 15, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Trigonometric Functions', date: 'Jun 16, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 25 (Jun 22-26, 2026)
+    { type: 'lab', title: 'Trigonometry Practice Lab', date: 'Jun 22, 2026', code: '#', problems: '#' },
+    { type: 'workshop', title: 'Trigonometric Equations Workshop', date: 'Jun 23, 2026', slides: '#', problems: '#' },
+    
+    // Week 26 (Jun 29 - Jul 3, 2026)
+    { type: 'lecture', title: 'Further Complex Numbers', date: 'Jun 29, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Hyperbolic Functions', date: 'Jun 30, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 27 (Jul 6-10, 2026)
+    { type: 'workshop', title: 'Complex & Hyperbolic Functions Workshop', date: 'Jul 6, 2026', slides: '#', problems: '#' },
+    { type: 'lecture', title: 'Polar Coordinate System', date: 'Jul 7, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 28 (Jul 13-17, 2026)
+    { type: 'lecture', title: 'Calculus Introduction', date: 'Jul 13, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Differentiation Fundamentals', date: 'Jul 14, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 29 (Jul 20-24, 2026)
+    { type: 'lab', title: 'Differentiation Practice Lab', date: 'Jul 20, 2026', code: '#', problems: '#' },
+    { type: 'lecture', title: 'Integration Fundamentals', date: 'Jul 21, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 30 (Jul 27-31, 2026)
+    { type: 'workshop', title: 'Integration Workshop', date: 'Jul 27, 2026', slides: '#', problems: '#' },
+    { type: 'review', title: 'Comprehensive Review Session', date: 'Jul 28, 2026', slides: '#', problems: '#' },
+    
+    // Week 31 (Aug 3-7, 2026)
+    { type: 'workshop', title: 'Final Exam Preparation Workshop', date: 'Aug 3, 2026', slides: '#', pastpapers: '#' },
+    { type: 'lab', title: 'Past Paper Practice Session', date: 'Aug 4, 2026', code: '#', problems: '#' }
+],
         chemistry: [
             { type: 'lecture', title: 'Atomic Structure', date: 'Sep 2, 2024', slides: '#', video: '#', notes: '#' },
             { type: 'lecture', title: 'Bonding and Structure', date: 'Sep 9, 2024', slides: '#', video: '#', notes: '#' },

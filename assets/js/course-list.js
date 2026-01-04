@@ -65,17 +65,17 @@ function initMobileMenu() {
 function initCourseData() {
     const courses = [
         {
-            id: 'mathematics',
-            title: 'Pure Mathematics',
+            id: 'mathematical methods',
+            title: 'Mathematical Methods I',
             category: 'math',
-            description: 'Master algebra, calculus, trigonometry, and advanced mathematical concepts with comprehensive resources.',
+            description: 'Master algebra, Geometry, trigonometry, calculus, and advanced mathematical methods concepts with comprehensive resources.',
             image: 'math',
             rating: 4.8,
             lectures: 24,
             resources: 45,
             students: 1567,
             difficulty: 'Intermediate',
-            duration: '14 weeks',
+            duration: '18 weeks',
             badge: 'popular',
             color: '#8b5cf6'
         },
