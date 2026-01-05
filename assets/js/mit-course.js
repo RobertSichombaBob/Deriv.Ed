@@ -245,8 +245,8 @@ function generateSchedule(courseId) {
     const schedules = {
        mathematics: [
     // Week 1 (Jan 5-9, 2026)
-                    { type: 'lecture', title: 'Set Theory', date: 'Jan 5, 2026', slides: '#', video: '#', notes: '#' },
-                    { type: 'workshop', title: 'Set Theory Practice', date: 'Jan 6, 2026', slides: '#', problems: '#' },
+    { type: 'lecture', title: 'Set Theory', date: 'Jan 5, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'workshop', title: 'Set Theory Practice', date: 'Jan 6, 2026', slides: '#', problems: '#' },
     
     // Week 2 (Jan 12-16, 2026)
                     { type: 'lecture', title: 'Set of Numbers', date: 'Jan 12, 2026', slides: '#', video: '#', notes: '#' },
@@ -369,29 +369,209 @@ function generateSchedule(courseId) {
     { type: 'lab', title: 'Past Paper Practice Session', date: 'Aug 4, 2026', code: '#', problems: '#' }
 ],
         chemistry: [
-            { type: 'lecture', title: 'Atomic Structure', date: 'Sep 2, 2024', slides: '#', video: '#', notes: '#' },
-            { type: 'lecture', title: 'Bonding and Structure', date: 'Sep 9, 2024', slides: '#', video: '#', notes: '#' },
-            { type: 'lab', title: 'Practical Chemistry Techniques', date: 'Sep 16, 2024', manual: '#', safety: '#' },
-            { type: 'lecture', title: 'Energetics', date: 'Sep 23, 2024', slides: '#', video: '#', notes: '#' },
-            { type: 'workshop', title: 'Organic Chemistry Workshop', date: 'Sep 30, 2024', slides: '#', problems: '#' },
-            { type: 'lecture', title: 'Kinetics', date: 'Oct 7, 2024', slides: '#', video: '#', notes: '#' },
-            { type: 'lecture', title: 'Equilibrium', date: 'Oct 14, 2024', slides: '#', video: '#', notes: '#' },
-            { type: 'lab', title: 'Analytical Chemistry', date: 'Oct 21, 2024', manual: '#', data: '#' },
-            { type: 'lecture', title: 'Redox Reactions', date: 'Oct 28, 2024', slides: '#', video: '#', notes: '#' },
-            { type: 'workshop', title: 'Chemistry Practical Exam Prep', date: 'Nov 4, 2024', slides: '#', pastpapers: '#' }
-        ],
+    // Week 1-2: Fundamental Concepts (Chapters 1-3 Review)
+    { type: 'lecture', title: 'Review: Chemical Foundations & Measurement', date: 'Jan 5, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Review: Atomic Structure & Periodicity', date: 'Jan 6, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lab', title: 'Chemical Measurement Techniques', date: 'Jan 12, 2026', code: '#', problems: '#' },
+    { type: 'workshop', title: 'Stoichiometry Practice Session', date: 'Jan 13, 2026', slides: '#', problems: '#' },
+    
+    // Week 3-4: Chapter 4 - Solution Chemistry
+    { type: 'lecture', title: 'Water as Solvent & Electrolyte Solutions', date: 'Jan 19, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Solution Composition & Concentration', date: 'Jan 20, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lab', title: 'Solution Preparation Lab', date: 'Jan 26, 2026', code: '#', problems: '#' },
+    { type: 'lecture', title: 'Precipitation & Acid-Base Reactions', date: 'Jan 27, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 5-6: Chapter 5 - Gases
+    { type: 'lecture', title: 'Gas Laws & Ideal Gas Behavior', date: 'Feb 2, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Gas Stoichiometry & Dalton\'s Law', date: 'Feb 3, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lab', title: 'Gas Laws Laboratory', date: 'Feb 9, 2026', code: '#', problems: '#' },
+    { type: 'workshop', title: 'Kinetic Molecular Theory Workshop', date: 'Feb 10, 2026', slides: '#', problems: '#' },
+    
+    // Week 7-8: Chapter 6 - Thermochemistry
+    { type: 'lecture', title: 'Energy Concepts & Enthalpy', date: 'Feb 16, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Calorimetry & Hess\'s Law', date: 'Feb 17, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lab', title: 'Calorimetry Lab', date: 'Feb 23, 2026', code: '#', problems: '#' },
+    { type: 'lecture', title: 'Energy Sources & Applications', date: 'Feb 24, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 9-10: Chapter 7 - Atomic Structure & Periodicity
+    { type: 'lecture', title: 'Quantum Theory & Atomic Spectra', date: 'Mar 2, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Quantum Mechanical Model', date: 'Mar 3, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'workshop', title: 'Quantum Numbers Workshop', date: 'Mar 9, 2026', slides: '#', problems: '#' },
+    { type: 'lecture', title: 'Periodic Trends & Properties', date: 'Mar 10, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 11-12: Chapter 8 - Chemical Bonding
+    { type: 'lecture', title: 'Chemical Bonds & Electronegativity', date: 'Mar 16, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Lewis Structures & VSEPR Theory', date: 'Mar 17, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lab', title: 'Molecular Modeling Lab', date: 'Mar 23, 2026', code: '#', problems: '#' },
+    { type: 'workshop', title: 'Resonance & Exceptions Workshop', date: 'Mar 24, 2026', slides: '#', problems: '#' },
+    
+    // Week 13-14: Chapter 9 - Advanced Bonding Concepts
+    { type: 'lecture', title: 'Hybridization & Molecular Orbitals', date: 'Mar 30, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Bonding in Diatomic Molecules', date: 'Mar 31, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'midterm', title: 'Mid-Term Review Session', date: 'Apr 6, 2026', slides: '#', problems: '#' },
+    { type: 'workshop', title: 'Photoelectron Spectroscopy Workshop', date: 'Apr 7, 2026', slides: '#', problems: '#' },
+    
+    // Week 15-16: Chapter 10 - Liquids & Solids
+    { type: 'lecture', title: 'Intermolecular Forces & Properties', date: 'Apr 13, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Solid State Chemistry', date: 'Apr 14, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lab', title: 'Phase Changes Laboratory', date: 'Apr 20, 2026', code: '#', problems: '#' },
+    { type: 'lecture', title: 'Network Solids & Phase Diagrams', date: 'Apr 21, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 17-18: Chapter 11 - Properties of Solutions
+    { type: 'lecture', title: 'Solution Formation & Solubility', date: 'Apr 27, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Colligative Properties', date: 'Apr 28, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'workshop', title: 'Colligative Properties Problem Solving', date: 'May 4, 2026', slides: '#', problems: '#' },
+    { type: 'lab', title: 'Osmotic Pressure Lab', date: 'May 5, 2026', code: '#', problems: '#' },
+    
+    // Week 19-20: Chapter 12 - Chemical Kinetics
+    { type: 'lecture', title: 'Reaction Rates & Rate Laws', date: 'May 11, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Reaction Mechanisms & Catalysis', date: 'May 12, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lab', title: 'Kinetics Laboratory', date: 'May 18, 2026', code: '#', problems: '#' },
+    { type: 'workshop', title: 'Integrated Rate Laws Workshop', date: 'May 19, 2026', slides: '#', problems: '#' },
+    
+    // Week 21-22: Chapter 13 - Chemical Equilibrium
+    { type: 'lecture', title: 'Equilibrium Concepts & Constants', date: 'May 25, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Equilibrium Calculations', date: 'May 26, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'workshop', title: 'Equilibrium Problem Solving', date: 'Jun 1, 2026', slides: '#', problems: '#' },
+    { type: 'lecture', title: 'Le Châtelier\'s Principle', date: 'Jun 2, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 23-24: Chapters 14-15 - Acids & Bases
+    { type: 'lecture', title: 'Acid-Base Theories & pH Scale', date: 'Jun 8, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Weak Acid/Base Calculations', date: 'Jun 9, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lab', title: 'Acid-Base Titration Lab', date: 'Jun 15, 2026', code: '#', problems: '#' },
+    { type: 'lecture', title: 'Buffers & Titration Curves', date: 'Jun 16, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 25-26: Chapters 16-17 - Advanced Equilibria & Thermodynamics
+    { type: 'lecture', title: 'Solubility Equilibria & Ksp', date: 'Jun 22, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Entropy & Spontaneous Processes', date: 'Jun 23, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'workshop', title: 'Thermodynamics Problem Solving', date: 'Jun 29, 2026', slides: '#', problems: '#' },
+    { type: 'lecture', title: 'Free Energy & Equilibrium', date: 'Jun 30, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 27-28: Chapters 18-20 - Electrochemistry & Representative Elements
+    { type: 'lecture', title: 'Electrochemistry Fundamentals', date: 'Jul 6, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Galvanic Cells & Batteries', date: 'Jul 7, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lab', title: 'Electrochemistry Laboratory', date: 'Jul 13, 2026', code: '#', problems: '#' },
+    { type: 'lecture', title: 'Nuclear Chemistry', date: 'Jul 14, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 29-30: Final Review & Advanced Topics
+    { type: 'lecture', title: 'Representative Elements Survey', date: 'Jul 20, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'workshop', title: 'Comprehensive Problem Review', date: 'Jul 21, 2026', slides: '#', problems: '#' },
+    { type: 'review', title: 'Final Exam Preparation Workshop', date: 'Jul 27, 2026', slides: '#', pastpapers: '#' },
+    { type: 'lab', title: 'Final Review Laboratory Session', date: 'Jul 28, 2026', code: '#', problems: '#' }
+],
         physics: [
-            { type: 'lecture', title: 'Mechanics and Motion', date: 'Sep 2, 2024', slides: '#', video: '#', notes: '#' },
-            { type: 'lecture', title: 'Forces and Energy', date: 'Sep 9, 2024', slides: '#', video: '#', notes: '#' },
-            { type: 'lab', title: 'Physics Practical Session', date: 'Sep 16, 2024', manual: '#', data: '#' },
-            { type: 'lecture', title: 'Waves and Optics', date: 'Sep 23, 2024', slides: '#', video: '#', notes: '#' },
-            { type: 'workshop', title: 'Electricity Workshop', date: 'Sep 30, 2024', slides: '#', problems: '#' },
-            { type: 'lecture', title: 'Electric and Magnetic Fields', date: 'Oct 7, 2024', slides: '#', video: '#', notes: '#' },
-            { type: 'lecture', title: 'Particle Physics', date: 'Oct 14, 2024', slides: '#', video: '#', notes: '#' },
-            { type: 'lab', title: 'Modern Physics Experiments', date: 'Oct 21, 2024', manual: '#', simulations: '#' },
-            { type: 'lecture', title: 'Thermal Physics', date: 'Oct 28, 2024', slides: '#', video: '#', notes: '#' },
-            { type: 'workshop', title: 'Physics Problem-Solving', date: 'Nov 4, 2024', slides: '#', pastpapers: '#' }
-        ],
+    // Week 1: Fundamentals
+    { type: 'lecture', title: 'Dimensions and Units: SI System & Dimensional Analysis', date: 'Jan 5, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'workshop', title: 'Unit Conversion & Dimensional Analysis Practice', date: 'Jan 6, 2026', slides: '#', problems: '#' },
+    
+    // Week 2: Vectors
+    { type: 'lecture', title: 'Vectors: Properties, Components & Unit Vectors', date: 'Jan 12, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Vector Operations: Dot Product & Cross Product', date: 'Jan 13, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 3: 1D Kinematics
+    { type: 'lab', title: 'Vector Analysis Laboratory', date: 'Jan 19, 2026', code: '#', problems: '#' },
+    { type: 'lecture', title: 'Motion in One Dimension: Position, Velocity & Acceleration', date: 'Jan 20, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 4: 1D Motion Applications
+    { type: 'lecture', title: 'Constant Acceleration & Free Fall', date: 'Jan 26, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'workshop', title: '1D Kinematics Problem Solving Workshop', date: 'Jan 27, 2026', slides: '#', problems: '#' },
+    
+    // Week 5: 2D Kinematics
+    { type: 'lecture', title: 'Motion in Two Dimensions: Vector Approach', date: 'Feb 2, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Projectile Motion', date: 'Feb 3, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 6: Circular Motion
+    { type: 'lab', title: 'Projectile Motion Laboratory', date: 'Feb 9, 2026', code: '#', problems: '#' },
+    { type: 'lecture', title: 'Uniform Circular Motion & Tangential Acceleration', date: 'Feb 10, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 7: Newton's Laws
+    { type: 'lecture', title: 'Force and Motion: Newton\'s Laws of Motion', date: 'Feb 16, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Types of Forces: Gravity, Normal, Friction, Tension', date: 'Feb 17, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 8: Force Applications
+    { type: 'workshop', title: 'Newton\'s Laws Application Problems', date: 'Feb 23, 2026', slides: '#', problems: '#' },
+    { type: 'lab', title: 'Force & Acceleration Laboratory', date: 'Feb 24, 2026', code: '#', problems: '#' },
+    
+    // Week 9: Work & Energy
+    { type: 'lecture', title: 'Work: Constant & Variable Forces', date: 'Mar 2, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Work-Energy Theorem', date: 'Mar 3, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 10: Conservation of Energy
+    { type: 'lecture', title: 'Conservative Forces & Potential Energy', date: 'Mar 9, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Conservation of Mechanical Energy', date: 'Mar 10, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 11: Energy Applications
+    { type: 'workshop', title: 'Energy Conservation Problem Solving', date: 'Mar 16, 2026', slides: '#', problems: '#' },
+    { type: 'lab', title: 'Energy Conservation Laboratory', date: 'Mar 17, 2026', code: '#', problems: '#' },
+    
+    // Week 12: Momentum
+    { type: 'lecture', title: 'Linear Momentum & Impulse', date: 'Mar 23, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Conservation of Linear Momentum', date: 'Mar 24, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 13: Collisions
+    { type: 'lecture', title: 'Elastic & Inelastic Collisions', date: 'Mar 30, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'midterm', title: 'Mechanics Mid-Term Review', date: 'Mar 31, 2026', slides: '#', problems: '#' },
+    
+    // Week 14: Center of Mass
+    { type: 'lecture', title: 'Center of Mass & Its Dynamics', date: 'Apr 6, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Systems of Variable Mass & Rocket Propulsion', date: 'Apr 7, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 15: Rotational Kinematics
+    { type: 'workshop', title: 'Collisions & Center of Mass Workshop', date: 'Apr 13, 2026', slides: '#', problems: '#' },
+    { type: 'lecture', title: 'Rotational Motion: Angular Quantities & Kinematics', date: 'Apr 14, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 16: Rotational Dynamics
+    { type: 'lecture', title: 'Rotational Dynamics: Torque & Moment of Inertia', date: 'Apr 20, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Newton\'s Second Law for Rotation', date: 'Apr 21, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 17: Rotational Energy & Rolling
+    { type: 'lab', title: 'Rotational Motion Laboratory', date: 'Apr 27, 2026', code: '#', problems: '#' },
+    { type: 'lecture', title: 'Rotational Kinetic Energy & Rolling Motion', date: 'Apr 28, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 18: Electricity Introduction
+    { type: 'lecture', title: 'Electric Charge & Coulomb\'s Law', date: 'May 4, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'workshop', title: 'Coulomb\'s Law Problem Solving', date: 'May 5, 2026', slides: '#', problems: '#' },
+    
+    // Week 19: Electric Fields
+    { type: 'lecture', title: 'Electric Field Concept & Point Charge Fields', date: 'May 11, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Electric Dipoles & Field Lines', date: 'May 12, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 20: Continuous Charge Distributions
+    { type: 'lecture', title: 'Electric Fields of Continuous Distributions: Part 1', date: 'May 18, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Electric Fields of Continuous Distributions: Part 2', date: 'May 19, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 21: Charged Particle Motion
+    { type: 'workshop', title: 'Electric Field Calculations Workshop', date: 'May 25, 2026', slides: '#', problems: '#' },
+    { type: 'lab', title: 'Electric Field Mapping Laboratory', date: 'May 26, 2026', code: '#', problems: '#' },
+    
+    // Week 22: Electric Current & Resistance
+    { type: 'lecture', title: 'Electric Current, Current Density & Ohm\'s Law', date: 'Jun 1, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Electric Resistance & Power', date: 'Jun 2, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 23: Circuits Fundamentals
+    { type: 'lecture', title: 'Electromotive Force & Simple Circuits', date: 'Jun 8, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lecture', title: 'Resistors in Series and Parallel', date: 'Jun 9, 2026', slides: '#', video: '#', notes: '#' },
+    
+    // Week 24: Circuit Analysis
+    { type: 'workshop', title: 'Circuit Analysis Problem Solving', date: 'Jun 15, 2026', slides: '#', problems: '#' },
+    { type: 'lab', title: 'Basic Circuits Laboratory', date: 'Jun 16, 2026', code: '#', problems: '#' },
+    
+    // Week 25: Kirchhoff's Rules
+    { type: 'lecture', title: 'Kirchhoff\'s Rules & Complex Circuit Analysis', date: 'Jun 22, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'workshop', title: 'Kirchhoff\'s Rules Application Workshop', date: 'Jun 23, 2026', slides: '#', problems: '#' },
+    
+    // Week 26: RC Circuits
+    { type: 'lecture', title: 'RC Circuits: Charging & Discharging', date: 'Jun 29, 2026', slides: '#', video: '#', notes: '#' },
+    { type: 'lab', title: 'RC Circuit Laboratory', date: 'Jun 30, 2026', code: '#', problems: '#' },
+    
+    // Week 27: Comprehensive Review
+    { type: 'review', title: 'Mechanics Comprehensive Review', date: 'Jul 6, 2026', slides: '#', problems: '#' },
+    { type: 'review', title: 'Electricity & Circuits Review', date: 'Jul 7, 2026', slides: '#', problems: '#' },
+    
+    // Week 28: Final Preparation
+    { type: 'workshop', title: 'Integrated Physics Problem Solving', date: 'Jul 13, 2026', slides: '#', problems: '#' },
+    { type: 'final', title: 'Final Exam Preparation & Past Papers', date: 'Jul 14, 2026', slides: '#', pastpapers: '#' }
+]
         'computer-science': [
             { type: 'lecture', title: 'Introduction to Programming', date: 'Sep 2, 2024', slides: '#', video: '#', notes: '#' },
             { type: 'lecture', title: 'Data Structures', date: 'Sep 9, 2024', slides: '#', video: '#', notes: '#' },
