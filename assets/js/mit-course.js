@@ -438,7 +438,7 @@ function getResourceUrl(course, week, title, type) {
 
 // Generate complete schedule for all weeks
 function generateSchedule(courseId) {
-    const baseUrl = 'https://github.com/RobertSichombaBob/Deriv.Ed';
+    const baseUrl = 'https://robertsichombabob.github.io/Deriv.Ed'';
     const schedules = {
         mathematics: getMathematicsSchedule(baseUrl),
         chemistry: getChemistrySchedule(baseUrl),
