@@ -800,7 +800,7 @@ function getMathematicsSchedule(baseUrl) {
         // Week 1
         { type: 'lecture', title: 'Set Theory', date: 'Jan 5, 2026', week: 1,
             slides: `${baseUrl}/resources/mathematics/week1/set_theory_slides.pdf`,
-            notes: `${baseUrl}/resources/mathematics/week1/Mathematical Method(MA110) by Mr Sakala W-1 (1)`,
+            notes: `${baseUrl}/resources/mathematics/week1/set_theory.pdf`,
             video: 'https://youtu.be/example-set-theory' },
         { type: 'workshop', title: 'Set Theory Practice', date: 'Jan 6, 2026', week: 1,
             problems: `${baseUrl}/resources/mathematics/week1/set_theory_problems.pdf`,
