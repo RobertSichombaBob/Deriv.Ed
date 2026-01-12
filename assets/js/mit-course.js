@@ -69,11 +69,11 @@ function addResourceStyles() {
         }
         
         .resource-link.pdf {
-            background: linear-gradient(135deg, #f56565 0%, #ed64a6 100%);
+            background: linear-gradient(135deg, #074519 0%, #054a2b 100%);
         }
         
         .resource-link.pdf:hover {
-            background: linear-gradient(135deg, #ed64a6 0%, #f56565 100%);
+            background: linear-gradient(135deg, #078975 0%, #492e8d 100%);
         }
         
         .resource-link.video {
@@ -93,11 +93,11 @@ function addResourceStyles() {
         }
         
         .resource-link.problems {
-            background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+            background: linear-gradient(135deg, #ac73e5 0%, #6c20dd 100%);
         }
         
         .resource-link.problems:hover {
-            background: linear-gradient(135deg, #dd6b20 0%, #ed8936 100%);
+            background: linear-gradient(135deg, #59710e 0%, #8faa3f 100%);
         }
         
         .schedule-item:hover .resource-link {
@@ -813,79 +813,8 @@ function getMathematicsSchedule(baseUrl) {
         { type: 'lecture', title: 'Exponents and Indices', date: 'Jan 13, 2026', week: 2,
             slides: `${baseUrl}/resources/mathematics/week2/exponents_indices_slides.pdf`,
             notes: `${baseUrl}/resources/mathematics/week2/exponents_indices_notes.pdf` },
-        
-        // Week 3
-        { type: 'lab', title: 'Surds Practice Session', date: 'Jan 19, 2026', week: 3,
-            problems: `${baseUrl}/resources/mathematics/week3/surds_practice_problems.pdf` },
-        { type: 'lecture', title: 'Laws of Indices Review', date: 'Jan 20, 2026', week: 3,
-            slides: `${baseUrl}/resources/mathematics/week3/laws_of_indices_slides.pdf`,
-            notes: `${baseUrl}/resources/mathematics/week3/laws_of_indices_notes.pdf` },
-        
-        // Week 4
-        { type: 'lecture', title: 'Complex Numbers - Introduction', date: 'Jan 26, 2026', week: 4,
-            slides: `${baseUrl}/resources/mathematics/week4/complex_numbers_slides.pdf`,
-            notes: `${baseUrl}/resources/mathematics/week4/complex_numbers_notes.pdf` },
-        { type: 'workshop', title: 'Complex Numbers Workshop', date: 'Jan 27, 2026', week: 4,
-            problems: `${baseUrl}/resources/mathematics/week4/complex_numbers_problems.pdf` },
-        
-        // Week 5
-        { type: 'lecture', title: 'Equations and Problem Solving', date: 'Feb 2, 2026', week: 5,
-            slides: `${baseUrl}/resources/mathematics/week5/equations_slides.pdf`,
-            notes: `${baseUrl}/resources/mathematics/week5/equations_notes.pdf` },
-        { type: 'lecture', title: 'Inequalities Fundamentals', date: 'Feb 3, 2026', week: 5,
-            slides: `${baseUrl}/resources/mathematics/week5/inequalities_slides.pdf`,
-            notes: `${baseUrl}/resources/mathematics/week5/inequalities_notes.pdf` },
-        
-        // Week 6
-        { type: 'lab', title: 'Equations Practice Lab', date: 'Feb 9, 2026', week: 6,
-            problems: `${baseUrl}/resources/mathematics/week6/equations_practice_problems.pdf` },
-        { type: 'workshop', title: 'Inequalities Workshop', date: 'Feb 10, 2026', week: 6,
-            problems: `${baseUrl}/resources/mathematics/week6/inequalities_workshop_problems.pdf` },
-        
-        // Week 7
-        { type: 'lecture', title: 'Quadratic Equations', date: 'Feb 16, 2026', week: 7,
-            slides: `${baseUrl}/resources/mathematics/week7/quadratic_equations_slides.pdf`,
-            notes: `${baseUrl}/resources/mathematics/week7/quadratic_equations_notes.pdf` },
-        { type: 'lecture', title: 'Quadratic Formula Applications', date: 'Feb 17, 2026', week: 7,
-            slides: `${baseUrl}/resources/mathematics/week7/quadratic_formula_slides.pdf`,
-            notes: `${baseUrl}/resources/mathematics/week7/quadratic_formula_notes.pdf` },
-        
-        // Week 8
-        { type: 'lab', title: 'Quadratic Equations Practice', date: 'Feb 23, 2026', week: 8,
-            problems: `${baseUrl}/resources/mathematics/week8/quadratic_practice_problems.pdf` },
-        { type: 'lecture', title: 'Functions Introduction', date: 'Feb 24, 2026', week: 8,
-            slides: `${baseUrl}/resources/mathematics/week8/functions_intro_slides.pdf`,
-            notes: `${baseUrl}/resources/mathematics/week8/functions_intro_notes.pdf` },
-        
-        // Week 9
-        { type: 'lecture', title: 'Function Properties and Graphs', date: 'Mar 2, 2026', week: 9,
-            slides: `${baseUrl}/resources/mathematics/week9/function_properties_slides.pdf`,
-            notes: `${baseUrl}/resources/mathematics/week9/function_properties_notes.pdf` },
-        { type: 'workshop', title: 'Functions Workshop', date: 'Mar 3, 2026', week: 9,
-            problems: `${baseUrl}/resources/mathematics/week9/functions_workshop_problems.pdf` },
-        
-        // Week 10
-        { type: 'lecture', title: 'Quadratic Functions', date: 'Mar 9, 2026', week: 10,
-            slides: `${baseUrl}/resources/mathematics/week10/quadratic_functions_slides.pdf`,
-            notes: `${baseUrl}/resources/mathematics/week10/quadratic_functions_notes.pdf` },
-        { type: 'lecture', title: 'Polynomial Functions', date: 'Mar 10, 2026', week: 10,
-            slides: `${baseUrl}/resources/mathematics/week10/polynomial_functions_slides.pdf`,
-            notes: `${baseUrl}/resources/mathematics/week10/polynomial_functions_notes.pdf` },
-        
-        // Week 11
-        { type: 'lab', title: 'Polynomial Practice', date: 'Mar 16, 2026', week: 11,
-            problems: `${baseUrl}/resources/mathematics/week11/polynomial_practice_problems.pdf` },
-        { type: 'lecture', title: 'Polynomial Equations', date: 'Mar 17, 2026', week: 11,
-            slides: `${baseUrl}/resources/mathematics/week11/polynomial_equations_slides.pdf`,
-            notes: `${baseUrl}/resources/mathematics/week11/polynomial_equations_notes.pdf` },
-        
-        // Week 12
-        { type: 'lecture', title: 'Sketching Rational Functions', date: 'Mar 23, 2026', week: 12,
-            slides: `${baseUrl}/resources/mathematics/week12/rational_functions_slides.pdf`,
-            notes: `${baseUrl}/resources/mathematics/week12/rational_functions_notes.pdf` },
-        { type: 'workshop', title: 'Piece-wise Functions Workshop', date: 'Mar 24, 2026', week: 12,
-            problems: `${baseUrl}/resources/mathematics/week12/piecewise_functions_problems.pdf` },
-    ];
+        // Continue adding weeks 3-30 with similar structure...
+];
 }
 
 // ================ CHEMISTRY SCHEDULE (30 Weeks) ================
@@ -972,26 +901,17 @@ function getComputerScienceSchedule(baseUrl) {
 function generateTeam(courseId) {
     const teams = {
         mathematics: [
-            { name: 'Dr. James Wilson', role: 'Lead Instructor', department: 'Mathematics', bio: 'PhD in Mathematics from Cambridge University, 15+ years teaching experience', avatar: 'JW' },
-            { name: 'Prof. Sarah Chen', role: 'Co-Instructor', department: 'Applied Mathematics', bio: 'Specialist in mathematical modeling and exam techniques', avatar: 'SC' },
-            { name: 'Michael Rodriguez', role: 'Lead TA', department: 'Mathematics Education', bio: 'MSc Mathematics, 5 years tutoring experience', avatar: 'MR' },
-            { name: 'Emma Johnson', role: 'Teaching Assistant', department: 'Statistics', bio: 'Data scientist specializing in statistical analysis', avatar: 'EJ' }
-        ],
+            { name: 'Mr. R. Sichomba', role: 'Lead Instructor', department: 'Mathematics', bio: 'MSc in Data Science and Exploration Geology from The Copperbelt University, 3+ years teaching experience', avatar: 'JW' },
+            ],
         chemistry: [
-            { name: 'Dr. Benjamin Carter', role: 'Lead Instructor', department: 'Chemistry', bio: 'PhD in Organic Chemistry, research background in pharmaceuticals', avatar: 'BC' },
-            { name: 'Prof. Olivia Martinez', role: 'Co-Instructor', department: 'Physical Chemistry', bio: 'Expert in chemical kinetics and thermodynamics', avatar: 'OM' },
-            { name: 'Sophia Williams', role: 'Lead TA', department: 'Chemistry Education', bio: 'Specialist in practical chemistry techniques', avatar: 'SW' }
-        ],
+            { name: 'Mr. R. Sichomba', role: 'Lead Instructor', department: 'Mathematics', bio: 'MSc in Data Science and Exploration Geology from The Copperbelt University, 3+ years teaching experience', avatar: 'JW' },
+           ],
         physics: [
-            { name: 'Dr. Alexander Lee', role: 'Lead Instructor', department: 'Physics', bio: 'PhD in Particle Physics, former CERN researcher', avatar: 'AL' },
-            { name: 'Prof. Maria Garcia', role: 'Co-Instructor', department: 'Astrophysics', bio: 'Expert in modern physics and cosmology', avatar: 'MG' },
-            { name: 'David Thompson', role: 'Lead TA', department: 'Physics Education', bio: 'Specialist in physics problem-solving techniques', avatar: 'DT' }
-        ],
+            { name: 'Mr. R. Sichomba', role: 'Lead Instructor', department: 'Mathematics', bio: 'MSc in Data Science and Exploration Geology from The Copperbelt University, 3+ years teaching experience', avatar: 'JW' },
+           ],
         'computer-science': [
-            { name: 'Dr. Robert Miller', role: 'Lead Instructor', department: 'Computer Science', bio: 'PhD in AI, 10+ years software engineering experience', avatar: 'RM' },
-            { name: 'Prof. Jennifer Davis', role: 'Co-Instructor', department: 'Algorithms', bio: 'Expert in data structures and algorithm design', avatar: 'JD' },
-            { name: 'Thomas Anderson', role: 'Lead TA', department: 'Software Engineering', bio: 'Full-stack developer and coding instructor', avatar: 'TA' }
-        ]
+            { name: 'Mr. R. Sichomba', role: 'Lead Instructor', department: 'Mathematics', bio: 'MSc in Data Science and Exploration Geology from The Copperbelt University, 3+ years teaching experience', avatar: 'JW' },
+            ]
     };
     
     const team = teams[courseId] || teams.mathematics;
